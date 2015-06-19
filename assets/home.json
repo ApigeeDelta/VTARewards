@@ -1,0 +1,68 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "garage",
+      "statusBar.style": "dark",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "getHvac,getSecurity,getDishwasher"
+        },
+        "on": "willAppear"
+      }
+    ],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "bg.color": "ffffff",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "customHeader",
+            "_type": "Custom",
+            "actions": [
+              {
+                "_type": "Function",
+                "attributes": {
+                  "_target": "$app",
+                  "functionName": "drawer.l.toggle"
+                },
+                "on": "button.left"
+              }
+            ],
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 62,
+              "visible": true,
+              "title": "Home",
+              "button.left":"../images/btnMenu_42x42.png",
+              "controlLocation": "/controls/header.json",
+              "layoutType": "float"
+            },
+            "controls": []
+          },
+          {
+            "_id": "btnMenu",
+            "_type": "Image",
+            "attributes": {
+              "size.h": "100%",
+              "size.w": "100%",
+              "image": "/images/tmpHome.jpg",
+              "layoutType": "absolute"
+            }
+          }
+        ]
+      }
+    ],
+    "datasources": []
+  }
+}

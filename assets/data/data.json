@@ -1,0 +1,96 @@
+{
+  "entities": [
+    {
+      "company": "Dweet",
+      "name": "HVAC",
+      "method": "GET",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/get/latest/dweet/for/c8ad1106-0cbb-4cda-8937-45b955591a55?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K"
+    },
+    {
+      "company": "Dweet",
+      "name": "HVAC",
+      "method": "POST",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/dweet/for/c8ad1106-0cbb-4cda-8937-45b955591a55?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K",
+      "body": {
+        "location": "Home",
+        "name": "Interior Temp",
+        "status": "71"
+      }
+    },
+    {
+      "company": "Dweet",
+      "name": "Security",
+      "method": "GET",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/get/latest/dweet/for/1d63586f-cd78-4a98-ab99-31ff3e3026c7?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K"
+    },
+    {
+      "company": "Dweet",
+      "name": "Security",
+      "method": "POST",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/dweet/for/1d63586f-cd78-4a98-ab99-31ff3e3026c7?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K",
+      "body": {
+        "location": "Home",
+        "name": "Security",
+        "status": "Armed"
+      }
+    },
+    {
+      "company": "Dweet",
+      "name": "Dishwasher",
+      "method": "GET",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/get/latest/dweet/for/00681ec6-bd49-42c5-8b1b-d7978fd93deb?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K"
+    },
+    {
+      "company": "Dweet",
+      "name": "Dishwasher",
+      "method": "POST",
+      "url": "https://verizonventures-prod.apigee.net",
+      "path": "/dweet/dweet/for/00681ec6-bd49-42c5-8b1b-d7978fd93deb?vzvkey=XA2AV4kUZubjtZ4K9ILMoOhei4FZxR7K",
+      "body": {
+        "location": "Home",
+        "name": "Dishwasher",
+        "status": "Washing"
+      }
+    },
+    {
+      "company": "Kiip",
+      "name": "Session",
+      "method": "POST",
+      "body": {
+        "app_key": "440c5e52f37554e536b1c12c79594954",
+        "device_id": "test001",
+        "events": [
+          {
+            "id": "session_start",
+            "start": "2015-05-28T15:23:22"
+          }
+        ],
+        "protocol": "http",
+        "sdk_version": "1.0",
+        "test": true
+      },
+      "url": "http://verizonventures-prod.apigee.net",
+      "path": "/kiip/2.0/web/moment?vzvkey=DgOhAlvkDJVj6yfX1obAk2YFbaqc1GVv"
+    },
+    {
+      "company": "Kiip",
+      "name": "Reward",
+      "method": "POST",
+      "body": {
+        "app_key": "440c5e52f37554e536b1c12c79594954",
+        "device_id": "test001",
+        "moment_id": "Driving 100 miles safely",
+        "protocol": "http",
+        "sdk_version": "1.0",
+        "test": true
+      },
+      "url": "http://verizonventures-prod.apigee.net",
+      "path": "/kiip/2.0/web/moment?vzvkey=DgOhAlvkDJVj6yfX1obAk2YFbaqc1GVv"
+    }
+  ]
+}

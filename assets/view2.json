@@ -1,0 +1,236 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "weather",
+      "statusBar.style": "hidden",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": []
+      ,
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "bg.color": "000000",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "browserReward",
+            "_type": "Browser",
+            "actions": [
+              {
+                "_type": "Alert",
+                "attributes": {
+                  "title": "finished."
+                },
+                "on": "finished"
+              }
+            ],
+            "attributes": {
+              "bg.color": "#000000",
+              "layoutType": "absolute",
+              "size.h": 320,
+              "size.w": 320,
+              "margin.left": 134,
+              "margin.top": 220,
+              "visible": true,
+              "1url": "http://api.kiip.me/reward/preview/555e0f12-3ae1-3711-cdd3-370546977706?locale=&sdk_version=2.0.9&r=29417&application_id=554a5e1f-1978-7788-1017-018922315126&moment_id=5567dc68-1c35-e489-c8d8-a0a81a3dde8d#show"
+            }
+          },
+          {
+            "_id": "layoutMap",
+            "_type": "Layout",
+            "attributes": {
+              "bg.color": "#ff00ff",
+              "visible": true,
+              "layoutType": "absolute",
+              "margin.left": 450,
+              "margin.top": 265,
+              "size.w": 430,
+              "size.h": 260
+            },
+            "controls": [
+              {
+                "_id": "mapControl",
+                "_type": "Map",
+                "actions": [
+                  {
+                    "_type": "Alert",
+                    "attributes": {
+                      "title": "You touched on [[$self.pin.title]]."
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "animatePinDrop.enabled": true,
+                  "pin": {
+                    "lat": "[[$row.location.lat]]",
+                    "long": "[[$row.location.long]]",
+                    "subtitle": "Subtitle",
+                    "title": "Title",
+                    "image": "[[$row.image]]"
+                  },
+                  "datasource.id": "users2",
+                  "size.h": "100%",
+                  "size.w": "100%",
+                  "userLocation.enabled": true,
+                  "zoomLevel": 12
+                }
+              }
+            ]
+          },
+          {
+            "_id": "imageBackground",
+            "_type": "Image",
+            "actions": [
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "to": "view.json",
+                  "animation.type": "flip.l"
+                },
+                "on": "touchUp"
+              }
+            ],
+            "attributes": {
+              "alpha": 1,
+              "layoutType": "absolute",
+              "size.w": "100%",
+              "size.h": "100%",
+              "image": "/images/bgCarZoom.png"
+            }
+          }
+        ]
+      },
+      {
+        "_id": "testText2",
+        "_type": "Text",
+        "actions": [
+          {
+            "_type": "Navigate",
+            "attributes": {
+              "to": "apiconsole.json",
+              "1animation.type": "flip.r"
+            },
+            "on": "touchUp"
+          }
+        ],
+        "attributes": {
+          "color": "#ffffff",
+          "bg.color": "#ff00ff00",
+          "align.h": "right",
+          "size.h": 50,
+          "size.w": 50,
+          "text.align": "left",
+          "font": "FontAwesome:30",
+          "layoutType": "float",
+          "margin": 20,
+          "text": "fa-code"
+        }
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "kiipMoment",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "kiipReward"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "method": "POST",
+          "body": {
+            "app_key": "[[$app.vzkey_kiip_app]]",
+            "device_id": "test001",
+            "events": [
+              {
+                "id": "session_start",
+                "start": "2015-05-28T15:23:22"
+              }
+            ],
+            "protocol": "http",
+            "sdk_version": "1.0",
+            "test": true
+          },
+          "responseType": "json",
+          "url": "http://verizonventures-prod.apigee.net/kiip/2.0/web/moment?vzvkey=[[$app.vzkey_kiip]]"
+        }
+      },
+      {
+        "_id": "kiipReward",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "[[$self.response.body.view.modal.body_url]]"
+            },
+            "enabled": false,
+            "on": "success"
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "browserReward"
+            },
+            "set": {
+              "url": "[[$self.response.body.view.modal.body_url]]#show"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "method": "POST",
+          "body": {
+            "app_key": "[[$app.vzkey_kiip_app]]",
+            "device_id": "test001",
+            "moment_id": "Driving 100 miles safely",
+            "protocol": "http",
+            "sdk_version": "1.0",
+            "test": true
+          },
+          "responseType": "json",
+          "url": "http://verizonventures-prod.apigee.net/kiip/2.0/web/moment?vzvkey=[[$app.vzkey_kiip]]"
+        }
+      },
+      {
+        "_id": "users2",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "mapControl",
+              "functionName": "showAllPins",
+              "delay": 1
+            },
+            "enabled": true,
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "data.basepath": "entities",
+          "cache.enabled": false,
+          "autoLoad.enabled": true,
+          "method": "POST",
+          "responseType": "json",
+          "url": "/data/users2.json",
+          "requestType": "json"
+        }
+      }
+    ]
+  }
+}

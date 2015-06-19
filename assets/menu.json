@@ -1,0 +1,309 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "garage",
+      "statusBar.style": "dark",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "getHvac,getSecurity,getDishwasher"
+        },
+        "on": "willAppear"
+      }
+    ],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "bg.color": "434953",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "layoutDivider",
+            "_type": "Layout",
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 20,
+              "visible": true,
+              "bg.color": "ffffff",
+              "layoutType": "float"
+            },
+            "controls": []
+          },
+          {
+            "_id": "layoutUser",
+            "_type": "Layout",
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 85,
+              "margin.top": 20,
+              "visible": true,
+              "bg.color": "434953",
+              "layoutType": "float"
+            },
+            "controls": [
+              {
+                "_id": "layoutDivider",
+                "_type": "Layout",
+                "attributes": {
+                  "size.w": "100%",
+                  "size.h": 42,
+                  "padding.left": 17,
+                  "padding.right": 17,
+                  "align.v": "middle",
+                  "layoutType": "float",
+                  "layoutFlow": "horizontal"
+                },
+                "controls": [
+                  {
+                    "_id": "layoutDivider",
+                    "_type": "Layout",
+                    "attributes": {
+                      "size.w": 42,
+                      "size.h": 42
+                    },
+                    "controls": [
+                      {
+                        "_id": "imageUser",
+                        "_type": "Image",
+                        "attributes": {
+                          "size.w": 42,
+                          "size.h": 42,
+                          "layoutType": "absolute",
+                          "image": "/images/tmpCody_42x42.png",
+                          "bg.color": "ffffff"
+                        }
+                      },
+                      {
+                        "_id": "imageUserOverlay",
+                        "_type": "Image",
+                        "attributes": {
+                          "size.w": 42,
+                          "size.h": 42,
+                          "image": "/images/imgUserOverlay_42x42.png",
+                          "layoutType": "absolute"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_id": "layoutDivider",
+                    "_type": "Layout",
+                    "attributes": {
+                      "size.w": 42,
+                      "size.h": 42
+                    },
+                    "controls": []
+                  }
+                ]
+              },
+              {
+                "_id": "layoutDivider",
+                "_type": "Layout",
+                "attributes": {
+                  "size.w": "100%",
+                  "size.h": 1,
+                  "align.v": "bottom",
+                  "bg.color": "25292e",
+                  "layoutType": "float"
+                }
+              }
+            ]
+          },
+          {
+            "_id": "layoutDivider",
+            "_type": "Layout",
+            "attributes": {
+              "size.w": "100%",
+              "margin.top": 105,
+              "autofill.h": true,
+              "visible": true,
+              "bg.color": "d4d7dd",
+              "layoutType": "float"
+            },
+            "controls": [
+              {
+                "_id": "tableMenu",
+                "_type": "Table",
+                "actions": [
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "inputSearch",
+                      "functionName": "dismissKeyboard"
+                    },
+                    "enabled": true,
+                    "on": "didBeginScrolling"
+                  }
+                ],
+                "attributes": {
+                  "bg.color": "#434953",
+                  "datasource.id": "menu",
+                  "data.basepath": "entities",
+                  "enabled": true,
+                  "cell.size.h": 47,
+                  "cell.size.w": "100%",
+                  "margin.top": 0,
+                  "reloadAnimation.enabled": false,
+                  "separator.style": "none",
+                  "size.h": "100%",
+                  "size.w": "100%"
+                },
+                "controls": [
+                  {
+                    "_id": "layoutThumbnail",
+                    "_type": "Layout",
+                    "actions": [
+                      {
+                        "_type": "Modify",
+                        "attributes": {
+                          "_target": "$session"
+                        },
+                        "on": "touch",
+                        "set": {
+                          "index": "[[$row.index]]"
+                        }
+                      },
+                      {
+                        "_type": "Refresh",
+                        "attributes": {
+                          "_target": "tableMenu"
+                        },
+                        "enabled": true,
+                        "on": "touch"
+                      },
+                      {
+                        "_type": "Navigate",
+                        "attributes": {
+                          "1nav_animation_duration": 0,
+                          "1nav_animation_type": "crossDissolve",
+                          "1nav_stack_type": "push",
+                          "to": "[[$row.path]]"
+                        },
+                        "on": "touchUp"
+                      }
+                    ],
+                    "attributes": {
+                      "size.h": "100%",
+                      "size.w": "100%"
+                    },
+                    "controls": [
+                      {
+                        "_id": "textMenuName",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#ffffff",
+                          "bg.color": "#ff00ff00",
+                          "align.h": "left",
+                          "margin.left": 17,
+                          "text.align": "left",
+                          "font": "Aileron-Regular:16",
+                          "layoutType": "float",
+                          "align.v": "middle",
+                          "text": "[[$row.name]]"
+                        }
+                      },
+                      {
+                        "_id": "btnMenu",
+                        "_type": "Image",
+                        "attributes": {
+                          "margin.right": 17,
+                          "size.h": 10,
+                          "size.w": 7,
+                          "margin.top": 0,
+                          "align.v": "middle",
+                          "align.h": "right",
+                          "image": "/images/btnChevron_7x10.png",
+                          "layoutType": "float"
+                        }
+                      },
+                      {
+                        "_id": "layoutDivider",
+                        "_type": "Layout",
+                        "attributes": {
+                          "size.w": "100%",
+                          "size.h": 1,
+                          "padding.left": 10,
+                          "padding.right": 10,
+                          "align.v": "bottom",
+                          "layoutType": "absolute"
+                        },
+                        "controls": [
+                          {
+                            "_id": "layoutDivider",
+                            "_type": "Layout",
+                            "attributes": {
+                              "size.w": "100%",
+                              "size.h": 1,
+                              "bg.color": "32373e"
+                            },
+                            "controls": []
+                          }
+                        ]
+                      },
+                      {
+                        "_id": "layoutDivider",
+                        "_type": "Layout",
+                        "attributes": {
+                          "size.w": "100%",
+                          "size.h": "100%",
+                          "visible": [
+                            "if :: [[$session.index]] == [[$row.index]] :: true",
+                            "if :: [[$session.index]] != [[$row.index]] :: false"
+                          ],
+                          "bg.color": "32373e"
+                        },
+                        "controls": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "menu",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "mapControl",
+              "functionName": "showAllPins",
+              "delay": 1
+            },
+            "enabled": true,
+            "on": "success"
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "textD1ishwasher"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "cache.enabled": false,
+          "autoLoad.enabled": true,
+          "method": "GET",
+          "responseType": "json",
+          "url": "/data/menu.json",
+          "requestType": "json"
+        }
+      }
+    ]
+  }
+}

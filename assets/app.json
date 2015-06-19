@@ -1,0 +1,25 @@
+{
+  "$app": {
+    "actions": [],
+    "attributes": {
+      "location.autoRequest.enabled":true,
+      "view.index": "/stops.json",
+      "drawer.l.url":"/menu.json",
+      "drawer.l.max.w":"{{[[$device.screen.width]]-50;}}",
+      "drawer.shadow.enabled":false,
+      "debug.layout.enabled": false,
+      "logging.datasource.enabled": true,
+      "logging.level": "error",
+      "mode": "release",
+      "navigationBar.enabled": false,
+      "preloadImages": [
+        "assets/images/pin_32x60_red@2x.png",
+        "assets/images/imgUserTim_38x53@2x.png",
+        "assets/images/imgUserAnne_38x53@2x.png",
+        "assets/images/bgCarGarage.png",
+        "assets/images/bgCarZoom.png"
+      ]
+    },
+    "datasources": []
+  }
+}

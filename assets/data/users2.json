@@ -1,0 +1,28 @@
+{
+  "entities": [
+    {
+      "name": "Anne",
+      "location": {
+        "lat": "37.780109",
+        "long": "-122.417564"
+      },
+      "image": "/images/imgUserAnne_38x53@2x.png"
+    },
+    {
+      "name": "Tim",
+      "location": {
+        "lat": "37.771425",
+        "long": "-122.420826"
+      },
+      "image": "/images/imgUserTim_38x53@2x.png"
+    },
+    {
+      "name": "Me",
+      "location": {
+        "lat": "37.765685",
+        "long": "-122.405271"
+      },
+      "image": "/images/imgUserMe_38x53@2x.png"
+    }
+  ]
+}

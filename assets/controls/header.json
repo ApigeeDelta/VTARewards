@@ -1,0 +1,108 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "garage",
+      "statusBar.style": "hidden",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [
+      {
+        "_type": "Refresh",
+        "attributes": {
+          "_target": "getHvac,getSecurity,getDishwasher"
+        },
+        "on": "willAppear"
+      }
+    ],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "padding.top": 20,
+          "visible": true,
+          "bg.color": "ffffff",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "layoutDivider",
+            "_type": "Layout",
+            "attributes": {
+              "size.w": "100%",
+              "size.h": "100%",
+              "visible": true
+            },
+            "controls": [
+              {
+                "_id": "textAPIConsole",
+                "_type": "Text",
+                "actions": [
+                  {
+                    "_type": "Navigate",
+                    "attributes": {
+                      "to": "apiconsole.json",
+                      "1animation.type": "flip.r"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "color": "#434a54",
+                  "bg.color": "#ff00ff00",
+                  "align.h": "right",
+                  "margin.top": 0,
+                  "size.h": "100%",
+                  "size.w": "100%",
+                  "text.align": "center",
+                  "font": "Aileron-SemiBold:20",
+                  "layoutType": "float",
+                  "text": "[[$custom.title]]"
+                }
+              },
+              {
+                "_id": "btnMenu",
+                "_type": "Image",
+                "actions": [
+                  {
+                    "_type": "Event",
+                    "attributes": {
+                      "_target": "$custom",
+                      "eventName": "button.left"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "bg.color": "#ff00ff00",
+                  "margin.left": 7,
+                  "size.h": 42,
+                  "size.w": 42,
+                  "margin.top": 0,
+                  "image": "[[$custom.button.left]]",
+                  "layoutType": "float"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_id": "layoutDivider",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": 1,
+          "visible": true,
+          "align.v": "bottom",
+          "bg.color": "d4d7dd",
+          "layoutType": "float"
+        },
+        "controls": []
+      }
+    ],
+    "datasources": []
+  }
+}

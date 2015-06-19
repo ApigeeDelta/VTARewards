@@ -1,0 +1,28 @@
+{
+  "entities": [
+    {
+      "name": "Home",
+      "path": "home.json"
+    },
+    {
+      "name": "Rankings",
+      "path": "rankings.json"
+    },
+    {
+      "name": "Stops",
+      "path": "stops.json"
+    },
+    {
+      "name": "Menu Item",
+      "path": "home.json"
+    },
+    {
+      "name": "Menu Item",
+      "path": "home.json"
+    },
+    {
+      "name": "Menu Item",
+      "path": "home.json"
+    },
+  ]
+}

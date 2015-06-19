@@ -1,0 +1,236 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "garage",
+      "statusBar.style": "dark",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "bg.color": "ffffff",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "customHeader",
+            "_type": "Custom",
+            "actions": [
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "stackType": "pop"
+                },
+                "on": "button.left"
+              }
+            ],
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 62,
+              "visible": true,
+              "title": "Stop Info",
+              "button.left": "../images/btnBack_42x42.png",
+              "controlLocation": "/controls/header.json",
+              "layoutType": "float"
+            }
+          },
+          {
+            "_id": "mapControl",
+            "_type": "Map",
+            "actions": [
+              {
+                "_type": "Alert",
+                "attributes": {
+                  "title": "You touched on [[$self.pin.title]]."
+                },
+                "on": "touchUp"
+              }
+            ],
+            "attributes": {
+              "animatePinDrop.enabled": true,
+              "pin": {
+                "lat": "[[$session.stop_lat]]",
+                "long": "[[$session.stop_lon]]",
+                "subtitle": "[[$session.stop_name]]",
+                "title": "[[$session.stop_name]]",
+                "image": "/images/pin_32x60_red@2x.png"
+              },
+              "size.h1": "{{ ([[$deivce.screen.height]] /2 ) - 62 }}",
+              "size.h": "[[$device.screen.width]]",
+              "size.w": "100%",
+              "userLocation.enabled": true,
+              "zoomLevel": 10
+            }
+          },
+          {
+            "_id": "layoutDivider",
+            "_type": "Layout",
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 1,
+              "bg.color": "e3e5e6"
+            }
+          },
+          {
+            "_id": "layoutThumbnail",
+            "_type": "Layout",
+            "attributes": {
+              "autofill.h": true,
+              "size.w": "100%"
+            },
+            "controls": [
+              {
+                "_id": "btnMenu",
+                "_type": "Image",
+                "attributes": {
+                  "margin": 13,
+                  "size.h": 65,
+                  "size.w": 65,
+                  "image": "/images/imgStopBus_65x65.png",
+                  "layoutType": "float"
+                }
+              },
+              {
+                "_id": "textMenuName",
+                "_type": "Layout",
+                "attributes": {
+                  "align.h": "left",
+                  "margin.top": 27,
+                  "margin.left": 93,
+                  "autofill.w": true,
+                  "padding.right": 17,
+                  "layoutType": "float"
+                },
+                "controls": [
+                  {
+                    "_id": "textMenuName",
+                    "_type": "Layout",
+                    "attributes": {
+                      "layoutFlow": "vertical"
+                    },
+                    "controls": [
+                      {
+                        "_id": "textMenuName",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#434a54",
+                          "bg.color": "#ff00ff00",
+                          "text.align": "left",
+                          "font": "Aileron-Light:16",
+                          "text": "NAME"
+                        }
+                      },
+                      {
+                        "_id": "textMenuName",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#434a54",
+                          "bg.color": "#ff00ff00",
+                          "text.align": "left",
+                          "font": "Aileron-Regular:16",
+                          "text": "[[$session.stop_name]]"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_id": "layoutDivider",
+                    "_type": "Layout",
+                    "attributes": {
+                      "size.w": "100%",
+                      "size.h": 1,
+                      "margin.top": 10,
+                      "margin.bottom": 10,
+                      "bg.color": "e4e4e4"
+                    }
+                  },
+                  {
+                    "_id": "textMenuName",
+                    "_type": "Layout",
+                    "attributes": {
+                      "layoutFlow": "vertical"
+                    },
+                    "controls": [
+                      {
+                        "_id": "textMenuName",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#434a54",
+                          "bg.color": "#ff00ff00",
+                          "text.align": "left",
+                          "font": "Aileron-Light:16",
+                          "text": "ADDRESS"
+                        }
+                      },
+                      {
+                        "_id": "textMenuName",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#434a54",
+                          "bg.color": "#ff00ff00",
+                          "text.align": "left",
+                          "font": "Aileron-Regular:16",
+                          "text": "333 N. 17th Street\nSan Jose, CA 90210"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_id": "layoutDivider",
+                    "_type": "Layout",
+                    "attributes": {
+                      "size.w": "100%",
+                      "size.h": 1,
+                      "margin.top": 10,
+                      "margin.bottom": 10,
+                      "bg.color": "e4e4e4"
+                    }
+                  }
+                ]
+              }              
+            ]
+          }
+        ]
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "menu",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "mapControl",
+              "functionName": "showAllPins",
+              "delay": 1
+            },
+            "enabled": true,
+            "on": "success"
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "textD1ishwasher"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "cache.enabled": false,
+          "autoLoad.enabled": true,
+          "method": "GET",
+          "responseType": "json",
+          "url": "/data/stops.json",
+          "requestType": "json"
+        }
+      }
+    ]
+  }
+}

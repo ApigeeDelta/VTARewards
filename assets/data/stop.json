@@ -1,0 +1,1366 @@
+{
+  "action" : "get",
+  "application" : "4e3e8df0-042d-11e5-a74d-711a1da72ac9",
+  "params" : {
+    "client_secret" : [ "b3U6zMSoWGHWMsepaRQ_0UamoUAlXCw" ],
+    "client_id" : [ "b3U6Tbc1igQtEeWrojlwhjM9BA" ]
+  },
+  "path" : "/stops",
+  "uri" : "https://api.usergrid.com/jwest_vta/sandbox/stops",
+  "entities" : [ {
+    "uuid" : "3c0526b4-0430-11e5-9fee-4d58d4d8237e",
+    "type" : "stop",
+    "name" : "5462",
+    "created" : 1432704091658,
+    "modified" : 1433425712769,
+    "location" : {
+      "lat" : "37.334111747999998",
+      "lon" : "-121.88760723999999"
+    },
+    "metadata" : {
+      "path" : "/stops/3c0526b4-0430-11e5-9fee-4d58d4d8237e"
+    },
+    "stop_code" : "65462",
+    "stop_id" : "5462",
+    "stop_lat" : "37.334111747999998",
+    "stop_lon" : "-121.88760723999999",
+    "stop_name" : "2ND & PASEO DE SAN ANTONIO",
+    "trips" : {
+      "trip_ids" : [ "1812340", "1812293", "1812324", "1812333", "1812279", "1812343", "1812336", "1812316", "1812320", "1812323", "1812271", "1812311", "1812328", "1812281", "1812282", "1812307", "1812295", "1812330", "1812300", "1812301", "1812339", "1812310", "1812337", "1812327", "1812329", "1812308", "1812296", "1812298", "1812299", "1812303", "1812304", "1812285", "1812306", "1812292", "1812341", "1812275", "1812325", "1812326", "1812280", "1812287", "1812334", "1812344", "1812313", "1812314", "1812319", "1812305", "1812273", "1812309", "1812283", "1812317", "1812302", "1812331", "1812289", "1812290", "1812335", "1812342", "1812345", "1812272", "1812315", "1812318", "1812322", "1812288", "1812277", "1812278", "1812338", "1812297", "1812284", "1812332", "1812286", "1812291", "1812294", "1812274", "1812312", "1812276", "1812321", "1812270", "1812430", "1812435", "1812439", "1812446", "1812432", "1812457", "1812410", "1812436", "1812419", "1812421", "1812454", "1812464", "1812428", "1812415", "1812437", "1812458", "1812461", "1812449", "1812451", "1812409", "1812411", "1812412", "1812441", "1812418", "1812459", "1812452", "1812425", "1812463", "1812417", "1812460", "1812434", "1812423", "1812443", "1812445", "1812426", "1812455", "1812456", "1812440", "1812420", "1812427", "1812453", "1812431", "1812450", "1812416", "1812433", "1812414", "1812466", "1812462", "1812438", "1812429", "1812422", "1812424", "1812413", "1812408", "1812444", "1812448", "1812442", "1812447", "1812465", "1812568", "1812537", "1812527", "1812546", "1812543", "1812560", "1812574", "1812526", "1812551", "1812554", "1812563", "1812573", "1812562", "1812564", "1812571", "1812544", "1812547", "1812534", "1812556", "1812535", "1812539", "1812541", "1812576", "1812528", "1812569", "1812570", "1812572", "1812577", "1812565", "1812567", "1812558", "1812559", "1812575", "1812548", "1812553", "1812533", "1812555", "1812538", "1812542", "1812545", "1812529", "1812532", "1812557", "1812561", "1812566", "1812549", "1812550", "1812552", "1812531", "1812536", "1812540", "1812525", "1812530", "1825191", "1825192", "1825193", "1825194", "1825195", "1825196", "1825197", "1825198", "1825199", "1825200", "1825201", "1825202", "1825203", "1825204", "1825205", "1825206", "1825207", "1825208", "1825209", "1825210", "1825211", "1825212", "1825213", "1825214", "1825215", "1825216", "1825217", "1825218", "1825219", "1825220", "1825221", "1825222", "1825223", "1825224", "1825225", "1825226", "1825227", "1825228", "1825229", "1825230", "1825231", "1825232", "1825233", "1825234", "1825235", "1825236", "1825237", "1825238", "1825239", "1825240", "1825241", "1825242", "1825243", "1825244", "1825245", "1825246", "1825293", "1825294", "1825295", "1825296", "1825297", "1825298", "1825299", "1825300", "1825301", "1825302", "1825303", "1825304", "1825305", "1825306", "1825307", "1825308", "1825309", "1825310", "1825311", "1825312", "1825313", "1825314", "1825315", "1825316", "1825317", "1825318", "1825319", "1825320", "1825321", "1825322", "1825323", "1825324", "1825325", "1825326", "1825327", "1825328", "1825329", "1825330", "1825331", "1825332", "1825333", "1825334", "1825335", "1825336", "1825337", "1825338", "1825367", "1825368", "1825369", "1825370", "1825371", "1825372", "1825373", "1825374", "1825375", "1825376", "1825377", "1825378", "1825379", "1825380", "1825381", "1825382", "1825383", "1825384", "1825385", "1825386", "1825387", "1825388", "1825389", "1825390", "1825391", "1825392", "1825393" ],
+      "times" : {
+        "1825319" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825318" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825313" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825312" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825311" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825310" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825317" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825316" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825315" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825314" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812333" : [ {
+          "arrival_time" : "16:06:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:06:00"
+        } ],
+        "1812332" : [ {
+          "arrival_time" : "12:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:19:00"
+        } ],
+        "1812331" : [ {
+          "arrival_time" : "11:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:31:00"
+        } ],
+        "1812330" : [ {
+          "arrival_time" : "10:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:07:00"
+        } ],
+        "1812337" : [ {
+          "arrival_time" : "07:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:19:00"
+        } ],
+        "1812336" : [ {
+          "arrival_time" : "18:45:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:45:00"
+        } ],
+        "1812335" : [ {
+          "arrival_time" : "15:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:07:00"
+        } ],
+        "1812334" : [ {
+          "arrival_time" : "17:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:55:00"
+        } ],
+        "1812339" : [ {
+          "arrival_time" : "12:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:31:00"
+        } ],
+        "1812338" : [ {
+          "arrival_time" : "08:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:19:00"
+        } ],
+        "1812539" : [ {
+          "arrival_time" : "11:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:07:00"
+        } ],
+        "1812538" : [ {
+          "arrival_time" : "10:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:52:00"
+        } ],
+        "1812531" : [ {
+          "arrival_time" : "09:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:07:00"
+        } ],
+        "1812530" : [ {
+          "arrival_time" : "08:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:52:00"
+        } ],
+        "1812533" : [ {
+          "arrival_time" : "09:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:37:00"
+        } ],
+        "1812532" : [ {
+          "arrival_time" : "09:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:22:00"
+        } ],
+        "1812535" : [ {
+          "arrival_time" : "10:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:07:00"
+        } ],
+        "1812534" : [ {
+          "arrival_time" : "09:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:52:00"
+        } ],
+        "1812537" : [ {
+          "arrival_time" : "10:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:37:00"
+        } ],
+        "1812536" : [ {
+          "arrival_time" : "10:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:22:00"
+        } ],
+        "1812438" : [ {
+          "arrival_time" : "08:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:22:00"
+        } ],
+        "1812439" : [ {
+          "arrival_time" : "08:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:37:00"
+        } ],
+        "1825246" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825241" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825240" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825243" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825242" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1812430" : [ {
+          "arrival_time" : "20:45:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:45:00"
+        } ],
+        "1812431" : [ {
+          "arrival_time" : "21:15:00",
+          "stop_sequence" : "23",
+          "departure_time" : "21:15:00"
+        } ],
+        "1812432" : [ {
+          "arrival_time" : "21:45:00",
+          "stop_sequence" : "23",
+          "departure_time" : "21:45:00"
+        } ],
+        "1812433" : [ {
+          "arrival_time" : "23:17:00",
+          "stop_sequence" : "23",
+          "departure_time" : "23:17:00"
+        } ],
+        "1812434" : [ {
+          "arrival_time" : "24:06:00",
+          "stop_sequence" : "23",
+          "departure_time" : "24:06:00"
+        } ],
+        "1812435" : [ {
+          "arrival_time" : "07:08:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:08:00"
+        } ],
+        "1812436" : [ {
+          "arrival_time" : "07:46:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:46:00"
+        } ],
+        "1812437" : [ {
+          "arrival_time" : "08:05:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:05:00"
+        } ],
+        "1825227" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825226" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825225" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825224" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825223" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825222" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825221" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825220" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825300" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825301" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825302" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825303" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825304" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825305" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825229" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825228" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812320" : [ {
+          "arrival_time" : "21:48:00",
+          "stop_sequence" : "23",
+          "departure_time" : "21:48:00"
+        } ],
+        "1812321" : [ {
+          "arrival_time" : "22:18:00",
+          "stop_sequence" : "23",
+          "departure_time" : "22:18:00"
+        } ],
+        "1812322" : [ {
+          "arrival_time" : "23:18:00",
+          "stop_sequence" : "23",
+          "departure_time" : "23:18:00"
+        } ],
+        "1812323" : [ {
+          "arrival_time" : "24:06:00",
+          "stop_sequence" : "23",
+          "departure_time" : "24:06:00"
+        } ],
+        "1812324" : [ {
+          "arrival_time" : "15:54:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:54:00"
+        } ],
+        "1812325" : [ {
+          "arrival_time" : "16:18:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:18:00"
+        } ],
+        "1812326" : [ {
+          "arrival_time" : "16:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:31:00"
+        } ],
+        "1812327" : [ {
+          "arrival_time" : "08:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:07:00"
+        } ],
+        "1812328" : [ {
+          "arrival_time" : "07:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:31:00"
+        } ],
+        "1812329" : [ {
+          "arrival_time" : "08:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:43:00"
+        } ],
+        "1812292" : [ {
+          "arrival_time" : "14:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:19:00"
+        } ],
+        "1812528" : [ {
+          "arrival_time" : "08:18:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:18:00"
+        } ],
+        "1812529" : [ {
+          "arrival_time" : "08:35:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:35:00"
+        } ],
+        "1825393" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825392" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825391" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1812293" : [ {
+          "arrival_time" : "14:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:31:00"
+        } ],
+        "1812291" : [ {
+          "arrival_time" : "14:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:07:00"
+        } ],
+        "1812277" : [ {
+          "arrival_time" : "07:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:07:00"
+        } ],
+        "1812294" : [ {
+          "arrival_time" : "14:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:43:00"
+        } ],
+        "1812409" : [ {
+          "arrival_time" : "06:36:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:36:00"
+        } ],
+        "1812408" : [ {
+          "arrival_time" : "05:57:00",
+          "stop_sequence" : "23",
+          "departure_time" : "05:57:00"
+        } ],
+        "1812295" : [ {
+          "arrival_time" : "09:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:43:00"
+        } ],
+        "1812296" : [ {
+          "arrival_time" : "09:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:55:00"
+        } ],
+        "1812297" : [ {
+          "arrival_time" : "10:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:19:00"
+        } ],
+        "1825234" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825235" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825236" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825237" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825230" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825231" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825232" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825233" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812271" : [ {
+          "arrival_time" : "05:45:00",
+          "stop_sequence" : "23",
+          "departure_time" : "05:45:00"
+        } ],
+        "1825238" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825239" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812553" : [ {
+          "arrival_time" : "14:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:37:00"
+        } ],
+        "1812552" : [ {
+          "arrival_time" : "14:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:22:00"
+        } ],
+        "1812551" : [ {
+          "arrival_time" : "14:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:07:00"
+        } ],
+        "1812550" : [ {
+          "arrival_time" : "13:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:52:00"
+        } ],
+        "1812319" : [ {
+          "arrival_time" : "21:17:00",
+          "stop_sequence" : "23",
+          "departure_time" : "21:17:00"
+        } ],
+        "1812556" : [ {
+          "arrival_time" : "15:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:22:00"
+        } ],
+        "1812555" : [ {
+          "arrival_time" : "15:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:07:00"
+        } ],
+        "1812554" : [ {
+          "arrival_time" : "14:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:52:00"
+        } ],
+        "1812315" : [ {
+          "arrival_time" : "19:25:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:25:00"
+        } ],
+        "1812314" : [ {
+          "arrival_time" : "19:00:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:00:00"
+        } ],
+        "1812317" : [ {
+          "arrival_time" : "09:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:31:00"
+        } ],
+        "1812316" : [ {
+          "arrival_time" : "19:50:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:50:00"
+        } ],
+        "1812311" : [ {
+          "arrival_time" : "06:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:55:00"
+        } ],
+        "1812310" : [ {
+          "arrival_time" : "06:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:43:00"
+        } ],
+        "1812313" : [ {
+          "arrival_time" : "18:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:31:00"
+        } ],
+        "1812312" : [ {
+          "arrival_time" : "18:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:07:00"
+        } ],
+        "1812412" : [ {
+          "arrival_time" : "14:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:07:00"
+        } ],
+        "1812413" : [ {
+          "arrival_time" : "14:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:22:00"
+        } ],
+        "1812410" : [ {
+          "arrival_time" : "13:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:37:00"
+        } ],
+        "1825383" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812416" : [ {
+          "arrival_time" : "15:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:07:00"
+        } ],
+        "1812417" : [ {
+          "arrival_time" : "15:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:22:00"
+        } ],
+        "1812414" : [ {
+          "arrival_time" : "14:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:37:00"
+        } ],
+        "1812415" : [ {
+          "arrival_time" : "14:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:52:00"
+        } ],
+        "1825388" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825389" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812418" : [ {
+          "arrival_time" : "15:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:37:00"
+        } ],
+        "1812419" : [ {
+          "arrival_time" : "15:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:52:00"
+        } ],
+        "1812289" : [ {
+          "arrival_time" : "13:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:31:00"
+        } ],
+        "1812288" : [ {
+          "arrival_time" : "06:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:19:00"
+        } ],
+        "1812278" : [ {
+          "arrival_time" : "07:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:43:00"
+        } ],
+        "1812279" : [ {
+          "arrival_time" : "17:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:07:00"
+        } ],
+        "1825201" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825200" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825203" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825202" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825205" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825204" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825207" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825206" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825209" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825208" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812428" : [ {
+          "arrival_time" : "19:41:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:41:00"
+        } ],
+        "1812540" : [ {
+          "arrival_time" : "11:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:22:00"
+        } ],
+        "1812541" : [ {
+          "arrival_time" : "11:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:37:00"
+        } ],
+        "1812308" : [ {
+          "arrival_time" : "09:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:19:00"
+        } ],
+        "1812543" : [ {
+          "arrival_time" : "12:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:07:00"
+        } ],
+        "1812544" : [ {
+          "arrival_time" : "12:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:22:00"
+        } ],
+        "1812545" : [ {
+          "arrival_time" : "12:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:37:00"
+        } ],
+        "1812546" : [ {
+          "arrival_time" : "12:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:52:00"
+        } ],
+        "1812547" : [ {
+          "arrival_time" : "13:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:07:00"
+        } ],
+        "1812302" : [ {
+          "arrival_time" : "11:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:19:00"
+        } ],
+        "1812549" : [ {
+          "arrival_time" : "13:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:37:00"
+        } ],
+        "1812300" : [ {
+          "arrival_time" : "10:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:55:00"
+        } ],
+        "1812301" : [ {
+          "arrival_time" : "11:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:07:00"
+        } ],
+        "1812306" : [ {
+          "arrival_time" : "13:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:19:00"
+        } ],
+        "1812307" : [ {
+          "arrival_time" : "09:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:07:00"
+        } ],
+        "1812304" : [ {
+          "arrival_time" : "11:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:55:00"
+        } ],
+        "1812305" : [ {
+          "arrival_time" : "13:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:07:00"
+        } ],
+        "1812542" : [ {
+          "arrival_time" : "11:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:52:00"
+        } ],
+        "1825335" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825334" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812465" : [ {
+          "arrival_time" : "19:21:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:21:00"
+        } ],
+        "1812309" : [ {
+          "arrival_time" : "06:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:31:00"
+        } ],
+        "1812463" : [ {
+          "arrival_time" : "18:08:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:08:00"
+        } ],
+        "1825330" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812461" : [ {
+          "arrival_time" : "17:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:22:00"
+        } ],
+        "1812460" : [ {
+          "arrival_time" : "22:17:00",
+          "stop_sequence" : "23",
+          "departure_time" : "22:17:00"
+        } ],
+        "1812284" : [ {
+          "arrival_time" : "12:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:07:00"
+        } ],
+        "1825338" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812343" : [ {
+          "arrival_time" : "17:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:19:00"
+        } ],
+        "1825218" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825219" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825216" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825217" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825214" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825215" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825212" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825213" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825210" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825211" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812276" : [ {
+          "arrival_time" : "20:17:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:17:00"
+        } ],
+        "1812548" : [ {
+          "arrival_time" : "13:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:22:00"
+        } ],
+        "1812274" : [ {
+          "arrival_time" : "15:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:19:00"
+        } ],
+        "1812275" : [ {
+          "arrival_time" : "15:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:31:00"
+        } ],
+        "1812272" : [ {
+          "arrival_time" : "16:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:55:00"
+        } ],
+        "1812273" : [ {
+          "arrival_time" : "06:06:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:06:00"
+        } ],
+        "1812270" : [ {
+          "arrival_time" : "05:24:00",
+          "stop_sequence" : "2",
+          "departure_time" : "05:24:00"
+        } ],
+        "1812303" : [ {
+          "arrival_time" : "11:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:43:00"
+        } ],
+        "1812575" : [ {
+          "arrival_time" : "17:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:22:00"
+        } ],
+        "1812574" : [ {
+          "arrival_time" : "24:06:00",
+          "stop_sequence" : "23",
+          "departure_time" : "24:06:00"
+        } ],
+        "1812577" : [ {
+          "arrival_time" : "17:58:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:58:00"
+        } ],
+        "1812576" : [ {
+          "arrival_time" : "08:01:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:01:00"
+        } ],
+        "1812571" : [ {
+          "arrival_time" : "21:17:00",
+          "stop_sequence" : "23",
+          "departure_time" : "21:17:00"
+        } ],
+        "1812570" : [ {
+          "arrival_time" : "20:38:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:38:00"
+        } ],
+        "1812573" : [ {
+          "arrival_time" : "23:15:00",
+          "stop_sequence" : "23",
+          "departure_time" : "23:15:00"
+        } ],
+        "1812572" : [ {
+          "arrival_time" : "22:16:00",
+          "stop_sequence" : "23",
+          "departure_time" : "22:16:00"
+        } ],
+        "1812457" : [ {
+          "arrival_time" : "13:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:22:00"
+        } ],
+        "1825245" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825244" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825322" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825323" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825320" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825321" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825326" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825327" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825324" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825325" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825328" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825329" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825195" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825194" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825197" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825196" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812462" : [ {
+          "arrival_time" : "07:28:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:28:00"
+        } ],
+        "1825193" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825192" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825199" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825198" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812568" : [ {
+          "arrival_time" : "19:38:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:38:00"
+        } ],
+        "1812569" : [ {
+          "arrival_time" : "20:08:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:08:00"
+        } ],
+        "1812562" : [ {
+          "arrival_time" : "16:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:52:00"
+        } ],
+        "1812563" : [ {
+          "arrival_time" : "17:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:07:00"
+        } ],
+        "1812560" : [ {
+          "arrival_time" : "16:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:22:00"
+        } ],
+        "1812561" : [ {
+          "arrival_time" : "16:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:37:00"
+        } ],
+        "1812566" : [ {
+          "arrival_time" : "18:38:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:38:00"
+        } ],
+        "1812567" : [ {
+          "arrival_time" : "19:08:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:08:00"
+        } ],
+        "1812564" : [ {
+          "arrival_time" : "17:38:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:38:00"
+        } ],
+        "1812565" : [ {
+          "arrival_time" : "18:18:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:18:00"
+        } ],
+        "1825296" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825297" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825294" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825295" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825293" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825298" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825299" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812441" : [ {
+          "arrival_time" : "09:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:22:00"
+        } ],
+        "1812440" : [ {
+          "arrival_time" : "09:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:07:00"
+        } ],
+        "1812443" : [ {
+          "arrival_time" : "09:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:52:00"
+        } ],
+        "1812442" : [ {
+          "arrival_time" : "09:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "09:37:00"
+        } ],
+        "1812445" : [ {
+          "arrival_time" : "10:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:22:00"
+        } ],
+        "1812444" : [ {
+          "arrival_time" : "10:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:07:00"
+        } ],
+        "1812447" : [ {
+          "arrival_time" : "10:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:52:00"
+        } ],
+        "1812446" : [ {
+          "arrival_time" : "10:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:37:00"
+        } ],
+        "1812449" : [ {
+          "arrival_time" : "11:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:22:00"
+        } ],
+        "1812448" : [ {
+          "arrival_time" : "11:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:07:00"
+        } ],
+        "1812281" : [ {
+          "arrival_time" : "07:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:55:00"
+        } ],
+        "1812280" : [ {
+          "arrival_time" : "17:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:31:00"
+        } ],
+        "1812287" : [ {
+          "arrival_time" : "17:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:43:00"
+        } ],
+        "1812286" : [ {
+          "arrival_time" : "12:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:55:00"
+        } ],
+        "1812285" : [ {
+          "arrival_time" : "12:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:43:00"
+        } ],
+        "1812318" : [ {
+          "arrival_time" : "20:47:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:47:00"
+        } ],
+        "1825371" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825370" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825373" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825372" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825375" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825374" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825377" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825376" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825379" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825378" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812557" : [ {
+          "arrival_time" : "15:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:37:00"
+        } ],
+        "1825336" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825191" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812559" : [ {
+          "arrival_time" : "16:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:07:00"
+        } ],
+        "1812558" : [ {
+          "arrival_time" : "15:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:52:00"
+        } ],
+        "1812466" : [ {
+          "arrival_time" : "20:01:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:01:00"
+        } ],
+        "1825337" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1812345" : [ {
+          "arrival_time" : "16:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:43:00"
+        } ],
+        "1812298" : [ {
+          "arrival_time" : "10:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:31:00"
+        } ],
+        "1812299" : [ {
+          "arrival_time" : "10:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "10:43:00"
+        } ],
+        "1812464" : [ {
+          "arrival_time" : "18:25:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:25:00"
+        } ],
+        "1812458" : [ {
+          "arrival_time" : "08:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:52:00"
+        } ],
+        "1812459" : [ {
+          "arrival_time" : "16:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:22:00"
+        } ],
+        "1812456" : [ {
+          "arrival_time" : "13:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:07:00"
+        } ],
+        "1825331" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812454" : [ {
+          "arrival_time" : "12:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:37:00"
+        } ],
+        "1812455" : [ {
+          "arrival_time" : "12:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:52:00"
+        } ],
+        "1812452" : [ {
+          "arrival_time" : "12:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:07:00"
+        } ],
+        "1812453" : [ {
+          "arrival_time" : "12:22:00",
+          "stop_sequence" : "23",
+          "departure_time" : "12:22:00"
+        } ],
+        "1812450" : [ {
+          "arrival_time" : "11:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:37:00"
+        } ],
+        "1812451" : [ {
+          "arrival_time" : "11:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "11:52:00"
+        } ],
+        "1825380" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825333" : [ {
+          "stop_sequence" : "2"
+        } ],
+        "1825368" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825369" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825367" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825332" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825382" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812290" : [ {
+          "arrival_time" : "13:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:55:00"
+        } ],
+        "1825309" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812283" : [ {
+          "arrival_time" : "08:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:55:00"
+        } ],
+        "1812344" : [ {
+          "arrival_time" : "18:19:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:19:00"
+        } ],
+        "1812411" : [ {
+          "arrival_time" : "13:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:52:00"
+        } ],
+        "1812342" : [ {
+          "arrival_time" : "15:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "15:43:00"
+        } ],
+        "1825306" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812340" : [ {
+          "arrival_time" : "13:43:00",
+          "stop_sequence" : "23",
+          "departure_time" : "13:43:00"
+        } ],
+        "1812341" : [ {
+          "arrival_time" : "14:55:00",
+          "stop_sequence" : "23",
+          "departure_time" : "14:55:00"
+        } ],
+        "1825384" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812423" : [ {
+          "arrival_time" : "17:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:07:00"
+        } ],
+        "1825307" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825385" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812526" : [ {
+          "arrival_time" : "07:08:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:08:00"
+        } ],
+        "1825386" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812527" : [ {
+          "arrival_time" : "07:38:00",
+          "stop_sequence" : "23",
+          "departure_time" : "07:38:00"
+        } ],
+        "1825381" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1825387" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812282" : [ {
+          "arrival_time" : "08:31:00",
+          "stop_sequence" : "23",
+          "departure_time" : "08:31:00"
+        } ],
+        "1825390" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812429" : [ {
+          "arrival_time" : "20:21:00",
+          "stop_sequence" : "23",
+          "departure_time" : "20:21:00"
+        } ],
+        "1812525" : [ {
+          "arrival_time" : "06:34:00",
+          "stop_sequence" : "23",
+          "departure_time" : "06:34:00"
+        } ],
+        "1825308" : [ {
+          "stop_sequence" : "5"
+        } ],
+        "1812422" : [ {
+          "arrival_time" : "16:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:52:00"
+        } ],
+        "1812421" : [ {
+          "arrival_time" : "16:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:37:00"
+        } ],
+        "1812420" : [ {
+          "arrival_time" : "16:07:00",
+          "stop_sequence" : "23",
+          "departure_time" : "16:07:00"
+        } ],
+        "1812427" : [ {
+          "arrival_time" : "19:01:00",
+          "stop_sequence" : "23",
+          "departure_time" : "19:01:00"
+        } ],
+        "1812426" : [ {
+          "arrival_time" : "18:42:00",
+          "stop_sequence" : "23",
+          "departure_time" : "18:42:00"
+        } ],
+        "1812425" : [ {
+          "arrival_time" : "17:52:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:52:00"
+        } ],
+        "1812424" : [ {
+          "arrival_time" : "17:37:00",
+          "stop_sequence" : "23",
+          "departure_time" : "17:37:00"
+        } ]
+      }
+    },
+    "zone_id" : "1"
+  } ],
+  "timestamp" : 1433443665284,
+  "duration" : 21,
+  "organization" : "jwest_vta",
+  "applicationName" : "sandbox"
+}

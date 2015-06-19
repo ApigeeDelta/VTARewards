@@ -1,0 +1,741 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "weather",
+      "statusBar.style": "hidden",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "padding": 50,
+          "padding.top": 70,
+          "bg.color": "000000",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "layoutText",
+            "_type": "Layout",
+            "attributes": {
+              "bg.color": "#666666",
+              "visible": true,
+              "layoutType": "absolute",
+              "align.h": "left",
+              "padding.top": 70,
+              "size.w": 320,
+              "size.h": "100%"
+            },
+            "controls": [
+              {
+                "_id": "tableviewTest",
+                "_type": "TableView",
+                "actions": [
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "inputBody",
+                      "functionName": "setText"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "text": "[[$row.body]]"
+                    }
+                  },
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "inputURL",
+                      "functionName": "setText"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "text": "[[$row.url]][[$row.path]]"
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "circleMethod"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "color": [
+                        "if :: '[[$row.method]]' == 'GET' :: 004c91",
+                        "if :: '[[$row.method]]' == 'POST' :: 367c2b"
+                      ]
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "textMethod"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "text": "[[$row.method]]"
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "layoutSend"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "bg.color": [
+                        "if :: '[[$row.method]]' == 'GET' :: 004c91",
+                        "if :: '[[$row.method]]' == 'POST' :: 367c2b"
+                      ]
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "layoutBody"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "visible": [
+                        "if :: '[[$row.method]]' == 'GET' :: false",
+                        "if :: '[[$row.method]]' == 'POST' :: true"
+                      ]
+                    }
+                  },
+                  {
+                    "_type": "Function",
+                    "attributes": {
+                      "_target": "inputResponseBody",
+                      "functionName": "setText"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "text": ""
+                    }
+                  },
+                  {
+                    "_type": "Modify",
+                    "attributes": {
+                      "_target": "textResponseBody"
+                    },
+                    "on": "touchUp",
+                    "set": {
+                      "text": "Response Body"
+                    }
+                  }
+                ],
+                "attributes": {
+                  "autofill.w": true,
+                  "cell.size.h": 70,
+                  "cell.size.w": "100%",
+                  "datasource.id": "getTest",
+                  "data.basepath": "entities",
+                  "enabled": true,
+                  "autofill.h": true,
+                  "margin.top": 0,
+                  "sectionHeader.xpath": "company",
+                  "sectionHeader.size.h": 30,
+                  "sectionHeader.size.w": "100%",
+                  "separator.style": "none"
+                },
+                "sectionHeader.controls": [
+                  {
+                    "_id": "testText2",
+                    "_type": "Layout",
+                    "attributes": {
+                      "bg.color": "3d3d3d",
+                      "size.w": "100%",
+                      "size.h": 30
+                    },
+                    "controls": [
+                      {
+                        "_id": "testText2",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#FFFFFF",
+                          "font": "HelveticaNeue:18",
+                          "text": "[[$row.company]]",
+                          "size.w": "100%",
+                          "padding.left": 20,
+                          "padding.top": 4,
+                          "text.align": "left"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "controls": [
+                  {
+                    "_id": "testText2",
+                    "_type": "Button",
+                    "attributes": {
+                      "bg.color": [
+                        "if :: '[[$row.method]]' == 'GET' :: 004c91",
+                        "if :: '[[$row.method]]' == 'POST' :: 367c2b"
+                      ],
+                      "size.w": 50,
+                      "size.h": 28,
+                      "margin.left": 20,
+                      "border.radius": 5,
+                      "layoutType": "absolute",
+                      "align.v": "middle",
+                      "text": "[[$row.method]]",
+                      "font": "HelveticaNeue:14",
+                      "color": "ffffff"
+                    }
+                  },
+                  {
+                    "_id": "testText2",
+                    "_type": "Layout",
+                    "attributes": {
+                      "padding.left": 90,
+                      "size.w": "100%",
+                      "align.v": "center",
+                      "layoutType": "absolute"
+                    },
+                    "controls": [
+                      {
+                        "_id": "testText2",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#FFFFFF",
+                          "font": "HelveticaNeue-Light:20",
+                          "text": "[[$row.name]]",
+                          "size.w": "100%",
+                          "text.align": "left"
+                        }
+                      },
+                      {
+                        "_id": "testText2",
+                        "_type": "Text",
+                        "attributes": {
+                          "color": "#FFFFFF",
+                          "font": "HelveticaNeue-Light:12",
+                          "text": "[[$row.path:truncate(35)]]",
+                          "text.align": "left"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "_id": "testText2",
+                    "_type": "Layout",
+                    "attributes": {
+                      "bg.color": "#27272750",
+                      "size.w": "100%",
+                      "size.h": 1,
+                      "layoutType": "absolute",
+                      "align.v": "bottom"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_id": "layoutText",
+            "_type": "Layout",
+            "attributes": {
+              "bg.color": "#f2f2f2",
+              "visible": true,
+              "layoutType": "absolute",
+              "padding.top": 70,
+              "margin.left": 320,
+              "size.h": "100%",
+              "autofill.w": true
+            },
+            "controls": [
+              {
+                "_id": "layoutText",
+                "_type": "Layout",
+                "attributes": {
+                  "size.w": "100%",
+                  "size.h": "100%"
+                },
+                "controls": [
+                  {
+                    "_id": "layoutHvacApi",
+                    "_type": "Layout",
+                    "attributes": {
+                      "bg.color": "#ff00ff00",
+                      "size.h": "100%",
+                      "visible": true,
+                      "padding": 0,
+                      "size.w": "100%"
+                    },
+                    "controls": [
+                      {
+                        "_id": "layoutHvacApi",
+                        "_type": "Layout",
+                        "attributes": {
+                          "bg.color": "#ff00ff00",
+                          "visible": true,
+                          "padding": 20,
+                          "size.w": "100%"
+                        },
+                        "controls": [
+                          {
+                            "_id": "testText2",
+                            "_type": "Text",
+                            "attributes": {
+                              "color": "#666666",
+                              "font": "HelveticaNeue-Light:20",
+                              "text": "Request URL",
+                              "size.w": "100%",
+                              "text.align": "left"
+                            }
+                          },
+                          {
+                            "_id": "layoutRequestURL",
+                            "_type": "Layout",
+                            "attributes": {
+                              "size.w": "100%",
+                              "margin.top": 10,
+                              "size.h": 30,
+                              "padding.right": 70,
+                              "text.align": "left"
+                            },
+                            "controls": [
+                              {
+                                "_id": "layoutURL",
+                                "_type": "Layout",
+                                "attributes": {
+                                  "bg.color": "#ffffff",
+                                  "autofill.w": true,
+                                  "size.h": "100%",
+                                  "padding.left": 10,
+                                  "border.color": "dddddd",
+                                  "border.size": 1,
+                                  "text.align": "left"
+                                },
+                                "controls": [
+                                  {
+                                    "_id": "inputURL",
+                                    "_type": "TextInput",
+                                    "attributes": {
+                                      "bg.color": "#ffffff00",
+                                      "font": "Courier:12",
+                                      "placeholder.text": "Request URL",
+                                      "size.w": "100%",
+                                      "size.h": "100%",
+                                      "text.align": "left"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "_id": "layoutMethod",
+                                "_type": "Layout",
+                                "attributes": {
+                                  "visible": false,
+                                  "bg.color": "ffffff",
+                                  "size.w": 60,
+                                  "size.h": 30,
+                                  "border.radius": 5,
+                                  "border.color": "dddddd",
+                                  "border.size": 1,
+                                  "layoutType": "float",
+                                  "align.h": "right",
+                                  "text": "1234 [[$row.method]]",
+                                  "font": "HelveticaNeue:14",
+                                  "color": "ff00ff"
+                                },
+                                "controls": [
+                                  {
+                                    "_id": "circleMethod",
+                                    "_type": "Circle",
+                                    "attributes": {
+                                      "color": "#fff000",
+                                      "size": 9,
+                                      "margin.left": 6,
+                                      "align.h": "left",
+                                      "align.v": "middle",
+                                      "layoutType": "absolute"
+                                    }
+                                  },
+                                  {
+                                    "_id": "textMethod",
+                                    "_type": "Text",
+                                    "attributes": {
+                                      "color": "#666666",
+                                      "font": "HelveticaNeue-Light:12",
+                                      "text": "POST",
+                                      "size.w": "100%",
+                                      "padding.left": 21,
+                                      "text.align": "left",
+                                      "align.h": "left",
+                                      "align.v": "middle",
+                                      "layoutType": "absolute"
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "_id": "layoutBody",
+                            "_type": "Layout",
+                            "attributes": {
+                              "margin.top": 20,
+                              "visible": false,
+                              "size.w": "100%"
+                            },
+                            "controls": [
+                              {
+                                "_id": "textRequestBody",
+                                "_type": "Text",
+                                "attributes": {
+                                  "color": "#666666",
+                                  "font": "HelveticaNeue-Light:20",
+                                  "text": "Body",
+                                  "size.w": "100%",
+                                  "text.align": "left"
+                                }
+                              },
+                              {
+                                "_id": "layoutRequestBody",
+                                "_type": "Layout",
+                                "attributes": {
+                                  "bg.color": "#ffffff",
+                                  "size.w": "100%",
+                                  "padding.left": 10,
+                                  "margin.top": 10,
+                                  "size.h": 100,
+                                  "text.align": "left",
+                                  "border.size": 1,
+                                  "border.color": "dddddd"
+                                },
+                                "controls": [
+                                  {
+                                    "_id": "inputBody",
+                                    "_type": "TextInput",
+                                    "attributes": {
+                                      "multiline.enabled": true,
+                                      "bg.color": "#ffffff00",
+                                      "font": "Courier:12",
+                                      "placeholder.text": "Request Body",
+                                      "size.w": "100%",
+                                      "size.h": "100%",
+                                      "text.align": "left"
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "_id": "layoutSend",
+                            "_type": "Layout",
+                            "actions": [
+                              {
+                                "_type": "Refresh",
+                                "attributes": {
+                                  "_target": "getAPI"
+                                },
+                                "on": "touchUp"
+                              }
+                            ],
+                            "attributes": {
+                              "bg.color": "007dc6",
+                              "size.w": 60,
+                              "size.h": 30,
+                              "margin.top": 20,
+                              "border.radius": 5,
+                              "align.h": "left"
+                            },
+                            "controls": [
+                              {
+                                "_id": "textMethod",
+                                "_type": "Text",
+                                "attributes": {
+                                  "color": "#ffffff",
+                                  "font": "HelveticaNeue:14",
+                                  "text": "Send",
+                                  "size.w": "100%",
+                                  "text.align": "center",
+                                  "align.h": "left",
+                                  "align.v": "middle",
+                                  "layoutType": "absolute"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "_id": "layoutDishwasherApi",
+                        "_type": "Layout",
+                        "attributes": {
+                          "bg.color": "#f2f6f8",
+                          "autofill.h": true,
+                          "visible": true,
+                          "margin.top": 0,
+                          "size.w": "100%"
+                        },
+                        "controls": [
+                          {
+                            "_id": "layoutDivider",
+                            "_type": "Layout",
+                            "attributes": {
+                              "bg.color": "#dddddd",
+                              "size.w": "100%",
+                              "layoutType": "absolute",
+                              "size.h": 1
+                            }
+                          },
+                          {
+                            "_id": "layoutResponseBody",
+                            "_type": "Layout",
+                            "attributes": {
+                              "margin.top": 0,
+                              "padding": 20,
+                              "visible": true,
+                              "size.w": "100%",
+                              "size.h": "100%"
+                            },
+                            "controls": [
+                              {
+                                "_id": "layoutResponseBody",
+                                "_type": "Layout",
+                                "attributes": {
+                                  "margin.top": 0,
+                                  "visible": true,
+                                  "size.w": "100%",
+                                  "size.h": "100%"
+                                },
+                                "controls": [
+                                  {
+                                    "_id": "textResponseBody",
+                                    "_type": "Text",
+                                    "attributes": {
+                                      "color": "#666666",
+                                      "font": "HelveticaNeue-Light:20",
+                                      "text": "Response Body",
+                                      "size.w": "100%",
+                                      "text.align": "left"
+                                    }
+                                  },
+                                  {
+                                    "_id": "layoutResponseBody",
+                                    "_type": "Layout",
+                                    "attributes": {
+                                      "bg.color": "#ffffff",
+                                      "size.w": "100%",
+                                      "padding.left": 10,
+                                      "margin.top": 10,
+                                      "autofill.h": true,
+                                      "text.align": "left",
+                                      "border.size": 1,
+                                      "border.color": "dddddd"
+                                    },
+                                    "controls": [
+                                      {
+                                        "_id": "inputResponseBody",
+                                        "_type": "TextInput",
+                                        "attributes": {
+                                          "multiline.enabled": true,
+                                          "bg.color": "#ffffff00",
+                                          "font": "Courier:12",
+                                          "placeholder.text": "Response Body",
+                                          "size.w": "100%",
+                                          "size.h": "100%",
+                                          "text.align": "left"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_id": "testText2",
+        "_type": "Layout",
+        "controls": [
+          {
+            "_id": "testText2",
+            "_type": "Text",
+            "actions": [
+              {
+                "_type": "Navigate",
+                "attributes": {
+                  "to": "apiconsole.json",
+                  "stackType": "pop",
+                  "1animation.type": "flip.l"
+                },
+                "on": "touchUp"
+              }
+            ],
+            "attributes": {
+              "bg.color": "#ff00ff",
+              "align.h": "left",
+              "size.h": 70,
+              "size.w": 70,
+              "layoutType": "float"
+            }
+          },
+          {
+            "_id": "testText2",
+            "_type": "Image",
+            "attributes": {
+              "image": "/images/vzVentures_logo.png",
+              "align.h": "left",
+              "size.h": 70,
+              "size.w": 320,
+              "align.h":"right",
+              "margin.right":20,
+              "layoutType": "float"
+            }
+          }
+        ],
+        "attributes": {
+          "bg.color": "#272727",
+          "align.h": "left",
+          "size.h": 70,
+          "size.w": "100%",
+          "layoutType": "float"
+        }
+      },
+      {
+        "_id": "testText2",
+        "_type": "Text",
+        "actions": [
+          {
+            "_type": "Navigate",
+            "attributes": {
+              "to": "apiconsole.json",
+              "stackType": "pop",
+              "1animation.type": "flip.l"
+            },
+            "on": "touchUp"
+          }
+        ],
+        "attributes": {
+          "color": "#ffffff50",
+          "bg.color": "#ff00ff00",
+          "align.h": "left",
+          "size.h": 70,
+          "size.w": 70,
+          "text.align": "center",
+          "font": "FontAwesome:30",
+          "layoutType": "float",
+          "margin": 0,
+          "text": "fa-arrow-circle-left"
+        }
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "getTest",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "tableviewTest"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "method": "GET",
+          "responseType": "json",
+          "url": "/data/data.json"
+        }
+      },
+      {
+        "_id": "getTest2",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "tableviewTest"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "method": "GET",
+          "responseType": "json",
+          "url": "/data/data.json"
+        }
+      },
+      {
+        "_id": "getAPI",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "getAPI",
+              "message": "[[getAPI.response.body.with.0.content.status]] [[$self.with.content]]"
+            },
+            "enabled": false,
+            "on": "success"
+          },
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "inputResponseBody",
+              "functionName": "setText"
+            },
+            "on": "success",
+            "set": {
+              "text": "[[$self.response.string]]"
+            }
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "textResponseBody"
+            },
+            "on": "success",
+            "set": {
+              "text": "Response Body ([[$self.response.code]])"
+            }
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "textResponseBody"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "cache.enabled": false,
+          "autoLoad.enabled": false,
+          "method": "[[textMethod.text]]",
+          "responseType": "json",
+          "url": "[[inputURL.text]]",
+          "body": "[[inputBody.text]]",
+          "1body": {
+            "location": "Home",
+            "name": "Interior Temp",
+            "status": "71"
+          },
+          "requestType": "json"
+        }
+      }
+    ]
+  }
+}
