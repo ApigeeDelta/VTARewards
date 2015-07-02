@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "10D7E694280D4DCF834C1678"
+               BlueprintIdentifier = "E68B7DA4CCA4C78FB2510D74"
                BuildableName = "libPods-AFOAuth2Manager.a"
                BlueprintName = "Pods-AFOAuth2Manager"
                ReferencedContainer = "container:Pods.xcodeproj">

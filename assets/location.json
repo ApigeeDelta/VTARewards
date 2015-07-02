@@ -1,0 +1,178 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "garage",
+      "statusBar.style": "dark",
+      "bg.color": "#cdcdcd"
+    },
+    "actions": [
+      {
+        "_type": "Alert",
+        "attributes": {
+          "title": "[[$session.user_uuid]]"
+        },
+        "enabled": false,
+        "on": "didAppear"
+      }
+    ],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": true,
+          "bg.color": "ffffff",
+          "layoutType": "float"
+        },
+        "controls": [
+          {
+            "_id": "customHeader",
+            "_type": "Custom",
+            "actions": [
+              {
+                "_type": "Function",
+                "attributes": {
+                  "_target": "$app",
+                  "functionName": "drawer.l.toggle"
+                },
+                "on": "button.left"
+              }
+            ],
+            "attributes": {
+              "size.w": "100%",
+              "size.h": 62,
+              "visible": true,
+              "title": "Tracking",
+              "button.left": "../images/btnMenu_42x42.png",
+              "controlLocation": "/controls/header.json",
+              "layoutType": "float"
+            },
+            "controls": []
+          }
+        ]
+      },
+      {
+        "_id": "button",
+        "_type": "Button",
+        "actions": [
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "locationTracker",
+              "name": "toggle"
+            },
+            "on": "touchUp"
+          },
+          {
+            "_type": "Modify",
+            "attributes": {
+              "_target": "$self"
+            },
+            "set": {
+              "text": [
+                "if :: '[[$self.text]]' == 'Location Tracking: Off' :: Location Tracking: On",
+                "if :: '[[$self.text]]' == 'Location Tracking: On' :: Location Tracking: Off"
+              ]
+            },
+            "on": "touchUp"
+          }
+        ],
+        "attributes": {
+          "align.h": "center",
+          "align.v": "middle",
+          "bg.color": "cdcdcd",
+          "margin.bottom": 0,
+          "color": "6c6c6c",
+          "layoutType": "float",
+          "size.h": 50,
+          "size.w": 200,
+          "text": "Location Tracking: Off",
+          "touch.bg.color": "cdcdcd",
+          "touch.color": "6c6c6c50"
+        }
+      },
+      {
+        "_id": "button",
+        "_type": "Button",
+        "actions": [
+          {
+            "_type": "Navigate",
+            "attributes": {
+              "stackType": "pop"
+            },
+            "on": "touchUp"
+          }
+        ],
+        "attributes": {
+          "align.h": "center",
+          "align.v": "bottom",
+          "bg.color": "cdcdcd",
+          "margin.bottom": 50,
+          "color": "6c6c6c",
+          "layoutType": "float",
+          "size.h": 50,
+          "size.w": 200,
+          "text": "Back",
+          "visible":false,
+          "touch.bg.color": "cdcdcd",
+          "touch.color": "6c6c6c50"
+        }
+      },
+      {
+        "_id": "locationTracker",
+        "_type": "LocationTracker",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "[[$self.data]]"
+            },
+            "on": "stopped"
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "postTrip"
+            },
+            "on": "stopped"
+          }
+        ],
+        "attributes": {
+          "color": "#000000",
+          "size.w": "100%",
+          "font": "HelveticaNeue-Light:20",
+          "text": "hello,",
+          "text.align": "center",
+          "margin.bottom": 20
+        }
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "postTrip",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "token",
+              "message": "[[$self.response.string]]"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "method": "POST",
+          "body": "[[locationTracker.data]]",
+          "headers": {
+            "access_token": "[[$session.access_token]]"
+          },
+          "url": "https://vta-prod.apigee.net/karma/v1/[[$session.user_uuid]]/trips"
+        }
+      }
+    ]
+  }
+}

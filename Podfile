@@ -1,1 +1,2 @@
 pod 'IgniteEngine'
+pod 'FBSDKLoginKit'

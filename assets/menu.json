@@ -208,6 +208,7 @@
                           "font": "Aileron-Regular:16",
                           "layoutType": "float",
                           "align.v": "middle",
+                          "size.w":"100%",
                           "text": "[[$row.name]]"
                         }
                       },

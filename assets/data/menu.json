@@ -13,16 +13,12 @@
       "path": "stops.json"
     },
     {
-      "name": "Menu Item",
-      "path": "home.json"
+      "name": "Location",
+      "path": "location.json"
     },
     {
-      "name": "Menu Item",
-      "path": "home.json"
-    },
-    {
-      "name": "Menu Item",
-      "path": "home.json"
-    },
+      "name": "Login",
+      "path": "login.json"
+    }
   ]
 }

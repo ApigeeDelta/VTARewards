@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "542318A49CF91EB02FEB089D"
+               BlueprintIdentifier = "A140A6575B34FCE4B0AE00A7"
                BuildableName = "libPods-IgniteEngine.a"
                BlueprintName = "Pods-IgniteEngine"
                ReferencedContainer = "container:Pods.xcodeproj">

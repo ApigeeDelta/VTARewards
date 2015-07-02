@@ -3,13 +3,13 @@
     "actions": [],
     "attributes": {
       "location.autoRequest.enabled":true,
-      "view.index": "/stops.json",
+      "view.index": "/home.json",
       "drawer.l.url":"/menu.json",
       "drawer.l.max.w":"{{[[$device.screen.width]]-50;}}",
       "drawer.shadow.enabled":false,
       "debug.layout.enabled": false,
       "logging.datasource.enabled": true,
-      "logging.level": "error",
+      "logging.level": "verbose",
       "mode": "release",
       "navigationBar.enabled": false,
       "preloadImages": [

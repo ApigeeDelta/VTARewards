@@ -37,6 +37,9 @@
 #import "ApigeeDataClient.h"
 #import "MMDrawerController.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 @implementation IXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -54,7 +57,11 @@
         [[IXAppManager sharedAppManager] appDidRecieveRemoteNotification:remoteNotificationInfo];
     }
     
-    return YES;
+    //return YES;
+    
+    
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)registerForPushNotifications
@@ -134,7 +141,14 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     [[IXAppManager sharedAppManager] appDidOpenWithCustomURL:url];
-    return YES;
+    
+    
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+    
+    //return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
