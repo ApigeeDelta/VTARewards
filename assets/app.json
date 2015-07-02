@@ -3,7 +3,7 @@
     "actions": [],
     "attributes": {
       "location.autoRequest.enabled":true,
-      "view.index": "/home.json",
+      "view.index": "/login.json",
       "drawer.l.url":"/menu.json",
       "drawer.l.max.w":"{{[[$device.screen.width]]-50;}}",
       "drawer.shadow.enabled":false,

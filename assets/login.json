@@ -163,9 +163,9 @@
             "on": "success"
           },
           {
-            "_type": "1Navigate",
+            "_type": "Navigate",
             "attributes": {
-              "to": "location.json"
+              "to": "home.json"
             },
             "on": "success"
           }
