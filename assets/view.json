@@ -1,47 +1,34 @@
 {
   "$view": {
-    "attributes": {
-      "_id": "garage",
-      "statusBar.style": "dark",
-      "bg.color": "#cdcdcd"
-    },
     "actions": [
       {
-        "_type": "Refresh",
+        "_type": "Refresh", 
         "attributes": {
           "_target": "getHvac,getSecurity,getDishwasher"
-        },
+        }, 
         "on": "willAppear"
       }
-    ],
+    ], 
+    "attributes": {
+      "_id": "garage", 
+      "bg.color": "#cdcdcd", 
+      "statusBar.style": "dark"
+    }, 
     "controls": [
       {
-        "_id": "layoutMain",
-        "_type": "Layout",
+        "_id": "layoutMain", 
+        "_type": "Layout", 
         "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "visible": true,
-          "bg.color": "ffffff",
-          "layoutType": "float"
-        },
+          "bg.color": "ffffff", 
+          "layoutType": "float", 
+          "size.h": "100%", 
+          "size.w": "100%", 
+          "visible": true
+        }, 
         "controls": [
-          {
-            "_id": "customHeader",
-            "_type": "Custom",
-            "attributes": {
-              "size.w": "100%",
-              "size.h": 62,
-              "visible": true,
-              "title": "View",
-              "controlLocation": "/controls/header.json",
-              "layoutType": "float"
-            },
-            "controls": []
-          }
         ]
       }
-    ],
+          ],
     "datasources": []
   }
 }
