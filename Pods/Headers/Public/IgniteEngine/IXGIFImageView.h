@@ -1,1 +1,0 @@
-../../../IgniteEngine/Classes/View/IXGIFImageView.h
