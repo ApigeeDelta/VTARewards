@@ -1,206 +1,206 @@
 {
-  "$view": {
-    "attributes": {
-      "_id": "garage",
-      "statusBar.style": "dark",
-      "bg.color": "#cdcdcd"
-    },
-    "actions": [
-      {
-        "_type": "1Navigate",
-        "attributes": {
-          "to": "location.json"
-        },
-        "enabled": [
-          "if :: [[$session.fb_token]] == '' :: false"
-        ],
-        "on": "willFirstAppear"
+    "$view": {
+        "actions": [
+            {
+                "_type": "1Navigate",
+                "attributes": {
+                    "to": "location.json"
                 },
-                {
+                "enabled": [
+                    "if :: [[$session.fb_token]] == '' :: false"
+                ],
+                "on": "willFirstAppear"
+            },
+            {
                 "_type": "Function",
                 "attributes": {
-                "_target": "myBeacon",
-                "functionName": "start"
-                }, 
+                    "_target": "myBeacon",
+                    "functionName": "start"
+                },
                 "on": "willAppear"
-                }
-    ],
-    "controls": [
-                 {
-                 "_id": "myBeacon",
-                 "_type": "Beacon",
-                 "actions": [
-                             {
-                             "_type": "Alert",
-                             "attributes": {
-                             "title": "Entered region"
-                             },
-                             "on": "enteredBeaconRegion"
-                             }
-                             ],
-                 "attributes": {
-                 "distanceFilter": "notsurewhatgoeshere", 
-                 "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
-                 }
-                 },
-      {
-        "_id": "bgImage",
-        "_type": "Image",
-        "actions": [
-          {
-            "_type": "Navigate",
-            "attributes": {
-              "to": "location.json"
-            },
-            "on": "touchUp"
-          }
+            }
         ],
         "attributes": {
-          "image": "/images/bg.png",
-          "layoutType": "absolute",
-          "size.h": "100%",
-          "size.w": "100%"
-        }
-      },
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "visible": true,
-          "bg.color": "ffffff00",
-          "layoutType": "float"
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "dark"
         },
         "controls": [
-          {
-            "_id": "customHeader",
-            "_type": "Custom",
-            "actions": [
-              {
-                "_type": "Function",
+            {
+                "_id": "myBeacon",
+                "_type": "Beacon",
+                "actions": [
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "title": "Entered region"
+                        },
+                        "on": "enteredBeaconRegion"
+                    }
+                ],
                 "attributes": {
-                  "_target": "$app",
-                  "functionName": "drawer.l.toggle"
+                    "distanceFilter": "notsurewhatgoeshere",
+                    "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                }
+            },
+            {
+                "_id": "bgImage",
+                "_type": "Image",
+                "actions": [
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "to": "location.json"
+                        },
+                        "on": "touchUp"
+                    }
+                ],
+                "attributes": {
+                    "image": "/images/bg.png",
+                    "layoutType": "absolute",
+                    "size.h": "100%",
+                    "size.w": "100%"
+                }
+            },
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
+                "attributes": {
+                    "bg.color": "ffffff00",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
                 },
-                "on": "button.left"
-              }
-            ],
-            "attributes": {
-              "size.w": "100%",
-              "size.h": 62,
-              "visible": true,
-              "title": "Login",
-              "button.left": "../images/btnMenu_42x42.png",
-              "controlLocation": "/controls/header.json",
-              "layoutType": "float"
+                "controls": [
+                    {
+                        "_id": "customHeader",
+                        "_type": "Custom",
+                        "actions": [
+                            {
+                                "_type": "Function",
+                                "attributes": {
+                                    "_target": "$app",
+                                    "functionName": "drawer.l.toggle"
+                                },
+                                "on": "button.left"
+                            }
+                        ],
+                        "attributes": {
+                            "button.left": "../images/btnMenu_42x42.png",
+                            "controlLocation": "/controls/header.json",
+                            "layoutType": "float",
+                            "size.h": 62,
+                            "size.w": "100%",
+                            "title": "Login",
+                            "visible": true
+                        },
+                        "controls": []
+                    }
+                ]
             },
-            "controls": []
-          }
+            {
+                "_id": "FBLogin",
+                "_type": "FBLogin",
+                "actions": [
+                    {
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "on": "login.success",
+                        "set": {
+                            "fb_token": "[[FBLogin.token]]"
+                        }
+                    },
+                    {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "fbLogin"
+                        },
+                        "on": "login.success"
+                    }
+                ],
+                "attributes": {
+                    "align.h": "center",
+                    "align.v": "middle",
+                    "border.radius": 0,
+                    "color": "6c6c6c",
+                    "layoutType": "float",
+                    "size.h": 50,
+                    "size.w": 200,
+                    "type": "button"
+                }
+            },
+            {
+                "_id": "button",
+                "_type": "Button",
+                "actions": [
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "to": "location.json"
+                        },
+                        "on": "touchUp"
+                    }
+                ],
+                "attributes": {
+                    "align.h": "center",
+                    "align.v": "bottom",
+                    "bg.color": "cdcdcd",
+                    "color": "6c6c6c",
+                    "layoutType": "float",
+                    "margin.bottom": 50,
+                    "size.h": 50,
+                    "size.w": 200,
+                    "text": "Location Tracking",
+                    "touch.bg.color": "cdcdcd",
+                    "touch.color": "6c6c6c50",
+                    "visible": false
+                }
+            }
+        ],
+        "datasources": [
+            {
+                "_id": "fbLogin",
+                "_type": "HTTP",
+                "actions": [
+                    {
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$session"
+                        },
+                        "on": "success",
+                        "set": {
+                            "access_token": "[[$self.response.body.access_token]]",
+                            "user_name_first": "[[$self.response.body.user.facebook.first_name]]",
+                            "user_name_last": "[[$self.response.body.user.facebook.last_name]]",
+                            "user_picture": "[[$self.response.body.user.picture]]",
+                            "user_uuid": "[[$self.response.body.user.uuid]]"
+                        }
+                    },
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "title": "[[$session.user_picture]]"
+                        },
+                        "enabled": false,
+                        "on": "success"
+                    },
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "to": "home.json"
+                        },
+                        "on": "success"
+                    }
+                ],
+                "attributes": {
+                    "autoLoad.enabled": false,
+                    "method": "GET",
+                    "url": "https://api.usergrid.com/vta/sandbox/auth/facebook?fb_access_token=[[$session.fb_token]]"
+                }
+            }
         ]
-      },
-      {
-        "_id": "FBLogin",
-        "_type": "FBLogin",
-        "actions": [
-          {
-            "_type": "Modify",
-            "attributes": {
-              "_target": "$session"
-            },
-            "set": {
-              "fb_token": "[[FBLogin.token]]"
-            },
-            "on": "login.success"
-          },
-          {
-            "_type": "Refresh",
-            "attributes": {
-              "_target": "fbLogin"
-            },
-            "on": "login.success"
-          }
-        ],
-        "attributes": {
-          "type": "button",
-          "align.h": "center",
-          "align.v": "middle",
-          "border.radius": 0,
-          "color": "6c6c6c",
-          "layoutType": "float",
-          "size.h": 50,
-          "size.w": 200
-        }
-      },
-      {
-        "_id": "button",
-        "_type": "Button",
-        "actions": [
-          {
-            "_type": "Navigate",
-            "attributes": {
-              "to": "location.json"
-            },
-            "on": "touchUp"
-          }
-        ],
-        "attributes": {
-          "visible":false,
-          "align.h": "center",
-          "align.v": "bottom",
-          "bg.color": "cdcdcd",
-          "margin.bottom": 50,
-          "color": "6c6c6c",
-          "layoutType": "float",
-          "size.h": 50,
-          "size.w": 200,
-          "text": "Location Tracking",
-          "touch.bg.color": "cdcdcd",
-          "touch.color": "6c6c6c50"
-        }
-      }
-    ],
-    "datasources": [
-      {
-        "_id": "fbLogin",
-        "_type": "HTTP",
-        "actions": [
-          {
-            "_type": "Modify",
-            "attributes": {
-              "_target": "$session"
-            },
-            "set": {
-              "user_uuid": "[[$self.response.body.user.uuid]]",
-              "user_name_first": "[[$self.response.body.user.facebook.first_name]]",
-              "user_name_last": "[[$self.response.body.user.facebook.last_name]]",
-              "user_picture": "[[$self.response.body.user.picture]]",
-              "access_token": "[[$self.response.body.access_token]]"
-            },
-            "on": "success"
-          },
-          {
-            "_type": "Alert",
-            "attributes": {
-              "title": "[[$session.user_picture]]"
-            },
-            "enabled":false,
-            "on": "success"
-          },
-          {
-            "_type": "Navigate",
-            "attributes": {
-              "to": "home.json"
-            },
-            "on": "success"
-          }
-        ],
-        "attributes": {
-          "autoLoad.enabled": false,
-          "method": "GET",
-          "url": "https://api.usergrid.com/vta/sandbox/auth/facebook?fb_access_token=[[$session.fb_token]]"
-        }
-      }
-    ]
-  }
+    }
 }
