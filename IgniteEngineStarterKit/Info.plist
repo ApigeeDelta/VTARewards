@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apigee.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -18,8 +18,23 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1612762118999763</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>1612762118999763</string>
+	<key>FacebookDisplayName</key>
+	<string>Rewards</string>
 	<key>IXApp</key>
 	<string>app.json</string>
 	<key>IXAssets</key>
@@ -27,7 +42,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Edit this description in your Info.plist</string>
+	<string>To store the trip the location tracking is required</string>
 	<key>NSLocationUsageDescription</key>
 	<string>BackgroundLocation</string>
 	<key>UIAppFonts</key>
@@ -55,6 +70,37 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+	    <key>NSExceptionDomains</key>
+	    <dict>
+	        <key>facebook.com</key>
+	        <dict>
+	            <key>NSIncludesSubdomains</key>
+	            <true/>
+	            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+	            <false/>
+	        </dict>
+	        <key>fbcdn.net</key>
+	        <dict>
+	            <key>NSIncludesSubdomains</key>
+	            <true/>
+	            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+	            <false/>
+	        </dict>
+	        <key>akamaihd.net</key>
+	        <dict>
+	            <key>NSIncludesSubdomains</key>
+	            <true/>
+	            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+	            <false/>
+	        </dict>
+	    </dict>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	    <string>fbauth2</string>
 	</array>
 </dict>
 </plist>
