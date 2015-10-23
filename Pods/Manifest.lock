@@ -35,13 +35,13 @@ PODS:
   - Bolts/AppLinks (1.3.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.3.0)
-  - CocoaLumberjack (2.0.3):
-    - CocoaLumberjack/Default (= 2.0.3)
-    - CocoaLumberjack/Extensions (= 2.0.3)
-  - CocoaLumberjack/Core (2.0.3)
-  - CocoaLumberjack/Default (2.0.3):
+  - CocoaLumberjack (2.1.0):
+    - CocoaLumberjack/Default (= 2.1.0)
+    - CocoaLumberjack/Extensions (= 2.1.0)
+  - CocoaLumberjack/Core (2.1.0)
+  - CocoaLumberjack/Default (2.1.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.0.3):
+  - CocoaLumberjack/Extensions (2.1.0):
     - CocoaLumberjack/Default
   - Color-Picker-for-iOS (2.0.2)
   - ColorUtils (1.1.3)
@@ -56,7 +56,160 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.7.0.1):
     - FBSDKCoreKit
-  - IgniteEngine (0.1.1):
+  - IgniteEngine (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Actions (= 0.1.2)
+    - IgniteEngine/Attributes (= 0.1.2)
+    - IgniteEngine/Categories (= 0.1.2)
+    - IgniteEngine/Controllers (= 0.1.2)
+    - IgniteEngine/Controls (= 0.1.2)
+    - IgniteEngine/Core (= 0.1.2)
+    - IgniteEngine/DataProviders (= 0.1.2)
+    - IgniteEngine/Evaluations (= 0.1.2)
+    - IgniteEngine/Utilities (= 0.1.2)
+    - IgniteEngine/Views (= 0.1.2)
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Actions (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Attributes (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Categories (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Controllers (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Controls (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Core (0.1.2):
     - ActionSheetPicker-3.0 (~> 1.6)
     - AFNetworkActivityLogger (~> 2.0)
     - AFNetworking (~> 2.5)
@@ -79,7 +232,103 @@ PODS:
     - YLMoment (~> 0.5)
     - ZBarSDK (~> 1.3)
     - ZipArchive (~> 1.4)
-  - IQKeyboardManager (3.3.2)
+  - IgniteEngine/DataProviders (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Evaluations (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Utilities (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IgniteEngine/Views (0.1.2):
+    - ActionSheetPicker-3.0 (~> 1.6)
+    - AFNetworkActivityLogger (~> 2.0)
+    - AFNetworking (~> 2.5)
+    - AFOAuth2Manager (~> 2.2)
+    - ALMoviePlayerController (~> 0.3)
+    - ApigeeiOSSDK (~> 2.0)
+    - APParallaxHeader-Width (~> 0.1)
+    - CocoaLumberjack (~> 2.0)
+    - Color-Picker-for-iOS (~> 2.0)
+    - ColorUtils (~> 1.1)
+    - IgniteEngine/Core
+    - IQKeyboardManager (~> 3.2)
+    - JAFontAwesome (~> 4.3)
+    - jetfire (~> 0.1)
+    - MMDrawerController (~> 0.6)
+    - Reachability (~> 3.2)
+    - SDWebImage (~> 3.7)
+    - SVPulsingAnnotationView (~> 0.3)
+    - SVWebViewController (~> 1.0)
+    - TTTAttributedLabel (~> 1.13)
+    - YLMoment (~> 0.5)
+    - ZBarSDK (~> 1.3)
+    - ZipArchive (~> 1.4)
+  - IQKeyboardManager (3.3.3)
   - JAFontAwesome (4.3.2)
   - jetfire (0.1.4)
   - MMDrawerController (0.6.0):
@@ -107,7 +356,16 @@ PODS:
 
 DEPENDENCIES:
   - FBSDKLoginKit
-  - IgniteEngine
+  - IgniteEngine (from `https://github.com/apigee/IgniteEngine-iOS.git`)
+
+EXTERNAL SOURCES:
+  IgniteEngine:
+    :git: https://github.com/apigee/IgniteEngine-iOS.git
+
+CHECKOUT OPTIONS:
+  IgniteEngine:
+    :commit: e18233fbdc26155f03ddbb8784c5893c399339be
+    :git: https://github.com/apigee/IgniteEngine-iOS.git
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: c5bdca19fd8b3d798f0c79892cbab6f11a8523ae
@@ -118,13 +376,13 @@ SPEC CHECKSUMS:
   ApigeeiOSSDK: 30b5ea541a502a8049cfbb2ee7e3a36ab621e65e
   APParallaxHeader-Width: a192449fc10b0a4075bef8555cdd410063f71b06
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
-  CocoaLumberjack: f58d8a19629f4d8379ae14bb3534def24161430e
+  CocoaLumberjack: d6627e7ad42e14d41a4fa2e6c7ae42489d5f3e8b
   Color-Picker-for-iOS: 4980589b3e3cfe7198f227dd50be9adb02d8bc0b
   ColorUtils: f99c501f9caf5374b35480a281168565a24bdb6d
   FBSDKCoreKit: eb580bfc2040ad44f4c0b4f4d0befb1d35bce59c
   FBSDKLoginKit: 028c5a205990441123764609fe795e65027c447f
-  IgniteEngine: 9c0ff761a4e1e8a65cb28ab5c19808cf6b4281bd
-  IQKeyboardManager: d863eb0bca424d1f6dad6bdd1f856af52664add8
+  IgniteEngine: 78b1c9f6f473e8a48c7cae71b5269002d1ffcd2f
+  IQKeyboardManager: 2eea3d69ea059940fb63fcbdce69eeaaae092c65
   JAFontAwesome: 0e624c389b30db8015eb6f670941c7d38d73c0d3
   jetfire: 6c6715c91d8b59d2fdb051e5f76ae2fb539d0362
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0

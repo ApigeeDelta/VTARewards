@@ -1,115 +1,115 @@
 {
-  "$view": {
-    "attributes": {
-      "_id": "garage",
-      "statusBar.style": "dark",
-      "bg.color": "#cdcdcd"
-    },
-    "actions": [
-      {
-        "_type": "Refresh",
+    "$view": {
+        "actions": [
+            {
+                "_type": "Refresh",
+                "attributes": {
+                    "_target": "getHvac,getSecurity,getDishwasher"
+                },
+                "on": "willAppear"
+            }
+        ],
         "attributes": {
-          "_target": "getHvac,getSecurity,getDishwasher"
-        },
-        "on": "willAppear"
-      }
-    ],
-    "controls": [
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "visible": true,
-          "bg.color": "ffffff",
-          "layoutType": "float"
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "dark"
         },
         "controls": [
-          {
-            "_id": "customHeader",
-            "_type": "Custom",
-            "actions": [
-              {
-                "_type": "Function",
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
                 "attributes": {
-                  "_target": "$app",
-                  "functionName": "drawer.l.toggle"
+                    "bg.color": "ffffff",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
                 },
-                "on": "button.left"
-              }
-            ],
-            "attributes": {
-              "size.w": "100%",
-              "size.h": 62,
-              "visible": true,
-              "title": "Home",
-              "button.left": "../images/btnMenu_42x42.png",
-              "controlLocation": "/controls/header.json",
-              "layoutType": "float"
-            },
-            "controls": []
-          },
-          {
-            "_id": "layoutProfilePhoto",
-            "_type": "Layout",
-            "controls": [
-              {
-                "_id": "imageProfileBlur",
-                "_type": "Image",
-                "controls": [],
-                "attributes": {
-                  "image": "[[$session.user_picture]]",
-                  "layoutType": "float",
-                  "blur.radius": 2,
-                  "size.h": "[[$device.screen.w]]",
-                  "size.w": "100%"
-                }
-              },
-              {
-                "_id": "imageProfileBlur",
-                "_type": "Image",
-                "controls": [],
-                "attributes": {
-                  "image": "[[$session.user_picture]]",
-                  "layoutType": "float",
-                  "align.h": "center",
-                  "align.v": "top",
-                  "margin.top": 100,
-                  "size.h": 100,
-                  "size.w": 100,
-                  "border.size": 2,
-                  "border.color": "ffffff"
-                }
-              },
-              {
-                "_id": "button",
-                "_type": "Button",
-                "attributes": {
-                  "align.h": "center",
-                  "align.v": "bottom",
-                  "bg.color": "666666",
-                  "margin.bottom": 50,
-                  "color": "ffffff",
-                  "layoutType": "float",
-                  "size.h": 50,
-                  "size.w": 200,
-                  "text": "[[$session.user_name_first]] [[$session.user_name_last]]",
-                  "touch.bg.color": "cdcdcd",
-                  "touch.color": "6c6c6c50"
-                }
-              }
-            ],
-            "attributes": {
-              "layoutType": "float",
-              "margin.top": 62,
-              "size.h": "[[$device.screen.w]]",
-              "size.w": "100%"
+                "controls": [
+                    {
+                        "_id": "customHeader",
+                        "_type": "Custom",
+                        "actions": [
+                            {
+                                "_type": "Function",
+                                "attributes": {
+                                    "_target": "$app",
+                                    "functionName": "drawer.l.toggle"
+                                },
+                                "on": "button.left"
+                            }
+                        ],
+                        "attributes": {
+                            "button.left": "../images/btnMenu_42x42.png",
+                            "controlLocation": "/controls/header.json",
+                            "layoutType": "float",
+                            "size.h": 62,
+                            "size.w": "100%",
+                            "title": "Home",
+                            "visible": true
+                        },
+                        "controls": []
+                    },
+                    {
+                        "_id": "layoutProfilePhoto",
+                        "_type": "Layout",
+                        "attributes": {
+                            "layoutType": "float",
+                            "margin.top": 62,
+                            "size.h": "[[$device.screen.w]]",
+                            "size.w": "100%"
+                        },
+                        "controls": [
+                            {
+                                "_id": "imageProfileBlur",
+                                "_type": "Image",
+                                "attributes": {
+                                    "blur.radius": 2,
+                                    "image": "[[$session.user_picture]]",
+                                    "layoutType": "float",
+                                    "size.h": "[[$device.screen.w]]",
+                                    "size.w": "100%"
+                                },
+                                "controls": []
+                            },
+                            {
+                                "_id": "imageProfileBlur",
+                                "_type": "Image",
+                                "attributes": {
+                                    "align.h": "center",
+                                    "align.v": "top",
+                                    "border.color": "ffffff",
+                                    "border.size": 2,
+                                    "image": "[[$session.user_picture]]",
+                                    "layoutType": "float",
+                                    "margin.top": 100,
+                                    "size.h": 100,
+                                    "size.w": 100
+                                },
+                                "controls": []
+                            },
+                            {
+                                "_id": "button",
+                                "_type": "Button",
+                                "attributes": {
+                                    "align.h": "center",
+                                    "align.v": "bottom",
+                                    "bg.color": "666666",
+                                    "color": "ffffff",
+                                    "layoutType": "float",
+                                    "margin.bottom": 50,
+                                    "size.h": 50,
+                                    "size.w": 200,
+                                    "text": "[[$session.user_name_first]] [[$session.user_name_last]]",
+                                    "touch.bg.color": "cdcdcd",
+                                    "touch.color": "6c6c6c50"
+                                }
+                            }
+                        ]
+                    }
+                ]
             }
-          }
-        ]
-      }
-    ],
-    "datasources": []
-  }
+        ],
+        "datasources": []
+    }
 }
