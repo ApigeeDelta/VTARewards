@@ -1,256 +1,261 @@
 {
-  "$view": {
-    "attributes": {
-      "_id": "garage",
-      "statusBar.style": "dark",
-      "bg.color": "#cdcdcd"
-    },
-    "actions": [
-      {
-        "_type": "Function",
-        "attributes": {
-          "_target": "$app",
-          "functionName": "location.auth.request"
-        },
-        "on": "willAppear"
-      }
-    ],
-    "controls": [
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "visible": true,
-          "bg.color": "ffffff",
-          "layoutType": "float"
-        },
-        "controls": [
-          {
-            "_id": "customHeader",
-            "_type": "Custom",
-            "actions": [
-              {
+    "$view": {
+        "actions": [
+            {
                 "_type": "Function",
                 "attributes": {
-                  "_target": "$app",
-                  "functionName": "drawer.l.toggle"
+                    "_target": "$app",
+                    "functionName": "location.auth.request"
                 },
-                "on": "button.left"
-              }
-            ],
-            "attributes": {
-              "size.w": "100%",
-              "size.h": 62,
-              "visible": true,
-              "title": "Stops",
-              "controlLocation": "/controls/header.json",
-              "button.left": "../images/btnMenu_42x42.png",
-              "layoutType": "float"
-            },
-            "controls": []
-          },
-          {
-            "_id": "mapControl",
-            "_type": "Map",
-            "actions": [
-              {
-                "_type": "Modify",
-                "attributes": {
-                  "_target": "$session"
-                },
-                "on": "touch",
-                "set": {
-                  "stop_id": "[[$row.stop_id]]",
-                  "stop_lat": "[[$row.stop_lat]]",
-                  "stop_lon": "[[$row.stop_lon]]",
-                  "stop_name": "[[$row.stop_name]]"
-                }
-              },
-              {
-                "_type": "Alert",
-                "attributes": {
-                  "title": "[[$session.stop_id]]"
-                },
-                "enabled": false,
-                "on": "touch"
-              },
-              {
-                "_type": "Navigate",
-                "attributes": {
-                  "1nav_animation_duration": 0,
-                  "1nav_animation_type": "crossDissolve",
-                  "1nav_stack_type": "push",
-                  "to": "stop.json"
-                },
-                "on": "touchUp"
-              }
-            ],
-            "attributes": {
-              "animatePinDrop.enabled": true,
-              "pin": {
-                "lat": "[[$row.stop_lat]]",
-                "long": "[[$row.stop_lon]]",
-                "subtitle": "[[$row.stop_name]]",
-                "title": "[[$row.stop_name]]",
-                "image": "/images/pin_32x60_red@2x.png"
-              },
-              "datasource.id": "stops",
-              "size.h": "[[$device.screen.width]]",
-              "size.w": "100%",
-              "userLocation.enabled": true,
-              "zoomLevel": 12
+                "on": "willAppear"
             }
-          },
-          {
-            "_id": "layoutDivider",
-            "_type": "Layout",
-            "attributes": {
-              "size.w": "100%",
-              "size.h": 1,
-              "bg.color": "e3e5e6"
-            }
-          },
-          {
-            "_id": "tableMenu",
-            "_type": "Table",
-            "actions": [],
-            "attributes": {
-              "bg.color": "#ffffff",
-              "datasource.id": "stops",
-              "enabled": true,
-              "cell.size.h": 60,
-              "cell.size.w": "100%",
-              "margin.top": 0,
-              "reloadAnimation.enabled": false,
-              "separator.style": "none",
-              "autofill.h": true,
-              "size.w": "100%"
-            },
-            "controls": [
-              {
-                "_id": "layoutThumbnail",
-                "_type": "Layout",
-                "actions": [
-                  {
-                    "_type": "Modify",
-                    "attributes": {
-                      "_target": "$session"
-                    },
-                    "on": "touch",
-                    "set": {
-                      "stop_id": "[[$row.stop_id]]",
-                      "stop_lat": "[[$row.stop_lat]]",
-                      "stop_lon": "[[$row.stop_lon]]",
-                      "stop_name": "[[$row.stop_name]]"
-                    }
-                  },
-                  {
-                    "_type": "Alert",
-                    "attributes": {
-                      "title": "[[$session.stop_id]]"
-                    },
-                    "enabled": false,
-                    "on": "touch"
-                  },
-                  {
-                    "_type": "Navigate",
-                    "attributes": {
-                      "1nav_animation_duration": 0,
-                      "1nav_animation_type": "crossDissolve",
-                      "1nav_stack_type": "push",
-                      "to": "stop.json"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "attributes": {
-                  "size.h": "100%",
-                  "size.w": "100%"
-                },
-                "controls": [
-                  {
-                    "_id": "textMenuName",
-                    "_type": "Text",
-                    "attributes": {
-                      "color": "#434a54",
-                      "bg.color": "#ff00ff00",
-                      "align.h": "left",
-                      "margin.left": 17,
-                      "text.align": "left",
-                      "font": "Aileron-Regular:16",
-                      "layoutType": "float",
-                      "align.v": "middle",
-                      "text": "[[$row.stop_name]]"
-                    }
-                  },
-                  {
-                    "_id": "btnMenu",
-                    "_type": "Image",
-                    "attributes": {
-                      "margin.right": 17,
-                      "size.h": 10,
-                      "size.w": 7,
-                      "margin.top": 0,
-                      "align.v": "middle",
-                      "align.h": "right",
-                      "tint": "7e858c",
-                      "image": "/images/btnChevron_7x10.png",
-                      "layoutType": "float"
-                    }
-                  },
-                  {
-                    "_id": "layoutDivider",
-                    "_type": "Layout",
-                    "attributes": {
-                      "size.w": "100%",
-                      "size.h": 1,
-                      "bg.color": "e3e5e6",
-                      "align.v": "bottom",
-                      "layoutType": "absolute"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "datasources": [
-      {
-        "_id": "stops",
-        "_type": "HTTP",
-        "actions": [
-          {
-            "_type": "Function",
-            "attributes": {
-              "_target": "mapControl",
-              "functionName": "showAllPins",
-              "delay": 1
-            },
-            "enabled": true,
-            "on": "success"
-          },
-          {
-            "_type": "Refresh",
-            "attributes": {
-              "_target": "textD1ishwasher"
-            },
-            "on": "success"
-          }
         ],
         "attributes": {
-          "data.basepath": "entities",
-          "cache.enabled": false,
-          "autoLoad.enabled": true,
-          "method": "GET",
-          "responseType": "json",
-          "url": "/data/stops.json",
-          "requestType": "json"
-        }
-      }
-    ]
-  }
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "dark"
+        },
+        "controls": [
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
+                "attributes": {
+                    "bg.color": "ffffff",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
+                },
+                "controls": [
+                    {
+                        "_id": "customHeader",
+                        "_type": "Custom",
+                        "actions": [
+                            {
+                                "_type": "Function",
+                                "attributes": {
+                                    "_target": "$app",
+                                    "functionName": "drawer.l.toggle"
+                                },
+                                "on": "button.left"
+                            }
+                        ],
+                        "attributes": {
+                            "button.left": "../images/btnMenu_42x42.png",
+                            "controlLocation": "/controls/header.json",
+                            "layoutType": "float",
+                            "size.h": 62,
+                            "size.w": "100%",
+                            "title": "Stops",
+                            "visible": true
+                        },
+                        "controls": []
+                    },
+                    {
+                        "_id": "mapControl",
+                        "_type": "Map",
+                        "actions": [
+                            {
+                                "_type": "Modify",
+                                "attributes": {
+                                    "_target": "$session"
+                                },
+                                "on": "touch",
+                                "set": {
+                                    "stop_id": "[[$row.stop_id]]",
+                                    "stop_lat": "[[$row.stop_lat]]",
+                                    "stop_lon": "[[$row.stop_lon]]",
+                                    "stop_name": "[[$row.stop_name]]"
+                                }
+                            },
+                            {
+                                "_type": "Alert",
+                                "attributes": {
+                                    "title": "[[$session.stop_id]]"
+                                },
+                                "enabled": false,
+                                "on": "touch"
+                            },
+                            {
+                                "_type": "Navigate",
+                                "attributes": {
+                                    "1nav_animation_duration": 0,
+                                    "1nav_animation_type": "crossDissolve",
+                                    "1nav_stack_type": "push",
+                                    "to": "stop.json"
+                                },
+                                "on": "touchUp"
+                            }
+                        ],
+                        "attributes": {
+                            "animatePinDrop.enabled": true,
+                            "datasource.id": "stops",
+                            "pin": {
+                                "image": "/images/pin_32x60_red@2x.png",
+                                "lat": "[[$row.stop_lat]]",
+                                "long": "[[$row.stop_lon]]",
+                                "subtitle": "[[$row.stop_name]]",
+                                "title": "[[$row.stop_name]]"
+                            },
+                            "size.h": "[[$device.screen.width]]",
+                            "size.w": "100%",
+                            "userLocation.enabled": true,
+                            "zoomLevel": 12
+                        }
+                    },
+                    {
+                        "_id": "layoutDivider",
+                        "_type": "Layout",
+                        "attributes": {
+                            "bg.color": "e3e5e6",
+                            "size.h": 1,
+                            "size.w": "100%"
+                        }
+                    },
+                    {
+                        "_id": "tableMenu",
+                        "_type": "Table",
+                        "actions": [],
+                        "attributes": {
+                            "autofill.h": true,
+                            "bg.color": "#ffffff",
+                            "cell.size.h": 60,
+                            "cell.size.w": "100%",
+                            "datasource.id": "stops",
+                            "enabled": true,
+                            "margin.top": 0,
+                            "reloadAnimation.enabled": false,
+                            "separator.style": "none",
+                            "size.w": "100%"
+                        },
+                        "controls": [
+                            {
+                                "_id": "layoutThumbnail",
+                                "_type": "Layout",
+                                "actions": [
+                                    {
+                                        "_type": "Modify",
+                                        "attributes": {
+                                            "_target": "$session"
+                                        },
+                                        "on": "touch",
+                                        "set": {
+                                            "stop_id": "[[$row.stop_id]]",
+                                            "stop_lat": "[[$row.stop_lat]]",
+                                            "stop_lon": "[[$row.stop_lon]]",
+                                            "stop_name": "[[$row.stop_name]]"
+                                        }
+                                    },
+                                    {
+                                        "_type": "Alert",
+                                        "attributes": {
+                                            "title": "[[$session.stop_id]]"
+                                        },
+                                        "enabled": false,
+                                        "on": "touch"
+                                    },
+                                    {
+                                        "_type": "Navigate",
+                                        "attributes": {
+                                            "1nav_animation_duration": 0,
+                                            "1nav_animation_type": "crossDissolve",
+                                            "1nav_stack_type": "push",
+                                            "to": "stop.json"
+                                        },
+                                        "on": "touchUp"
+                                    }
+                                ],
+                                "attributes": {
+                                    "size.h": "100%",
+                                    "size.w": "100%"
+                                },
+                                "controls": [
+                                    {
+                                        "_id": "textMenuName",
+                                        "_type": "Text",
+                                        "attributes": {
+                                            "align.h": "left",
+                                            "align.v": "middle",
+                                            "bg.color": "#ff00ff00",
+                                            "color": "#434a54",
+                                            "font": "Aileron-Regular:16",
+                                            "layoutType": "float",
+                                            "margin.left": 17,
+                                            "text": "[[$row.stop_name]]",
+                                            "text.align": "left"
+                                        }
+                                    },
+                                    {
+                                        "_id": "btnMenu",
+                                        "_type": "Image",
+                                        "attributes": {
+                                            "align.h": "right",
+                                            "align.v": "middle",
+                                            "image": "/images/btnChevron_7x10.png",
+                                            "layoutType": "float",
+                                            "margin.right": 17,
+                                            "margin.top": 0,
+                                            "size.h": 10,
+                                            "size.w": 7,
+                                            "tint": "7e858c"
+                                        }
+                                    },
+                                    {
+                                        "_id": "layoutDivider",
+                                        "_type": "Layout",
+                                        "attributes": {
+                                            "align.v": "bottom",
+                                            "bg.color": "e3e5e6",
+                                            "layoutType": "absolute",
+                                            "size.h": 1,
+                                            "size.w": "100%"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "datasources": [
+            {
+                "_id": "stops",
+                "_type": "HTTP",
+                "actions": [
+                    {
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "mapControl",
+                            "delay": 1,
+                            "functionName": "showAllPins"
+                        },
+                        "enabled": true,
+                        "on": "success"
+                    },
+                    {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "textD1ishwasher"
+                        },
+                        "on": "success"
+                    }
+                ],
+                "attributes": {
+                    "autoLoad.enabled": true,
+                    "cache.enabled": false,
+                    "data.basepath": "entities",
+                    "method": "GET",
+                    "queryParams": {
+                        "client_id": "YXA6XGvhkBavEeW9rKtDAlGEWQ",
+                        "client_secret": "YXA6qT3puV0hkcEtK-YVq-AkPVvaGvA",
+                        "ql": "select * within 10 of [[$device.location.lat]], [[$device.location.long]]"
+                    },
+                    "requestType": "json",
+                    "responseType": "json",
+                    "url": "https://api.usergrid.com/vta/sandbox/stops"
+                }
+            }
+        ]
+    }
 }

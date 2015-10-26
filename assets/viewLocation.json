@@ -1,107 +1,107 @@
 {
-  "$view": {
-    "attributes": {
-      "_id": "weather",
-      "statusBar.style": "hidden",
-      "bg.color": "#cdcdcd"
-    },
-    "actions": [],
-    "controls": [
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
+    "$view": {
+        "actions": [],
         "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "visible": true,
-          "bg.color": "ffffff",
-          "layoutType": "float"
+            "_id": "weather",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "hidden"
         },
         "controls": [
-          {
-            "_id": "testText2",
-            "_type": "Layout",
-            "attributes": {
-              "color": "#ffffff",
-              "size.w": "100%",
-              "layoutType": "absolute",
-              "align.v": "middle",
-              "align.h": "center"
-            },
-            "controls": [
-              {
-                "_id": "testText2",
-                "_type": "Text",
-                         "actions" : [
-                                      {
-                                      "_type" : "Function",
-                                      "attributes" : {
-                                      "_target":"locationTracker",
-                                      "name":"toggle"
-                                      },
-                                      "on" : "touchUp"
-                                      }
-                                      ],
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
                 "attributes": {
-                  "color": "#000000",
-                  "size.w": "100%",
-                  "font": "HelveticaNeue-Light:20",
-                  "text": "hello,",
-                  "text.align": "center",
-                  "margin.bottom": 20
-                }
-              },
-                         {
-                         "_id": "locationTracker",
-                         "_type": "LocationTracker",
-                         "actions" : [
-                                      {
-                                      "_type" : "Alert",
-                                      "attributes" : {
-                                      "title" : "[[$self.data]]"
-                                      },
-                                      "on" : "stopped"
-                                      }
-                                      ],
-                         "attributes": {
-                         "color": "#000000",
-                         "size.w": "100%",
-                         "font": "HelveticaNeue-Light:20",
-                         "text": "hello,",
-                         "text.align": "center",
-                         "margin.bottom": 20
-                         }
-                         },
-              {
-                "_id": "testText2",
-                "_type": "Image",
-                "attributes": {
-                  "visible": true,
-                  "size.w": 60,
-                  "size.h": 60,
-                  "align.h": "center",
-                  "image": "/images/Icon-60@3x.png",
-                  "text.align": "center",
-                  "margin.bottom": 20
-                }
-              },
-              {
-                "_id": "testText2",
-                "_type": "Text",
-                "attributes": {
-                  "color": "#000000",
-                  "visible": true,
-                  "size.w": "100%",
-                  "font": "HelveticaNeue-Medium:20",
-                  "text": "ignite engine",
-                  "text.align": "center"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "datasources": []
-  }
+                    "bg.color": "ffffff",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
+                },
+                "controls": [
+                    {
+                        "_id": "testText2",
+                        "_type": "Layout",
+                        "attributes": {
+                            "align.h": "center",
+                            "align.v": "middle",
+                            "color": "#ffffff",
+                            "layoutType": "absolute",
+                            "size.w": "100%"
+                        },
+                        "controls": [
+                            {
+                                "_id": "testText2",
+                                "_type": "Text",
+                                "actions": [
+                                    {
+                                        "_type": "Function",
+                                        "attributes": {
+                                            "_target": "locationTracker",
+                                            "name": "toggle"
+                                        },
+                                        "on": "touchUp"
+                                    }
+                                ],
+                                "attributes": {
+                                    "color": "#000000",
+                                    "font": "HelveticaNeue-Light:20",
+                                    "margin.bottom": 20,
+                                    "size.w": "100%",
+                                    "text": "hello,",
+                                    "text.align": "center"
+                                }
+                            },
+                            {
+                                "_id": "locationTracker",
+                                "_type": "LocationTracker",
+                                "actions": [
+                                    {
+                                        "_type": "Alert",
+                                        "attributes": {
+                                            "title": "[[$self.data]]"
+                                        },
+                                        "on": "stopped"
+                                    }
+                                ],
+                                "attributes": {
+                                    "color": "#000000",
+                                    "font": "HelveticaNeue-Light:20",
+                                    "margin.bottom": 20,
+                                    "size.w": "100%",
+                                    "text": "hello,",
+                                    "text.align": "center"
+                                }
+                            },
+                            {
+                                "_id": "testText2",
+                                "_type": "Image",
+                                "attributes": {
+                                    "align.h": "center",
+                                    "image": "/images/Icon-60@3x.png",
+                                    "margin.bottom": 20,
+                                    "size.h": 60,
+                                    "size.w": 60,
+                                    "text.align": "center",
+                                    "visible": true
+                                }
+                            },
+                            {
+                                "_id": "testText2",
+                                "_type": "Text",
+                                "attributes": {
+                                    "color": "#000000",
+                                    "font": "HelveticaNeue-Medium:20",
+                                    "size.w": "100%",
+                                    "text": "ignite engine",
+                                    "text.align": "center",
+                                    "visible": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "datasources": []
+    }
 }

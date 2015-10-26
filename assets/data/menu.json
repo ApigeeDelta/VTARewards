@@ -5,10 +5,6 @@
       "path": "home.json"
     },
     {
-      "name": "Rankings",
-      "path": "rankings.json"
-    },
-    {
       "name": "Stops",
       "path": "stops.json"
     },

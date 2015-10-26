@@ -184,7 +184,7 @@
                         "attributes": {
                             "title": "[[$session.user_picture]]"
                         },
-                        "enabled": false,
+                        "enabled": true,
                         "on": "success"
                     },
                     {
