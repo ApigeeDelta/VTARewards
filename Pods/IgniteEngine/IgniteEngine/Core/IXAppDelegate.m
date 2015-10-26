@@ -37,6 +37,8 @@
 #import "ApigeeDataClient.h"
 #import "MMDrawerController.h"
 
+#import "FBSDKApplicationDelegate.h"
+
 @implementation IXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -133,7 +135,15 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[IXAppManager sharedAppManager] appDidOpenWithCustomURL:url];
+    if( [[url absoluteString] hasPrefix:@"fb"] ) {
+        [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                       openURL:url
+                                             sourceApplication:sourceApplication
+                                                    annotation:annotation
+         ];
+    } else {
+        [[IXAppManager sharedAppManager] appDidOpenWithCustomURL:url];
+    }
     return YES;
 }
 

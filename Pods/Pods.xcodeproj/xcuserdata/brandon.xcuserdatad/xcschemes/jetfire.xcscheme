@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D6A4DC8D8DC3645CC86E0AA3'
+               BlueprintIdentifier = '080416D0C07E648AC80A9227'
                BlueprintName = 'jetfire'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libjetfire.a'>

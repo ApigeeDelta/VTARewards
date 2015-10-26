@@ -6843,37 +6843,6 @@
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/IgniteEngine/IgniteEngine-prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Private\"",
-					"\"${PODS_ROOT}/Headers/Private/IgniteEngine\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworkActivityLogger\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/AFOAuth2Manager\"",
-					"\"${PODS_ROOT}/Headers/Public/ALMoviePlayerController\"",
-					"\"${PODS_ROOT}/Headers/Public/APParallaxHeader-Width\"",
-					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
-					"\"${PODS_ROOT}/Headers/Public/ApigeeiOSSDK\"/**",
-					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/Color-Picker-for-iOS\"",
-					"\"${PODS_ROOT}/Headers/Public/ColorUtils\"",
-					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
-					"\"${PODS_ROOT}/Headers/Public/FBSDKLoginKit\"",
-					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
-					"\"${PODS_ROOT}/Headers/Public/IgniteEngine\"",
-					"\"${PODS_ROOT}/Headers/Public/JAFontAwesome\"",
-					"\"${PODS_ROOT}/Headers/Public/MMDrawerController\"",
-					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/Public/SVPulsingAnnotationView\"",
-					"\"${PODS_ROOT}/Headers/Public/SVWebViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/YLMoment\"",
-					"\"${PODS_ROOT}/Headers/Public/ZBarSDK\"",
-					"\"${PODS_ROOT}/Headers/Public/ZipArchive\"",
-					"\"${PODS_ROOT}/Headers/Public/jetfire\"",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -7161,37 +7130,6 @@
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/IgniteEngine/IgniteEngine-prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Private\"",
-					"\"${PODS_ROOT}/Headers/Private/IgniteEngine\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworkActivityLogger\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/AFOAuth2Manager\"",
-					"\"${PODS_ROOT}/Headers/Public/ALMoviePlayerController\"",
-					"\"${PODS_ROOT}/Headers/Public/APParallaxHeader-Width\"",
-					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
-					"\"${PODS_ROOT}/Headers/Public/ApigeeiOSSDK\"/**",
-					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/Color-Picker-for-iOS\"",
-					"\"${PODS_ROOT}/Headers/Public/ColorUtils\"",
-					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
-					"\"${PODS_ROOT}/Headers/Public/FBSDKLoginKit\"",
-					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
-					"\"${PODS_ROOT}/Headers/Public/IgniteEngine\"",
-					"\"${PODS_ROOT}/Headers/Public/JAFontAwesome\"",
-					"\"${PODS_ROOT}/Headers/Public/MMDrawerController\"",
-					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/Public/SVPulsingAnnotationView\"",
-					"\"${PODS_ROOT}/Headers/Public/SVWebViewController\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/YLMoment\"",
-					"\"${PODS_ROOT}/Headers/Public/ZBarSDK\"",
-					"\"${PODS_ROOT}/Headers/Public/ZipArchive\"",
-					"\"${PODS_ROOT}/Headers/Public/jetfire\"",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";

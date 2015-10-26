@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A1CF804D4D32B37F748C9B9A'
+               BlueprintIdentifier = 'CDCFAB748A33A88BC347B34F'
                BlueprintName = 'IgniteEngine'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libIgniteEngine.a'>

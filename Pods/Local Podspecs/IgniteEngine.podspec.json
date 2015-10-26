@@ -22,6 +22,9 @@
   "preserve_paths": "IgniteEngine/**",
   "exclude_files": "Example",
   "documentation_url": "https://ignite.apigee.com",
+  "xcconfig": {
+    "USER_HEADER_SEARCH_PATHS": "\"${PODS_ROOT}/Headers/Public/ApigeeiOSSDK/ApigeeiOSSDK\""
+  },
   "dependencies": {
     "ActionSheetPicker-3.0": [
       "~>1.6"
