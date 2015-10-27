@@ -64,10 +64,9 @@
                                         "controls": [
                                             {
                                                 "_id": "imageUser",
-                                                "_type": "Image",
+                                                "_type": "FBProfile",
                                                 "attributes": {
                                                     "bg.color": "ffffff",
-                                                    "image": "/images/tmpCody_42x42.png",
                                                     "layoutType": "absolute",
                                                     "size.h": 42,
                                                     "size.w": 42
