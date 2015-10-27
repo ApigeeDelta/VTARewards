@@ -1,0 +1,20 @@
+{
+  "entities": [
+    {
+      "name": "Home",
+      "path": "home.json"
+    },
+    {
+      "name": "Stops",
+      "path": "stops.json"
+    },
+    {
+      "name": "Location",
+      "path": "location.json"
+    },
+    {
+      "name": "Logout",
+      "path": "logout.json"
+    }
+  ]
+}

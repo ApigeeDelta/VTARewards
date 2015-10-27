@@ -1,14 +1,6 @@
 {
     "$view": {
-        "actions": [
-            {
-                "_type": "Refresh",
-                "attributes": {
-                    "_target": "getHvac,getSecurity,getDishwasher"
-                },
-                "on": "willAppear"
-            }
-        ],
+        "actions": [],
         "attributes": {
             "_id": "garage",
             "bg.color": "#cdcdcd",
@@ -61,30 +53,14 @@
                         },
                         "controls": [
                             {
-                                "_id": "imageProfileBlur",
-                                "_type": "Image",
-                                "attributes": {
-                                    "blur.radius": 2,
-                                    "image": "[[$session.user_picture]]",
-                                    "layoutType": "float",
-                                    "size.h": "[[$device.screen.w]]",
-                                    "size.w": "100%"
-                                },
-                                "controls": []
-                            },
-                            {
-                                "_id": "imageProfileBlur",
-                                "_type": "Image",
+                                "_id": "fbProfile",
+                                "_type": "FBProfile",
                                 "attributes": {
                                     "align.h": "center",
                                     "align.v": "top",
-                                    "border.color": "ffffff",
-                                    "border.size": 2,
-                                    "image": "[[$session.user_picture]]",
                                     "layoutType": "float",
-                                    "margin.top": 100,
-                                    "size.h": 100,
-                                    "size.w": 100
+                                    "size.h": "[[$device.screen.w]]",
+                                    "size.w": "100%"
                                 },
                                 "controls": []
                             },
@@ -97,10 +73,10 @@
                                     "bg.color": "666666",
                                     "color": "ffffff",
                                     "layoutType": "float",
-                                    "margin.bottom": 50,
+                                    "margin.bottom": "100",
                                     "size.h": 50,
                                     "size.w": 200,
-                                    "text": "[[$session.user_name_first]] [[$session.user_name_last]]",
+                                    "text": "[[fbProfile.name]]",
                                     "touch.bg.color": "cdcdcd",
                                     "touch.color": "6c6c6c50"
                                 }

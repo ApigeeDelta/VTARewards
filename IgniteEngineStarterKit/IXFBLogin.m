@@ -74,6 +74,7 @@ IX_STATIC_CONST_STRING kIXFBLogoutSuccess = @"logout.success";
 
 -(void)buildView
 {
+    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     [super buildView];
 }
 

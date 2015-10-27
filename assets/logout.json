@@ -1,27 +1,5 @@
 {
     "$view": {
-        "actions": [
-            {
-                "_type": "1Navigate",
-                "attributes": {
-                    "to": "home.json",
-                    "animation.type": "crossDissolve",
-                    "animation.duration": 0
-                },
-                "enabled": [
-                    "if :: [[$session.fb_token:is(!empty && !nil)]] :: false :: true"
-                ],
-                "on": "willFirstAppear"
-            },
-            {
-                "_type": "Function",
-                "attributes": {
-                    "_target": "myBeacon",
-                    "functionName": "start"
-                },
-                "on": "willAppear"
-            }
-        ],
         "attributes": {
             "_id": "garage",
             "bg.color": "#cdcdcd",
@@ -94,7 +72,7 @@
                             "layoutType": "float",
                             "size.h": 62,
                             "size.w": "100%",
-                            "title": "Login",
+                            "title": "Logout",
                             "visible": true
                         },
                         "controls": []
@@ -110,9 +88,9 @@
                         "attributes": {
                             "_target": "$session"
                         },
-                        "on": "login.success",
+                        "on": "logout.success",
                         "set": {
-                            "fb_token": "[[FBLogin.token]]"
+                            "fb_token": ""
                         }
                     },
                     {
@@ -120,7 +98,7 @@
                         "attributes": {
                             "_target": "fbLogin"
                         },
-                        "on": "login.success"
+                        "on": "logout.success"
                     }
                 ],
                 "attributes": {

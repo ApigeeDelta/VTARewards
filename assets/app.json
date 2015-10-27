@@ -1,25 +1,27 @@
 {
-  "$app": {
-    "actions": [],
-    "attributes": {
-      "location.autoRequest.enabled":true,
-      "defaultView": "/login.json",
-      "drawer.l.url":"/menu.json",
-      "drawer.l.max.w":"{{[[$device.screen.width]]-50;}}",
-      "drawer.shadow.enabled":false,
-      "debug.layout.enabled": false,
-      "logging.datasource.enabled": true,
-      "logging.level": "verbose",
-      "mode": "release",
-      "navigationBar.enabled": false,
-      "preloadImages": [
-        "assets/images/pin_32x60_red@2x.png",
-        "assets/images/imgUserTim_38x53@2x.png",
-        "assets/images/imgUserAnne_38x53@2x.png",
-        "assets/images/bgCarGarage.png",
-        "assets/images/bgCarZoom.png"
-      ]
-    },
-    "datasources": []
-  }
+    "$app": {
+        "actions": [],
+        "attributes": {
+            "debug.layout.enabled": false,
+            "defaultView": [
+                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+            ],
+            "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
+            "drawer.l.url": "/menu.json",
+            "drawer.shadow.enabled": false,
+            "location.autoRequest.enabled": true,
+            "logging.datasource.enabled": true,
+            "logging.level": "verbose",
+            "mode": "release",
+            "navigationBar.enabled": false,
+            "preloadImages": [
+                "assets/images/pin_32x60_red@2x.png",
+                "assets/images/imgUserTim_38x53@2x.png",
+                "assets/images/imgUserAnne_38x53@2x.png",
+                "assets/images/bgCarGarage.png",
+                "assets/images/bgCarZoom.png"
+            ]
+        },
+        "datasources": []
+    }
 }

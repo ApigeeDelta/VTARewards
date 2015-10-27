@@ -140,7 +140,9 @@
                                     "cell.size.h": 47,
                                     "cell.size.w": "100%",
                                     "data.basepath": "entities",
-                                    "datasource.id": "menu",
+                                    "datasource.id": [
+                                        "if :: [[$session.fb_token]] == '' :: menuLoggedOut :: menuLoggedIn"
+                                    ],
                                     "enabled": true,
                                     "margin.top": 0,
                                     "reloadAnimation.enabled": false,
@@ -266,7 +268,7 @@
         ],
         "datasources": [
             {
-                "_id": "menu",
+                "_id": "menuLoggedIn",
                 "_type": "HTTP",
                 "actions": [
                     {
@@ -278,13 +280,6 @@
                         },
                         "enabled": true,
                         "on": "success"
-                    },
-                    {
-                        "_type": "Refresh",
-                        "attributes": {
-                            "_target": "textD1ishwasher"
-                        },
-                        "on": "success"
                     }
                 ],
                 "attributes": {
@@ -293,7 +288,19 @@
                     "method": "GET",
                     "requestType": "json",
                     "responseType": "json",
-                    "url": "/data/menu.json"
+                    "url": "/data/menuLoggedIn.json"
+                }
+            },
+            {
+                "_id": "menuLoggedOut",
+                "_type": "HTTP",
+                "attributes": {
+                    "autoLoad.enabled": true,
+                    "cache.enabled": false,
+                    "method": "GET",
+                    "requestType": "json",
+                    "responseType": "json",
+                    "url": "/data/menuLoggedOut.json"
                 }
             }
         ]

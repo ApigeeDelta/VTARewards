@@ -12,6 +12,7 @@
 		3FAAB0611AF92E3600CFFA7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAAB0601AF92E3600CFFA7D /* Images.xcassets */; };
 		3FFE71A21AF934E000AFCFED /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A11AF934E000AFCFED /* assets */; };
 		3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */; };
+		CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */; };
 		CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */; };
 		CAE9C69B1AFA7F66002004A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */; };
 		CAE9C69D1AFA84B6002004A0 /* LaunchScreenLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CAE9C69C1AFA84B6002004A0 /* LaunchScreenLogo.png */; };
@@ -30,6 +31,8 @@
 		3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9540153EAE69696C9963D283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA6D43A6D244554B08386F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBProfile.h; sourceTree = "<group>"; };
+		CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXFBProfile.m; sourceTree = "<group>"; };
 		CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXFBLogin.m; sourceTree = "<group>"; };
 		CA2A9CBC1BD96A1700F00E8E /* IXFBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBLogin.h; sourceTree = "<group>"; };
 		CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				3FAAB0581AF92E3600CFFA7D /* AppDelegate.m */,
 				CA2A9CBC1BD96A1700F00E8E /* IXFBLogin.h */,
 				CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */,
+				CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */,
+				CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */,
 				3FAAB0601AF92E3600CFFA7D /* Images.xcassets */,
 				3FAAB0531AF92E3600CFFA7D /* Supporting Files */,
 				CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */,
@@ -235,6 +240,7 @@
 			files = (
 				3FAAB0591AF92E3600CFFA7D /* AppDelegate.m in Sources */,
 				3FAAB0561AF92E3600CFFA7D /* main.m in Sources */,
+				CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */,
 				CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
