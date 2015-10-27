@@ -58,6 +58,7 @@
                                 "attributes": {
                                     "align.h": "center",
                                     "align.v": "top",
+                                    "blur.enabled": true,
                                     "layoutType": "float",
                                     "size.h": "[[$device.screen.w]]",
                                     "size.w": "100%"

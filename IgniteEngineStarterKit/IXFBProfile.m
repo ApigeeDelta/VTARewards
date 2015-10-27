@@ -30,8 +30,13 @@
 
 #import "IXAppManager.h"
 #import "IXAttributeContainer.h"
+#import "IXControlLayoutInfo.h"
+#import "IXControlContentView.h"
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+// IXFBProfile ReadOnly Attributes
+IX_STATIC_CONST_STRING kIXBlurEnabled = @"blur.enabled";
 
 // IXFBProfile ReadOnly Attributes
 IX_STATIC_CONST_STRING kIXName = @"name";
@@ -40,9 +45,24 @@ IX_STATIC_CONST_STRING kIXMiddleName = @"middleName";
 IX_STATIC_CONST_STRING kIXLastName = @"lastName";
 IX_STATIC_CONST_STRING kIXLinkURL = @"linkURL";
 
+@interface FBSDKProfilePictureView () {
+    UIImageView *_imageView;
+}
+@end
+@interface FBSDKProfilePictureView (Test)
+-(UIImageView*)getImageView;
+@end
+@implementation FBSDKProfilePictureView (Test)
+-(UIImageView*)getImageView {
+    return _imageView;
+}
+@end
+
 @interface IXFBProfile ()
 
 @property (nonatomic,retain) FBSDKProfilePictureView* pictureView;
+@property (nonatomic,retain) UIVisualEffectView* visualEffectView;
+@property (nonatomic) UIBlurEffectStyle defaultBlurStyle;
 
 @end
 
@@ -59,8 +79,13 @@ IX_STATIC_CONST_STRING kIXLinkURL = @"linkURL";
 {
     [super buildView];
 
+    [self setDefaultBlurStyle:UIBlurEffectStyleLight];
+
+    [self setVisualEffectView:[[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:self.defaultBlurStyle]]];
+
     [self setPictureView:[[FBSDKProfilePictureView alloc] initWithFrame:CGRectZero]];
     [[self pictureView] setPictureMode:FBSDKProfilePictureModeNormal];
+    [[[self pictureView] getImageView] addSubview:[self visualEffectView]];
 
     [[self contentView] addSubview:[self pictureView]];
 
@@ -86,6 +111,7 @@ IX_STATIC_CONST_STRING kIXLinkURL = @"linkURL";
 {
     [super layoutControlContentsInRect:rect];
     if( !CGRectEqualToRect(self.pictureView.frame, rect) ) {
+        [[self visualEffectView] setFrame:rect];
         [[self pictureView] setFrame:rect];
         [[self pictureView] setNeedsImageUpdate];
     }
@@ -96,6 +122,13 @@ IX_STATIC_CONST_STRING kIXLinkURL = @"linkURL";
     [super applySettings];
 
     [[self pictureView] setProfileID:[[FBSDKProfile currentProfile] userID]];
+
+    BOOL blurEnabled = [[self attributeContainer] getBoolValueForAttribute:kIXBlurEnabled defaultValue:NO];
+    if( blurEnabled ) {
+        [[self visualEffectView] setEffect:[UIBlurEffect effectWithStyle:self.defaultBlurStyle]];
+    } else {
+        [[self visualEffectView] setEffect:nil];
+    }
 }
 
 -(NSString *)getReadOnlyPropertyValue:(NSString *)propertyName
