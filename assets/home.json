@@ -98,7 +98,7 @@
                                     "margin.bottom": 50,
                                     "size.h": 50,
                                     "size.w": 200,
-                                    "text": "[[$session.user_name_first]] [[$session.user_name_last]]",
+                                    "text": "[[fbProfilePic.firstName]] [[fbProfilePic.lastName]]",
                                     "touch.bg.color": "cdcdcd",
                                     "touch.color": "6c6c6c50"
                                 }

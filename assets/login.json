@@ -2,18 +2,6 @@
     "$view": {
         "actions": [
             {
-                "_type": "1Navigate",
-                "attributes": {
-                    "to": "home.json",
-                    "animation.type": "crossDissolve",
-                    "animation.duration": 0
-                },
-                "enabled": [
-                    "if :: [[$session.fb_token:is(!empty && !nil)]] :: false :: true"
-                ],
-                "on": "willFirstAppear"
-            },
-            {
                 "_type": "Function",
                 "attributes": {
                     "_target": "myBeacon",
@@ -182,16 +170,10 @@
                         }
                     },
                     {
-                        "_type": "Alert",
-                        "attributes": {
-                            "title": "[[$session.user_picture]]"
-                        },
-                        "enabled": false,
-                        "on": "success"
-                    },
-                    {
                         "_type": "Navigate",
                         "attributes": {
+                            "animation.delay": 0.1,
+                            "animation.type": "crossDissolve",
                             "to": "home.json"
                         },
                         "on": "success"

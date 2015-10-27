@@ -90,13 +90,27 @@
                         },
                         "on": "logout.success",
                         "set": {
-                            "fb_token": ""
+                            "fb_token": "",
+                            "access_token": "",
+                            "user_name_first": "",
+                            "user_name_last": "",
+                            "user_picture": "",
+                            "user_uuid": ""
                         }
                     },
                     {
                         "_type": "Refresh",
                         "attributes": {
                             "_target": "fbLogin"
+                        },
+                        "on": "logout.success"
+                    },
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "animation.delay": 0.1,
+                            "animation.type": "crossDissolve",
+                            "to": "login.json"
                         },
                         "on": "logout.success"
                     }
