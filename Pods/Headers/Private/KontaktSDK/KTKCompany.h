@@ -1,0 +1,1 @@
+../../../KontaktSDK/KontaktSDK/Headers/KTKCompany.h

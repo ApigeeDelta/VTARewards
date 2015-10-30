@@ -1,0 +1,1 @@
+../../../KontaktSDK/KontaktSDK/Headers/KTKEddystoneUID.h

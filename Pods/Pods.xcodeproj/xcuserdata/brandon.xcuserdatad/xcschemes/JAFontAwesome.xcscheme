@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '03EE951FEDCDAFEE9F759D10'
+               BlueprintIdentifier = 'C6554BC266768D23E5A6A24C'
                BlueprintName = 'JAFontAwesome'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libJAFontAwesome.a'>

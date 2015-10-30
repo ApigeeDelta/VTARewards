@@ -331,6 +331,7 @@ PODS:
   - IQKeyboardManager (3.3.3.1)
   - JAFontAwesome (4.3.2)
   - jetfire (0.1.4)
+  - KontaktSDK (6.2)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
@@ -357,6 +358,7 @@ PODS:
 DEPENDENCIES:
   - FBSDKLoginKit
   - IgniteEngine (from `https://github.com/RobertWalsh/IgniteEngine-iOS.git`)
+  - KontaktSDK
 
 EXTERNAL SOURCES:
   IgniteEngine:
@@ -385,6 +387,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: acacb9f4a7646841e2472cae42d3d90687c95940
   JAFontAwesome: 0e624c389b30db8015eb6f670941c7d38d73c0d3
   jetfire: 6c6715c91d8b59d2fdb051e5f76ae2fb539d0362
+  KontaktSDK: f0fd26e98f2cf35f7371220857c052c83e3371e5
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

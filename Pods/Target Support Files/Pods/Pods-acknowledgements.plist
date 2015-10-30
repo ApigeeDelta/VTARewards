@@ -639,6 +639,15 @@ A mention of 'Font Awesome - http://fortawesome.github.com/Font-Awesome' in huma
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright (c) 2015 Kontakt.io. All rights reserved.
+</string>
+			<key>Title</key>
+			<string>KontaktSDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>Copyright (c) 2013 Mutual Mobile (http://mutualmobile.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
