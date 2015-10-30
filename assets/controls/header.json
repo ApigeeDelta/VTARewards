@@ -50,7 +50,7 @@
                   }
                 ],
                 "attributes": {
-                  "color": "#434a54",
+                  "color": "[[$app.color.text]]",
                   "bg.color": "#ff00ff00",
                   "align.h": "right",
                   "margin.top": 0,

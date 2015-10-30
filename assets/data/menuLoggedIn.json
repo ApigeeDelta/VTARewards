@@ -9,6 +9,10 @@
       "path": "stops.json"
     },
     {
+      "name": "My Rides",
+      "path": "rides.json"
+    },
+    {
       "name": "Location",
       "path": "location.json"
     },

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A18146D007276C7F15934936'
+               BlueprintIdentifier = 'E9EA354FA0A02431DB8D7E49'
                BlueprintName = 'YLMoment'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libYLMoment.a'>

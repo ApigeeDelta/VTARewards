@@ -91,6 +91,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fontawesome-webfont.ttf</string>
+		<string>Aileron-Light.otf</string>
+		<string>Aileron-SemiBold.otf</string>
+		<string>Aileron-Regular.otf</string>
+		<string>Aileron-UltraLight.otf</string>
 	</array>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeLeft</string>

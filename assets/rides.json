@@ -1,0 +1,156 @@
+{
+    "$view": {
+        "actions": [],
+        "attributes": {
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "dark"
+        },
+        "controls": [
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
+                "attributes": {
+                    "bg.color": "ffffff00",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
+                },
+                "controls": [
+                    {
+                        "_id": "customHeader",
+                        "_type": "Custom",
+                        "actions": [
+                            {
+                                "_type": "Function",
+                                "attributes": {
+                                    "_target": "$app",
+                                    "functionName": "drawer.l.toggle"
+                                },
+                                "on": "button.left"
+                            }
+                        ],
+                        "attributes": {
+                            "button.left": "../images/btnMenu_42x42.png",
+                            "controlLocation": "/controls/header.json",
+                            "layoutType": "float",
+                            "size.h": 62,
+                            "size.w": "100%",
+                            "title": "My Rides",
+                            "visible": true
+                        }
+                    },
+                    {
+                        "_id": "tableRides",
+                        "_type": "Table",
+                        "actions": [],
+                        "attributes": {
+                            "bg.color": "#ffffff",
+                            "cell.size.h": 110,
+                            "cell.size.w": "100%",
+                            "datasource.id": "ridesList",
+                            "data.basepath": "rides",
+                            "margin.top": 61,
+                            "reloadAnimation.enabled": false,
+                            "separator.style": "none",
+                            "size.h": "100%",
+                            "size.w": "100%"
+                        },
+                        "controls": [
+                        {
+                                "_id": "textDate",
+                                "_type": "Text",
+                                "attributes": {
+                                    "align.h": "left",
+                                    "align.v": "top",
+                                    "color": "[[$app.color.textLight]]",
+                                    "font": "Aileron-Light:16",
+                                    "layoutType": "absolute",
+                                    "margin.top": 10,
+                                    "margin.left": 17,
+                                    "text": "[[$row.tripEnd.timestamp:moment(js|MMMM dd yyyy)]]",
+                                    "text.align": "left"
+                                }
+                            },
+                            {
+                                "_id": "textDistance",
+                                "_type": "Text",
+                                "attributes": {
+                                    "align.h": "right",
+                                    "align.v": "top",
+                                    "color": "[[$app.color.textLight]]",
+                                    "font": "Aileron-Light:16",
+                                    "layoutType": "absolute",
+                                    "margin.top": 10,
+                                    "margin.right": 17,
+                                    "text": "Distance: [[$row.summary.distanceTraveled.miles:round(1)]] mi",
+                                    "text.align": "right"
+                                }
+                            },
+                            {
+                                "_id": "textYouSaved",
+                                "_type": "AttributedText",
+                                "attributes": {
+                                    "align.h": "center",
+                                    "align.v": "center",
+                                    "color": "[[$app.color.text]]",
+                                    "font": "Aileron-Regular:22",
+                                    "layoutType": "absolute",
+                                    "margin.top": 0,
+                                    "margin.right": 0,
+                                    "markdown.enabled": true,
+                                    "size.h": 40,
+                                    "links.enabled": false,                                    
+                                    "text": "You saved {[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
+                                    "text.align": "center"
+                                }
+                            },
+                            {
+                                "_id": "textVsAverageFuelEconomy",
+                                "_type": "Text",
+                                "attributes": {
+                                    "align.h": "center",
+                                    "align.v": "bottom",
+                                    "color": "[[$app.color.textLight]]",
+                                    "font": "Aileron-Light:16",
+                                    "layoutType": "absolute",
+                                    "margin.bottom": 10,
+                                    "margin.right": 0,
+                                    "markdown.enabled": true,
+                                    "text": "vs. average fuel economy",
+                                    "text.align": "center"
+                                }
+                            },
+                            {
+                                "_id": "cellDivider",
+                                "_type": "Layout",
+                                "attributes": {
+                                    "size.h": 1,
+                                    "size.w": "100%",
+                                    "bg.color": "#ddd"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "datasources": [
+            {
+                "_id": "ridesList",
+                "_type": "HTTP",
+                "attributes": {
+                    "autoLoad.enabled": true,
+                    "headers": {
+                        "access_token": "[[$session.access_token]]"
+                    },
+                    "method": "GET",
+                    "requestType": "json",
+                    "responseType": "json",
+                    "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
+                }
+            }
+        ]
+    }
+}

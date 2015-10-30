@@ -2,11 +2,12 @@
     "$view": {
         "actions": [
             {
-                "_type": "Refresh",
+                "_type": "Function",
                 "attributes": {
-                    "_target": "getHvac,getSecurity,getDishwasher"
+                    "_target": "mainBeacon",
+                    "functionName": "start"
                 },
-                "on": "willAppear"
+                "on": "willFirstAppear"
             }
         ],
         "attributes": {
@@ -15,6 +16,23 @@
             "statusBar.style": "dark"
         },
         "controls": [
+            {
+                "_id": "mainBeacon",
+                "_type": "Beacon",
+                "actions": [
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "title": "Entered region"
+                        },
+                        "on": "enteredBeaconRegion"
+                    }
+                ],
+                "attributes": {
+                    "distanceFilter": "notsurewhatgoeshere",
+                    "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                }
+            },
             {
                 "_id": "layoutMain",
                 "_type": "Layout",
