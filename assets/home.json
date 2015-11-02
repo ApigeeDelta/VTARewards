@@ -74,7 +74,7 @@
                         "attributes": {
                             "layoutType": "float",
                             "margin.top": 62,
-                            "size.h": "[[$device.screen.w]]",
+                            "size.h": 260,
                             "size.w": "100%"
                         },
                         "controls": [
@@ -86,7 +86,7 @@
                                     "align.v": "top",
                                     "blur.enabled": true,
                                     "layoutType": "float",
-                                    "size.h": "[[$device.screen.w]]",
+                                    "size.h": "100%",
                                     "size.w": "100%"
                                 }
                             },
@@ -97,35 +97,201 @@
                                     "align.h": "center",
                                     "align.v": "top",
                                     "border.color": "ffffff",
+                                    "border.radius": "{{[[$self.size.w]] / 2}}",
                                     "border.size": 2,
                                     "layoutType": "float",
-                                    "margin.top": 100,
-                                    "size.h": 100,
-                                    "size.w": 100
+                                    "margin.top": 30,
+                                    "size.h": 90,
+                                    "size.w": 90
                                 }
                             },
                             {
-                                "_id": "button",
-                                "_type": "Button",
+                                "_id": "fbProfileName",
+                                "_type": "Text",
                                 "attributes": {
                                     "align.h": "center",
-                                    "align.v": "bottom",
-                                    "bg.color": "666666",
+                                    "align.v": "top",
                                     "color": "ffffff",
+                                    "font": "Aileron-Light:18",
                                     "layoutType": "float",
-                                    "margin.bottom": 50,
-                                    "size.h": 50,
-                                    "size.w": 200,
-                                    "text": "[[fbProfilePic.firstName]] [[fbProfilePic.lastName]]",
-                                    "touch.bg.color": "cdcdcd",
-                                    "touch.color": "6c6c6c50"
+                                    "margin.top": 130,
+                                    "text": "[[fbProfilePic.name]]"
                                 }
+                            },
+                            {
+                                "_id": "layoutSummaryBackground",
+                                "_type": "Layout",
+                                "attributes": {
+                                    "align.v": "bottom",
+                                    "bg.color": "00000010",
+                                    "layoutType": "float",
+                                    "size.h": 60,
+                                    "size.w": "100%"
+                                },
+                                "controls": [
+                                    {
+                                        "_id": "layoutSummaryBorder",
+                                        "_type": "Layout",
+                                        "attributes": {
+                                            "bg.color": "00000020",
+                                            "layoutType": "float",
+                                            "size.h": 1,
+                                            "size.w": "100%"
+                                        },
+                                        "controls": []
+                                    },
+                                    {
+                                        "_id": "textSavingsMi",
+                                        "_type": "Text",
+                                        "attributes": {
+                                            "align.h": "left",
+                                            "color": "white",
+                                            "font": "Aileron-SemiBold:18",
+                                            "layoutType": "float",
+                                            "padding.top": 12,
+                                            "padding.left": "{{[[$device.screen.w]] / 4 - 20}}"
+                                        }
+                                    },
+                                    {
+                                        "_id": "textSavingsKg",
+                                        "_type": "Text",
+                                        "attributes": {
+                                            "align.h": "left",
+                                            "color": "white",
+                                            "font": "Aileron-SemiBold:18",
+                                            "layoutType": "float",
+                                            "padding.top": 12,
+                                            "padding.left": "{{[[$device.screen.w]] / 4 * 3 - 50}}"
+                                        }
+                                    },
+                                    {
+                                        "_id": "textSavingsMiDescription",
+                                        "_type": "Text",
+                                        "attributes": {
+                                            "align.h": "left",
+                                            "color": "white",
+                                            "font": "Aileron-Light:13",
+                                            "layoutType": "float",
+                                            "padding.top": 32,
+                                            "padding.left": "{{[[$device.screen.w]] / 4 - 20}}",
+                                            "text": "Distance Travelled"
+                                        }
+                                    },
+                                    {
+                                        "_id": "textSavingsKgDescription",
+                                        "_type": "Text",
+                                        "attributes": {
+                                            "align.h": "left",
+                                            "color": "white",
+                                            "font": "Aileron-Light:13",
+                                            "layoutType": "float",
+                                            "padding.top": 32,
+                                            "padding.left": "{{[[$device.screen.w]] / 4 * 3 - 50}}",
+                                            "text": "CO₂ Reduced"
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             }
         ],
-        "datasources": []
+        "datasources": [
+            {
+                "_id": "dataBaasProfile",
+                "_type": "HTTP",
+                "actions": [
+                    {
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "textSavingsMi"
+                        },
+                        "on": "success",
+                        "set": {
+                            "text": "[[$self.response.body.savings.all]] mi"
+                        }
+                    },
+                    {
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "textSavingsKg"
+                        },
+                        "on": "success",
+                        "set": {
+                            "text": "[[$self.response.body.distance.all]] Kg"
+                        }
+                    },
+                    {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "textSavingsMi,textSavingsKg"
+                        },
+                        "on": "success"
+                    }
+                ],
+                "attributes": {
+                    "autoLoad.enabled": true,
+                    "headers": {
+                        "access_token": "[[$session.access_token]]"
+                    },
+                    "method": "GET",
+                    "requestType": "json",
+                    "responseType": "json",
+                    "url": "https://vta-prod.apigee.net/karma/v1/me/profile"
+                }
+            },
+            {
+                "_id": "dataFacebookProfile",
+                "_type": "HTTP",
+                "actions": [
+                    {
+                        "_type": "zModify",
+                        "attributes": {
+                            "_target": "textSavingsMi"
+                        },
+                        "on": "success",
+                        "set": {
+                            "text": "[[$self.response.body.savings.all]] mi"
+                        }
+                    },
+                    {
+                        "_type": "zModify",
+                        "attributes": {
+                            "_target": "textSavingsKg"
+                        },
+                        "on": "success",
+                        "set": {
+                            "text": "[[$self.response.body.distance.all]] Kg"
+                        }
+                    },
+                    {
+                        "_type": "zRefresh",
+                        "attributes": {
+                            "_target": "textSavingsMi,textSavingsKg"
+                        },
+                        "on": "success"
+                    },
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "message": "[[$self.response.body]]"
+                        },
+                        "on": "success"
+                    }
+                ],
+                "attributes": {
+                    "autoLoad.enabled": true,
+                    "method": "GET",
+                    "requestType": "json",
+                    "responseType": "json",
+                    "url": "https://graph.facebook.com/v2.5/me",
+                    "queryParams": {
+                        "fields": "hometown",
+                        "access_token": "[[$session.fb_token]]"
+                    }
+                }
+            }
+        ]
     }
 }

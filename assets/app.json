@@ -1,13 +1,23 @@
 {
     "$app": {
-        "actions": [],
+        "actions": [
+            {
+                "_type": "zAlert",
+                "attributes": {
+                    "message": [
+                        "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+                    ]
+                },
+                "on": "didBecomeActive"
+            }
+        ],
         "attributes": {
             "color.text": "#434a54",
-            "color.textLight": "#acafb4",
             "color.textGreen": "#84c51d",
-            "debug.layout.enabled": true,
+            "color.textLight": "#acafb4",
+            "debug.layout.enabled": false,
             "defaultView": [
-                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /rides.json :: /login.json"
+                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
             ],
             "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
             "drawer.l.url": "/menu.json",

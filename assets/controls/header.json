@@ -57,9 +57,9 @@
                   "size.h": "100%",
                   "size.w": "100%",
                   "text.align": "center",
-                  "font": "Aileron-SemiBold:20",
+                  "font": "Aileron-Regular:18",
                   "layoutType": "float",
-                  "text": "[[$custom.title]]"
+                  "text": "[[$custom.title:lowercase]]"
                 }
               },
               {

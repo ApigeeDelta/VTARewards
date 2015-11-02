@@ -49,8 +49,8 @@
                             "bg.color": "#ffffff",
                             "cell.size.h": 110,
                             "cell.size.w": "100%",
-                            "datasource.id": "ridesList",
                             "data.basepath": "rides",
+                            "datasource.id": "ridesList",
                             "margin.top": 61,
                             "reloadAnimation.enabled": false,
                             "separator.style": "none",
@@ -58,7 +58,7 @@
                             "size.w": "100%"
                         },
                         "controls": [
-                        {
+                            {
                                 "_id": "textDate",
                                 "_type": "Text",
                                 "attributes": {
@@ -67,8 +67,8 @@
                                     "color": "[[$app.color.textLight]]",
                                     "font": "Aileron-Light:16",
                                     "layoutType": "absolute",
-                                    "margin.top": 10,
                                     "margin.left": 17,
+                                    "margin.top": 10,
                                     "text": "[[$row.tripEnd.timestamp:moment(js|MMMM dd yyyy)]]",
                                     "text.align": "left"
                                 }
@@ -82,8 +82,8 @@
                                     "color": "[[$app.color.textLight]]",
                                     "font": "Aileron-Light:16",
                                     "layoutType": "absolute",
-                                    "margin.top": 10,
                                     "margin.right": 17,
+                                    "margin.top": 10,
                                     "text": "Distance: [[$row.summary.distanceTraveled.miles:round(1)]] mi",
                                     "text.align": "right"
                                 }
@@ -97,11 +97,11 @@
                                     "color": "[[$app.color.text]]",
                                     "font": "Aileron-Regular:22",
                                     "layoutType": "absolute",
-                                    "margin.top": 0,
+                                    "links.enabled": false,
                                     "margin.right": 0,
+                                    "margin.top": 0,
                                     "markdown.enabled": true,
                                     "size.h": 40,
-                                    "links.enabled": false,                                    
                                     "text": "You saved {[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
                                     "text.align": "center"
                                 }
@@ -126,9 +126,24 @@
                                 "_id": "cellDivider",
                                 "_type": "Layout",
                                 "attributes": {
+                                    "bg.color": "#ddd",
                                     "size.h": 1,
-                                    "size.w": "100%",
-                                    "bg.color": "#ddd"
+                                    "size.w": "100%"
+                                }
+                            },
+                            {
+                                "_id": "buttonDetails",
+                                "_type": "Button",
+                                "attributes": {
+                                    "align.h": "right",
+                                    "align.v": "middle",
+                                    "icon": "/images/btnDetailView.png",
+                                    "icon.tint": "[[$app.color.text]]",
+                                    "layoutType": "float",
+                                    "margin.right": 17,
+                                    "margin.top": 0,
+                                    "size.h": 16,
+                                    "size.w": 8
                                 }
                             }
                         ]
