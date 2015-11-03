@@ -158,11 +158,7 @@
                 ],
                 "attributes": {
                     "autoLoad.enabled": false,
-                    "body": {
-                        "tripBegin": "[[locationTracker.trip.start]]",
-                        "tripEnd": "[[locationTracker.trip.end]]",
-                        "waypoints": "[[locationTracker.trip.waypoints]]"
-                    },
+                    "body": "[[locationTracker.trip]]",
                     "headers": {
                         "access_token": "[[$session.access_token]]"
                     },

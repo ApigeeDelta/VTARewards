@@ -9,9 +9,15 @@
 #import "IXLocationTracker.h"
 
 // LocationTracker Read Only Attributes
-IX_STATIC_CONST_STRING kIXTripWaypoints = @"trip.waypoints";
-IX_STATIC_CONST_STRING kIXTripStart = @"trip.start";
-IX_STATIC_CONST_STRING kIXTripEnd = @"trip.end";
+#warning Do not commit tripBegin etc. sytnax to IX source repo - for VTA only. Use the following instead:
+//IX_STATIC_CONST_STRING kIXTripWaypoints = @"trip.waypoints";
+//IX_STATIC_CONST_STRING kIXTripStart = @"trip.start";
+//IX_STATIC_CONST_STRING kIXTripEnd = @"trip.end";
+
+IX_STATIC_CONST_STRING kIXTrip = @"trip";
+IX_STATIC_CONST_STRING kIXTripWaypoints = @"waypoints";
+IX_STATIC_CONST_STRING kIXTripStart = @"tripBegin";
+IX_STATIC_CONST_STRING kIXTripEnd = @"tripEnd";
 
 // Sound Events
 IX_STATIC_CONST_STRING kIXStarted = @"started";
@@ -79,9 +85,10 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
             if (self.tripData == nil) {
                 self.tripData = [[NSMutableDictionary alloc]init];
             }
-            [self.tripData setObject:self.start forKey:@"start"];
-            [self.tripData setObject:self.waypoints forKey:@"waypoints"];
-            [self.tripData setObject:self.stop forKey:@"stop"];
+            [self.tripData setObject:self.start forKey:kIXTripStart];
+            [self.tripData setObject:self.waypoints forKey:kIXTripWaypoints];
+            [self.tripData setObject:self.stop forKey:kIXTripEnd];
+            
             self.isTrackingLocation = NO;
             [[self actionContainer] executeActionsForEventNamed:kIXStopped];
         }
@@ -113,11 +120,13 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
 {
     NSString* returnString = nil;
     if( [propertyName isEqualToString:kIXTripWaypoints] ) {
-        returnString = [self toJSON:[self tripData][@"waypoints"]];
+        returnString = [self toJSON:[self tripData][kIXTripWaypoints]];
     } else if( [propertyName isEqualToString:kIXTripStart]) {
-        returnString = [self toJSON:[self tripData][@"start"]];
+        returnString = [self toJSON:[self tripData][kIXTripStart]];
     } else if( [propertyName isEqualToString:kIXTripEnd] ) {
-        returnString = [self toJSON:[self tripData][@"end"]];
+        returnString = [self toJSON:[self tripData][kIXTripEnd]];
+    } else if( [propertyName isEqualToString:kIXTrip]) {
+        returnString = [self toJSON:[self tripData]];
     } else {
         returnString = [super getReadOnlyPropertyValue:propertyName];
     }
@@ -141,7 +150,7 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
     CLLocation *location = [locations objectAtIndex:0];
     NSDictionary *locationDict = @{@"latitude":[NSNumber numberWithDouble:location.coordinate.latitude],
                                    @"longitude":[NSNumber numberWithDouble:location.coordinate.longitude],
-                                   @"timestamp":[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000]};
+                                   @"timestamp":@([[NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970] * 1000] integerValue])};
 
     if (self.start == nil) {
         //capture the start location
@@ -152,10 +161,12 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
     }
     //every recent location is overwritten to the stop location
     self.stop = locationDict;
+    
+    DDLogVerbose(@"Location updated : %@",location.description);
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"Location manager error: %@",error);
+    DDLogError(@"Location manager failure: %@",error);
 }
 
 @end
