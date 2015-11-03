@@ -244,16 +244,19 @@
                 "attributes": {
                     "autoLoad.enabled": true,
                     "cache.enabled": false,
-                    "data.basepath": "entities",
+                    "data.basepath": "stops",
+                    "headers": {
+                        "access_token": "[[$session.access_token]]"
+                    },
                     "method": "GET",
                     "queryParams": {
-                        "client_id": "YXA6XGvhkBavEeW9rKtDAlGEWQ",
-                        "client_secret": "YXA6qT3puV0hkcEtK-YVq-AkPVvaGvA",
-                        "ql": "select * where location within 10 of [[$device.location.lat]], [[$device.location.long]] and not ignore=true"
+                        "latitude": "[[$device.location.lat]]",
+                        "longitude": "[[$device.location.long]]",
+                        "radius": 800
                     },
                     "requestType": "json",
                     "responseType": "json",
-                    "url": "https://api.usergrid.com/vta/sandbox/stops"
+                        "url": "https://vta-prod.apigee.net/karma/v1/stops"
                 }
             }
         ]
