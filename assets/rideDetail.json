@@ -23,61 +23,78 @@
             "_type": "Custom",
             "actions": [
               {
-                "_type": "Function",
+                "_type": "Navigate",
                 "attributes": {
-                  "_target": "$app",
-                  "functionName": "drawer.l.toggle"
+                  "stackType": "pop"
                 },
                 "on": "button.left"
+              },
+              {
+                "_type": "Function",
+                "attributes": {
+                  "_target": "socialTest",
+                  "functionName": "present"
+                },
+                "on": "button.right"
               }
             ],
             "attributes": {
-              "button.left": "../images/btnMenu_42x42.png",
+              "button.left": "../images/btnBack_42x42.png",
+              "button.right": "../images/btnShare_42x42.png",
               "controlLocation": "/controls/header.json",
               "layoutType": "float",
               "size.h": 62,
               "size.w": "100%",
-              "title": "My Rides",
+              "title": "ride detail",
               "visible": true
             }
           },
           {
-            "_id": "tableRides",
-            "_type": "Table",
+            "_id": "mapControl",
+            "_type": "Map",
             "actions": [
               {
-                "_type": "Modify",
+                "_type": "Alert",
                 "attributes": {
-                  "_target": "$session"
-                },
-                "set": {
-                  "rideIndex": "[[$row.$index]]",
-                  "textRideDate": "[[$row.tripEnd.timestamp:moment(js|MMMM dd yyyy)]]",
-                  "textRideDistance": "[[$row.summary.distanceTraveled.miles:round(1)]]",
-                  "textRideYouSaved": "{[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
-                  "textRideYouSavedCO2": "[[$row.summary.savings.versusAverage:round(2)]] kg CO₂"
+                  "title": "You touched on [[$self.pin.title]]."
                 },
                 "on": "touchUp"
+              }
+            ],
+            "attributes": {
+              "animatePinDrop.enabled": true,
+              "pin": {
+                "lat": "[[$row.latitude]]",
+                "long": "[[$row.longitude]]",
+                "subtitle": "Subtitle",
+                "title": "Title"
               },
+              "datasource.id": "ridesList",
+              "size.h": "100%",
+              "size.w": "100%",
+              "userLocation.enabled": true,
+              "zoomLevel": 12
+            }
+          },
+          {
+            "_id": "tableRides",
+            "_type": "Layout",
+            "actions": [
               {
                 "_type": "Navigate",
                 "attributes": {
-                  "to": "/rideDetail.json"
+                  "to": "/rides.json"
                 },
                 "on": "touchUp"
               }
             ],
             "attributes": {
               "bg.color": "#ffffff",
-              "cell.size.h": 110,
-              "cell.size.w": "100%",
-              "data.basepath": "rides",
-              "datasource.id": "ridesList",
-              "padding.top": 61,
-              "reloadAnimation.enabled": false,
-              "separator.style": "none",
-              "size.h": "100%",
-              "size.w": "100%"
+              "layoutType": "float",
+              "align.v": "bottom",
+              "size.h": 110,
+              "size.w": "100%",
+              "margin.top": 61
             },
             "controls": [
               {
@@ -91,7 +108,7 @@
                   "layoutType": "absolute",
                   "margin.left": 17,
                   "margin.top": 10,
-                  "text": "[[$row.tripEnd.timestamp:moment(js|MMMM dd yyyy)]]",
+                  "text": "[[$session.textRideDate]]",
                   "text.align": "left"
                 }
               },
@@ -106,7 +123,7 @@
                   "layoutType": "absolute",
                   "margin.right": 17,
                   "margin.top": 10,
-                  "text": "Distance: [[$row.summary.distanceTraveled.miles:round(1)]] mi",
+                  "text": "Distance: [[$session.textRideDistance]] mi",
                   "text.align": "right"
                 }
               },
@@ -124,7 +141,7 @@
                   "margin.top": 0,
                   "markdown.enabled": true,
                   "size.h": 40,
-                  "text": "You saved {[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
+                  "text": "You saved [[$session.textRideYouSaved]]",
                   "text.align": "center"
                 }
               },
@@ -152,25 +169,28 @@
                   "size.h": 1,
                   "size.w": "100%"
                 }
-              },
-              {
-                "_id": "buttonDetails",
-                "_type": "Button",
-                "attributes": {
-                  "align.h": "right",
-                  "align.v": "middle",
-                  "icon": "/images/btnDetailView.png",
-                  "icon.tint": "[[$app.color.text]]",
-                  "layoutType": "float",
-                  "margin.right": 17,
-                  "margin.top": 0,
-                  "size.h": 16,
-                  "size.w": 8
-                }
               }
             ]
           }
         ]
+      },
+      {
+        "_id": "socialTest",
+        "_type": "Social",
+        "actions": [
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "success"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "platform": "twitter",
+          "text": "I just saved [[$session.textRideYouSavedCO2]] by riding @VTA! #hipster #mybeardisbetterthanyours",
+          "url": "http://duck.lips"
+        }
       }
     ],
     "datasources": [
@@ -185,6 +205,7 @@
           "method": "GET",
           "requestType": "json",
           "responseType": "json",
+          "data.basepath": "rides.[[$session.rideIndex]].waypoints",
           "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
         }
       }
