@@ -35,8 +35,11 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-// IXFBProfile ReadOnly Attributes
+// IXFBProfile Attributes
 IX_STATIC_CONST_STRING kIXBlurEnabled = @"blur.enabled";
+IX_STATIC_CONST_STRING kIXBorderColor = @"border.color"; // must match BaseControl attribute name
+IX_STATIC_CONST_STRING kIXBorderSize = @"border.size"; // must match BaseControl attribute name
+IX_STATIC_CONST_STRING kIXBorderRadius = @"border.radius"; // must match BaseControl attribute name
 
 // IXFBProfile ReadOnly Attributes
 IX_STATIC_CONST_STRING kIXName = @"name";
@@ -113,6 +116,11 @@ IX_STATIC_CONST_STRING kIXLinkURL = @"linkURL";
     if( !CGRectEqualToRect(self.pictureView.frame, rect) ) {
         [[self visualEffectView] setFrame:rect];
         [[self pictureView] setFrame:rect];
+        if ([[self attributeContainer] getFloatValueForAttribute:kIXBorderRadius defaultValue:0.0f] > 0) {
+            [self pictureView].backgroundColor = [UIColor clearColor];
+            [self pictureView].layer.cornerRadius = [[self attributeContainer] getFloatValueForAttribute:kIXBorderRadius defaultValue:0.0f];
+            [self pictureView].layer.masksToBounds = YES;
+        }
         [[self pictureView] setNeedsImageUpdate];
     }
 }
