@@ -91,17 +91,21 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
 }
 
 - (NSString *)toJSON:(id)object{
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    NSString *jsonString = nil;
-    if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
+    if (object) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        NSString *jsonString = nil;
+        if (! jsonData) {
+            NSLog(@"Got an error: %@", error);
+        } else {
+            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        return jsonString;
     } else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        return @"";
     }
-    return jsonString;
 }
 
 
@@ -151,7 +155,7 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"error %@",error);
+    NSLog(@"Location manager error: %@",error);
 }
 
 @end
