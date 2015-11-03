@@ -32,8 +32,8 @@
 		CA860C3B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C2B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf */; };
 		CA860C3C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C2C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf */; };
 		CA9F5E2F1BE8340B00A77B49 /* IXLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */; };
+		CA9F5E311BE9274900A77B49 /* LaunchScreenLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */; };
 		CAE9C69B1AFA7F66002004A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */; };
-		CAE9C69D1AFA84B6002004A0 /* LaunchScreenLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CAE9C69C1AFA84B6002004A0 /* LaunchScreenLogo.png */; };
 		D9A5387969AB69A3100F77D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF1103913C6F54FD9D0305 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -72,8 +72,8 @@
 		CA860C2C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-UltraLightItalic.otf"; sourceTree = "<group>"; };
 		CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXLocationTracker.m; sourceTree = "<group>"; };
 		CA9F5E2E1BE8340B00A77B49 /* IXLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXLocationTracker.h; sourceTree = "<group>"; };
+		CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreenLogo.png; sourceTree = "<group>"; };
 		CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		CAE9C69C1AFA84B6002004A0 /* LaunchScreenLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreenLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,7 @@
 				3FAAB0601AF92E3600CFFA7D /* Images.xcassets */,
 				3FAAB0531AF92E3600CFFA7D /* Supporting Files */,
 				CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */,
-				CAE9C69C1AFA84B6002004A0 /* LaunchScreenLogo.png */,
+				CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */,
 			);
 			path = IgniteEngineStarterKit;
 			sourceTree = "<group>";
@@ -236,11 +236,11 @@
 				CAE9C69B1AFA7F66002004A0 /* LaunchScreen.xib in Resources */,
 				CA860C341BE3EC9F00BB1F19 /* Aileron-Light.otf in Resources */,
 				CA860C2E1BE3EC9F00BB1F19 /* Aileron-BlackItalic.otf in Resources */,
+				CA9F5E311BE9274900A77B49 /* LaunchScreenLogo.png in Resources */,
 				CA860C361BE3EC9F00BB1F19 /* Aileron-Regular.otf in Resources */,
 				3FFE71A21AF934E000AFCFED /* assets in Resources */,
 				CA860C3A1BE3EC9F00BB1F19 /* Aileron-ThinItalic.otf in Resources */,
 				CA860C2D1BE3EC9F00BB1F19 /* Aileron-Black.otf in Resources */,
-				CAE9C69D1AFA84B6002004A0 /* LaunchScreenLogo.png in Resources */,
 				CA860C331BE3EC9F00BB1F19 /* Aileron-Italic.otf in Resources */,
 				3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */,
 				CA860C351BE3EC9F00BB1F19 /* Aileron-LightItalic.otf in Resources */,
