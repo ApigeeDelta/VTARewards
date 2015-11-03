@@ -249,7 +249,7 @@
                     "queryParams": {
                         "client_id": "YXA6XGvhkBavEeW9rKtDAlGEWQ",
                         "client_secret": "YXA6qT3puV0hkcEtK-YVq-AkPVvaGvA",
-                        "ql": "select * within 10 of [[$device.location.lat]], [[$device.location.long]]"
+                        "ql": "select * where location within 10 of [[$device.location.lat]], [[$device.location.long]] and not ignore=true"
                     },
                     "requestType": "json",
                     "responseType": "json",
