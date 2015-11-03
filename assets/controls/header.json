@@ -84,6 +84,33 @@
                   "image": "[[$custom.button.left]]",
                   "layoutType": "float"
                 }
+              },
+              {
+                "_id": "btnRight",
+                "_type": "Image",
+                "actions": [
+                  {
+                    "_type": "Event",
+                    "attributes": {
+                      "_target": "$custom",
+                      "eventName": "button.right"
+                    },
+                    "on": "touchUp"
+                  }
+                ],
+                "attributes": {
+                  "bg.color": "#ff00ff00",
+                  "margin.right": 7,
+                  "size.h": 42,
+                  "size.w": 42,
+                  "margin.top": 0,
+                  "image": "[[$custom.button.right]]",
+                  "layoutType": "float",
+                  "align.h": "right",
+                  "visible": [
+                    "if :: [[$custom.button.right]] == '' :: false"
+                  ]
+                }
               }
             ]
           }
