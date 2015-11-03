@@ -148,10 +148,23 @@
                 "_type": "HTTP",
                 "actions": [
                     {
-                        "_type": "Alert",
+                        "_type": "zAlert",
                         "attributes": {
                             "message": "[[$self.response.string]]",
                             "title": "token"
+                        },
+                        "on": "success"
+                    },
+                    {
+                        "_type": "Modify",
+                        "set": {
+                            "$session.rideIndex": 0
+                        }
+                    },
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "to": "/rideDetail.json"
                         },
                         "on": "success"
                     }
