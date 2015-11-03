@@ -102,7 +102,8 @@
                     "layoutType": "float",
                     "size.h": 50,
                     "size.w": 200,
-                    "type": "button"
+                    "type": "button",
+                    "permissions.read": "email,user_about_me,user_location,user_hometown"
                 }
             },
             {
@@ -155,7 +156,7 @@
                     {
                         "_type": "Navigate",
                         "attributes": {
-                            "animation.delay": 0.1,
+                            "animation.delay": 0.04,
                             "animation.type": "crossDissolve",
                             "to": "home.json"
                         },

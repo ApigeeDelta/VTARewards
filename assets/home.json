@@ -273,7 +273,7 @@
                         "on": "success"
                     },
                     {
-                        "_type": "Alert",
+                        "_type": "Azlert",
                         "attributes": {
                             "message": "[[$self.response.body]]"
                         },

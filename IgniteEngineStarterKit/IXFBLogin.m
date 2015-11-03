@@ -89,6 +89,7 @@ IX_STATIC_CONST_STRING kIXFBLogoutSuccess = @"logout.success";
         if( _loginButton == nil ) {
             //  Initialize the FBSDKLoginButton and add to contentView
             _loginButton = [[FBSDKLoginButton alloc] init];
+            _loginButton.readPermissions = [[self attributeContainer] getCommaSeparatedArrayOfValuesForAttribute:kIXFBLoginReadPermissions defaultValue:@[@"email"]];
             _loginButton.delegate = self;
             [[self contentView] addSubview:_loginButton];
         }
@@ -122,7 +123,7 @@ IX_STATIC_CONST_STRING kIXFBLogoutSuccess = @"logout.success";
 {
     if( [functionName isEqualToString:kIXFBLogin] )
     {
-        [_loginManager logInWithReadPermissions:@[@"email"] fromViewController:self.sandbox.viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        [_loginManager logInWithReadPermissions:[[self attributeContainer] getCommaSeparatedArrayOfValuesForAttribute:kIXFBLoginReadPermissions defaultValue:@[]] fromViewController:self.sandbox.viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             //  Handle the login events for the loginManager
             if (result.isCancelled) {
                 [self loginCancelled];
