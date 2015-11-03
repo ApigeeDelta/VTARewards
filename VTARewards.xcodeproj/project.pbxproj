@@ -12,6 +12,7 @@
 		3FAAB0611AF92E3600CFFA7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAAB0601AF92E3600CFFA7D /* Images.xcassets */; };
 		3FFE71A21AF934E000AFCFED /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A11AF934E000AFCFED /* assets */; };
 		3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */; };
+		3FFE872C1BE8606900601777 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE872B1BE8606900601777 /* Images.xcassets */; };
 		CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */; };
 		CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */; };
 		CA860C2D1BE3EC9F00BB1F19 /* Aileron-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C1D1BE3EC9F00BB1F19 /* Aileron-Black.otf */; };
@@ -46,6 +47,7 @@
 		3FAAB0601AF92E3600CFFA7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3FFE71A11AF934E000AFCFED /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
 		3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		3FFE872B1BE8606900601777 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VTARewards/Images.xcassets; sourceTree = "<group>"; };
 		9540153EAE69696C9963D283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA6D43A6D244554B08386F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBProfile.h; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		3FAAB0471AF92E3600CFFA7D = {
 			isa = PBXGroup;
 			children = (
+				3FFE872B1BE8606900601777 /* Images.xcassets */,
 				3FAAB0521AF92E3600CFFA7D /* IgniteEngineStarterKit */,
 				3FAAB0511AF92E3600CFFA7D /* Products */,
 				86F25A01E2DA07909B130107 /* Pods */,
@@ -243,6 +246,7 @@
 				CA860C351BE3EC9F00BB1F19 /* Aileron-LightItalic.otf in Resources */,
 				CA860C381BE3EC9F00BB1F19 /* Aileron-SemiBoldItalic.otf in Resources */,
 				CA860C301BE3EC9F00BB1F19 /* Aileron-BoldItalic.otf in Resources */,
+				3FFE872C1BE8606900601777 /* Images.xcassets in Resources */,
 				CA860C321BE3EC9F00BB1F19 /* Aileron-HeavyItalic.otf in Resources */,
 				CA860C3C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf in Resources */,
 				CA860C3B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf in Resources */,
@@ -406,7 +410,7 @@
 			baseConfigurationReference = 9540153EAE69696C9963D283 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: APIGEE CORPORATION";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -455,7 +459,7 @@
 			baseConfigurationReference = BEA6D43A6D244554B08386F1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: APIGEE CORPORATION";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				HEADER_SEARCH_PATHS = (
