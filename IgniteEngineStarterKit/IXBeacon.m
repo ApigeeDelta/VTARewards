@@ -22,8 +22,8 @@ IX_STATIC_CONST_STRING kIXCanMonitorBeacons = @"canMonitorBeacons";
 IX_STATIC_CONST_STRING kIXTripData = @"tripData";
 
 // IXBeacon Functions
-IX_STATIC_CONST_STRING kIXStart = @"stop";
-IX_STATIC_CONST_STRING kIXStop = @"start";
+IX_STATIC_CONST_STRING kIXStart = @"start";
+IX_STATIC_CONST_STRING kIXStop = @"stop";
 
 // IXBeacon Events
 IX_STATIC_CONST_STRING kIXEnteredBeaconRegion = @"enteredBeaconRegion";

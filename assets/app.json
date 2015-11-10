@@ -17,7 +17,7 @@
             "color.textLight": "#acafb4",
             "debug.layout.enabled": false,
             "defaultView": [
-                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /location.json :: /login.json"
             ],
             "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
             "drawer.l.url": "/menu.json",

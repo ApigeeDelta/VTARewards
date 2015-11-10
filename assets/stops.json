@@ -256,7 +256,7 @@
                     },
                     "requestType": "json",
                     "responseType": "json",
-                        "url": "https://vta-prod.apigee.net/karma/v1/stops"
+                    "url": "https://vta-prod.apigee.net/karma/v1/stops"
                 }
             }
         ]
