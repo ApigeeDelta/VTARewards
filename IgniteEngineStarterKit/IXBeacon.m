@@ -141,10 +141,25 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
     [self.locationTrackerManager beginLocationTracking];
 
     [self.actionContainer executeActionsForEventNamed:kIXEnteredBeaconRegion];
+
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    [notification setFireDate:[NSDate date]];
+    [notification setAlertBody:@"You are near a beacon!"];
+    [notification setAlertTitle:@"Beacon around"];
+    [notification setAlertAction:@"Hmmm, OK!"];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 -(void)locationManager:(KTKLocationManager *)locationManager didExitRegion:(KTKRegion *)region
 {
+    NSLog(@"You are leaving a beacon region!");
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    [notification setFireDate:[NSDate date]];
+    [notification setAlertBody:@"You are leaving a beacon region!"];
+    [notification setAlertTitle:@"Beacon away"];
+    [notification setAlertAction:@"Hmmm, OK!"];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+ 
     [self.locationTrackerManager.locationManager stopMonitoringSignificantLocationChanges];
     [self.locationTrackerManager stopTrackingLocation];
 

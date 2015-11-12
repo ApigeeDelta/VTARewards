@@ -36,6 +36,7 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
 @property (nonatomic, strong) NSDictionary *start;
 @property (nonatomic, strong) NSDictionary *stop;
 @property (nonatomic, strong) NSMutableDictionary *tripData;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier locationTrackingTask;
 
 @end
 
@@ -46,7 +47,7 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
     self.isTrackingLocation = NO;
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     [self.locationManager setDistanceFilter:20.0f];
 
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
@@ -145,6 +146,11 @@ IX_STATIC_CONST_STRING kIXToggle = @"toggle";
     if (self.waypoints == nil) {
         self.waypoints = [[NSMutableArray alloc]init];
     }
+
+    self.locationTrackingTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [[UIApplication sharedApplication] endBackgroundTask:self.locationTrackingTask];
+        self.locationTrackingTask = UIBackgroundTaskInvalid;
+    }];
 
     //form dictionary from the first location object
     CLLocation *location = [locations objectAtIndex:0];

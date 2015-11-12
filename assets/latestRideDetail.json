@@ -53,23 +53,16 @@
             "_id": "mapControl",
             "_type": "Map",
             "actions": [
-              {
-                "_type": "Alert",
-                "attributes": {
-                  "title": "You touched on [[$self.pin.title]]."
-                },
-                "on": "touchUp"
-              }
             ],
             "attributes": {
-              "animatePinDrop.enabled": true,
+              "animatePinDrop.enabled": false,
               "pin": {
                 "lat": "[[$row.latitude]]",
                 "long": "[[$row.longitude]]",
                 "subtitle": "Subtitle",
                 "title": "Title"
               },
-              "datasource.id": "ridesList",
+              "datasource.id": "ride",
               "size.h": "100%",
               "size.w": "100%",
               "userLocation.enabled": true,
@@ -188,25 +181,26 @@
         ],
         "attributes": {
           "platform": "twitter",
-          "text": "I just saved [[$session.textRideYouSavedCO2]] by riding @VTA!",
+          "text": "I just saved [[$session.textRideYouSavedCO2]] by riding @VTA! #hipster #mybeardisbetterthanyours",
           "url": "http://duck.lips"
         }
       }
     ],
     "datasources": [
       {
-        "_id": "ridesList",
+        "_id": "ride",
         "_type": "HTTP",
         "attributes": {
           "autoLoad.enabled": true,
           "headers": {
-            "access_token": "[[$session.access_token]]"
+            "access_token": "[[$session.access_token]]",
+            "skip-cache": "true"
           },
           "method": "GET",
           "requestType": "json",
           "responseType": "json",
           "data.basepath": "rides.[[$session.rideIndex]].waypoints",
-          "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
+          "url": "https://vta-prod.apigee.net/karma/v1/rides/[[@session.latestRideId]]"
         }
       }
     ]

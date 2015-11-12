@@ -2,7 +2,7 @@
     "$app": {
         "actions": [
             {
-                "_type": "zAlert",
+                "_type": "Alert",
                 "attributes": {
                     "message": [
                         "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
@@ -17,7 +17,7 @@
             "color.textLight": "#acafb4",
             "debug.layout.enabled": false,
             "defaultView": [
-                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /location.json :: /login.json"
+                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
             ],
             "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
             "drawer.l.url": "/menu.json",
@@ -25,7 +25,7 @@
             "location.autoRequest.enabled": true,
             "logging.datasource.enabled": true,
             "logging.level": "verbose",
-            "mode": "release",
+            "mode": "debug",
             "navigationBar.enabled": false,
             "preloadImages": [
                 "assets/images/pin_32x60_red@2x.png",
