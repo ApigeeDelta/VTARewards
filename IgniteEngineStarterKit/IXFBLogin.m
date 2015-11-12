@@ -33,10 +33,15 @@
 IX_STATIC_CONST_STRING kIXFBLoginType = @"type";
 IX_STATIC_CONST_STRING kIXFBLoginReadPermissions = @"permissions.read";
 IX_STATIC_CONST_STRING kIXFBLoginPublishPermissions = @"permissions.publish";
+IX_STATIC_CONST_STRING kIXFBLoginBehavior = @"loginBehavior";
 
 // Attribute Accepted Values
 IX_STATIC_CONST_STRING kIXFBLoginButton = @"button";
 IX_STATIC_CONST_STRING kIXFBLoginFunction = @"function";
+IX_STATIC_CONST_STRING kIXFBLoginBehaviorNative = @"native";
+IX_STATIC_CONST_STRING kIXFBLoginBehaviorWeb = @"web";
+IX_STATIC_CONST_STRING kIXFBLoginBehaviorBrowser = @"browser";
+IX_STATIC_CONST_STRING kIXFBLoginBehaviorSystem = @"system";
 
 // Returns
 IX_STATIC_CONST_STRING kIXFBAccessToken = @"token";
@@ -89,15 +94,17 @@ IX_STATIC_CONST_STRING kIXFBLogoutSuccess = @"logout.success";
         if( _loginButton == nil ) {
             //  Initialize the FBSDKLoginButton and add to contentView
             _loginButton = [[FBSDKLoginButton alloc] init];
-            _loginButton.readPermissions = [[self attributeContainer] getCommaSeparatedArrayOfValuesForAttribute:kIXFBLoginReadPermissions defaultValue:@[@"email"]];
             _loginButton.delegate = self;
             [[self contentView] addSubview:_loginButton];
         }
+        _loginButton.loginBehavior = [self loginBehaviorFromString:[[self attributeContainer] getStringValueForAttribute:kIXFBLoginBehavior defaultValue:kIXFBLoginBehaviorNative]];
+        _loginButton.readPermissions = [[self attributeContainer] getCommaSeparatedArrayOfValuesForAttribute:kIXFBLoginReadPermissions defaultValue:@[@"email"]];
     }
     // FBLoginType: Function
     else if ([type isEqualToString:kIXFBLoginFunction]) {
         //  Initialize the FBSDKLoginManager and wait for a function call
         _loginManager = [[FBSDKLoginManager alloc] init];
+        _loginManager.loginBehavior = [self loginBehaviorFromString:[[self attributeContainer] getStringValueForAttribute:kIXFBLoginBehavior defaultValue:kIXFBLoginBehaviorNative]];
     }
 }
 
@@ -145,6 +152,18 @@ IX_STATIC_CONST_STRING kIXFBLogoutSuccess = @"logout.success";
     {
         [super applyFunction:functionName withParameters:parameterContainer];
     }
+}
+
+- (FBSDKLoginBehavior)loginBehaviorFromString:(NSString*)loginBehavior
+{
+    FBSDKLoginBehavior returnBehavior = FBSDKLoginBehaviorNative;
+    if ([loginBehavior isEqualToString:kIXFBLoginBehaviorBrowser])
+        returnBehavior = FBSDKLoginBehaviorBrowser;
+    else if ([loginBehavior isEqualToString:kIXFBLoginBehaviorWeb])
+        returnBehavior = FBSDKLoginBehaviorWeb;
+    else if ([loginBehavior isEqualToString:kIXFBLoginBehaviorSystem])
+        returnBehavior = FBSDKLoginBehaviorSystemAccount;
+    return returnBehavior;
 }
 
 -(NSString*)getReadOnlyPropertyValue:(NSString *)propertyName
