@@ -7,6 +7,13 @@
           "_target": "mainBeacon",
           "functionName": "start"
         },
+        "on": "didLoad,willFirstAppear"
+      },
+      {
+        "_type": "zAlert",
+        "attributes": {
+          "message": "Did load",
+        },
         "on": "didLoad"
       }
     ],
