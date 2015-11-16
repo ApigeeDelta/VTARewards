@@ -104,7 +104,7 @@
             "attributes": {
               "layoutType": "float",
               "margin.top": 62,
-              "size.h": 260,
+              "size.h": 290,
               "size.w": "100%"
             },
             "controls": [
@@ -131,8 +131,8 @@
                   "border.size": 2,
                   "layoutType": "float",
                   "margin.top": 30,
-                  "size.h": 100,
-                  "size.w": 100
+                  "size.h": 120,
+                  "size.w": 120
                 }
               },
               {
@@ -142,9 +142,9 @@
                   "align.h": "center",
                   "align.v": "top",
                   "color": "ffffff",
-                  "font": "Aileron-Light:18",
+                  "font": "Aileron-Light:22",
                   "layoutType": "float",
-                  "margin.top": 130,
+                  "margin.top": 170,
                   "text": "[[fbProfilePic.name]]"
                 }
               },
@@ -163,7 +163,7 @@
                     "_id": "layoutSummaryBorder",
                     "_type": "Layout",
                     "attributes": {
-                      "bg.color": "00000020",
+                      "bg.color": "00000010",
                       "layoutType": "float",
                       "size.h": 1,
                       "size.w": "100%"
@@ -171,53 +171,15 @@
                     "controls": []
                   },
                   {
-                    "_id": "textSavingsMi",
-                    "_type": "Text",
+                    "_id": "textLatestSavings",
+                    "_type": "AttributedText",
                     "attributes": {
-                      "align.h": "left",
-                      "color": "white",
-                      "font": "Aileron-SemiBold:18",
+                      "align.h": "center",
+                      "align.v": "middle",
+                      "font": "Aileron-Light:18",
+                      "markdown.enabled": true,
                       "layoutType": "float",
-                      "padding.top": 12,
-                      "padding.left": "{{[[$device.screen.w]] / 4 - 20}}"
-                    }
-                  },
-                  {
-                    "_id": "textSavingsKg",
-                    "_type": "Text",
-                    "attributes": {
-                      "align.h": "left",
-                      "color": "white",
-                      "font": "Aileron-SemiBold:18",
-                      "layoutType": "float",
-                      "padding.top": 12,
-                      "padding.left": "{{[[$device.screen.w]] / 4 * 3 - 50}}"
-                    }
-                  },
-                  {
-                    "_id": "textSavingsMiDescription",
-                    "_type": "Text",
-                    "attributes": {
-                      "align.h": "left",
-                      "color": "white",
-                      "font": "Aileron-Light:13",
-                      "layoutType": "float",
-                      "padding.top": 32,
-                      "padding.left": "{{[[$device.screen.w]] / 4 - 20}}",
-                      "text": "Distance Travelled"
-                    }
-                  },
-                  {
-                    "_id": "textSavingsKgDescription",
-                    "_type": "Text",
-                    "attributes": {
-                      "align.h": "left",
-                      "color": "white",
-                      "font": "Aileron-Light:13",
-                      "layoutType": "float",
-                      "padding.top": 32,
-                      "padding.left": "{{[[$device.screen.w]] / 4 * 3 - 50}}",
-                      "text": "CO₂ Reduced"
+                      "padding.bottom": 8
                     }
                   }
                 ]
@@ -235,27 +197,17 @@
           {
             "_type": "Modify",
             "attributes": {
-              "_target": "textSavingsMi"
+              "_target": "textLatestSavings"
             },
             "on": "success",
             "set": {
-              "text": "[[$self.response.body.savings.all]] mi"
-            }
-          },
-          {
-            "_type": "Modify",
-            "attributes": {
-              "_target": "textSavingsKg"
-            },
-            "on": "success",
-            "set": {
-              "text": "[[$self.response.body.distance.all]] Kg"
+              "text": "{#333333|Your last ride:} {#ffffff|[[$self.response.body.distance.latest]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.latest]] [[$self.response.body.savings.unit]] CO₂ saved}"
             }
           },
           {
             "_type": "Refresh",
             "attributes": {
-              "_target": "textSavingsMi,textSavingsKg"
+              "_target": "textLatestSavings"
             },
             "on": "success"
           }
@@ -275,40 +227,6 @@
         "_id": "dataFacebookProfile",
         "_type": "HTTP",
         "actions": [
-          {
-            "_type": "zModify",
-            "attributes": {
-              "_target": "textSavingsMi"
-            },
-            "on": "success",
-            "set": {
-              "text": "[[$self.response.body.savings.all]] mi"
-            }
-          },
-          {
-            "_type": "zModify",
-            "attributes": {
-              "_target": "textSavingsKg"
-            },
-            "on": "success",
-            "set": {
-              "text": "[[$self.response.body.distance.all]] Kg"
-            }
-          },
-          {
-            "_type": "zRefresh",
-            "attributes": {
-              "_target": "textSavingsMi,textSavingsKg"
-            },
-            "on": "success"
-          },
-          {
-            "_type": "Azlert",
-            "attributes": {
-              "message": "[[$self.response.body]]"
-            },
-            "on": "success"
-          }
         ],
         "attributes": {
           "autoLoad.enabled": true,
