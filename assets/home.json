@@ -99,13 +99,14 @@
                         "controls": []
                     },
                     {
-                        "_id": "layoutProfilePhoto",
+                        "_id": "layoutHomeView",
                         "_type": "Layout",
                         "attributes": {
-                            "layoutType": "float",
+                            "layoutType": "relative",
                             "margin.top": 62,
-                            "size.h": 290,
-                            "size.w": "100%"
+                            "size.h": "40%",
+                            "size.w": "100%",
+                            "scrolling.enabled": true
                         },
                         "controls": [
                             {
@@ -131,8 +132,12 @@
                                     "border.size": 2,
                                     "layoutType": "float",
                                     "margin.top": 30,
-                                    "size.h": 120,
-                                    "size.w": 120
+                                    "size.h": [
+                                        "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
+                                    ],
+                                    "size.w": [
+                                        "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
+                                    ]
                                 }
                             },
                             {
@@ -144,7 +149,9 @@
                                     "color": "ffffff",
                                     "font": "Aileron-Light:22",
                                     "layoutType": "float",
-                                    "margin.top": 170,
+                                    "margin.top": [
+                                        "if :: [[$device.screen.w]] > 320 :: 160 :: 120"
+                                    ],
                                     "text": "[[fbProfilePic.name]]"
                                 }
                             },
@@ -176,7 +183,9 @@
                                         "attributes": {
                                             "align.h": "center",
                                             "align.v": "middle",
-                                            "font": "Aileron-Light:18",
+                                            "font": [
+                                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+                                            ],
                                             "layoutType": "float",
                                             "markdown.enabled": true,
                                             "padding.bottom": 8
@@ -185,6 +194,70 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "_id": "textSavingsSummaryTitle",
+                        "_type": "Text",
+                        "attributes": {
+                            "align.h": "center",
+                            "color": "#333333",
+                            "font": "Aileron-Light:22",
+                            "layoutType": "relative",
+                            "margin.top": 40,
+                            "text": " Your Carbon Savings "
+                        }
+                    },
+                    {
+                        "_id": "textSavingsMonth",
+                        "_type": "AttributedText",
+                        "attributes": {
+                            "align.h": "left",
+                            "color": "#333333",
+                            "font": [
+                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+                            ],
+                            "layoutType": "relative",
+                            "margin.top": 36,
+                            "margin.left": [
+                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+                            ],
+                            "markdown.enabled": true,
+                            "text": "{#333333|This month:} {[[$app.color.textGreen]]|}"
+                        }
+                    },
+                    {
+                        "_id": "textSavingsYear",
+                        "_type": "AttributedText",
+                        "attributes": {
+                            "align.h": "left",
+                            "font": [
+                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+                            ],
+                            "layoutType": "relative",
+                            "margin.top": 30,
+                            "margin.left": [
+                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+                            ],
+                            "markdown.enabled": true,
+                            "text": "{#333333|This year:} {[[$app.color.textGreen]]|}"
+                        }
+                    },
+                    {
+                        "_id": "textSavingsAllTime",
+                        "_type": "AttributedText",
+                        "attributes": {
+                            "align.h": "left",
+                            "font": [
+                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+                            ],
+                            "layoutType": "relative",
+                            "margin.top": 30,
+                            "margin.left": [
+                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+                            ],
+                            "markdown.enabled": true,
+                            "text": "{#333333|All time:} {[[$app.color.textGreen]]|}"
+                        }
                     }
                 ]
             }
@@ -196,12 +269,12 @@
                 "actions": [
                     {
                         "_type": "Modify",
-                        "attributes": {
-                            "_target": "textLatestSavings"
-                        },
                         "on": "success",
                         "set": {
-                            "text": "{#333333|Your last ride:} {#ffffff|[[$self.response.body.distance.latest]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.latest]] [[$self.response.body.savings.unit]] CO₂ saved}"
+                            "textLatestSavings.text": "{#333333|Your last ride:} {#ffffff|[[$self.response.body.distance.latest]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.latest]] [[$self.response.body.savings.unit]] CO₂ saved}",
+                            "textSavingsMonth.text": "{#333333|This month:} {[[$app.color.textGreen]]|[[$self.response.body.distance.month]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.month]] [[$self.response.body.savings.unit]] CO₂ saved}",
+                            "textSavingsYear.text": "{#333333|This year:} {[[$app.color.textGreen]]|[[$self.response.body.distance.year]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.year]] [[$self.response.body.savings.unit]] CO₂ saved}",
+                            "textSavingsAllTime.text": "{#333333|All time:} {[[$app.color.textGreen]]|[[$self.response.body.distance.all]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.all]] [[$self.response.body.savings.unit]] CO₂ saved}"
                         }
                     },
                     {
