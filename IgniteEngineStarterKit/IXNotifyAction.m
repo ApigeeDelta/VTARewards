@@ -33,8 +33,13 @@
 #import "YLMoment+IXAdditions.h"
 
 // IXNotifyAction Attributes
-static NSString* const kIXTitle = @"title";
-static NSString* const kIXMessage = @"message";
+IX_STATIC_CONST_STRING kIXTitle = @"title";
+IX_STATIC_CONST_STRING kIXMessage = @"message";
+IX_STATIC_CONST_STRING kIXDate = @"date";
+IX_STATIC_CONST_STRING kIXDateFormat = @"dateFormat";
+
+// Non attribute constants
+IX_STATIC_CONST_STRING kIXDefaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 
 @implementation IXNotifyAction
 
@@ -47,8 +52,8 @@ static NSString* const kIXMessage = @"message";
     [notification setAlertBody:[[self actionProperties] getStringValueForAttribute:kIXMessage defaultValue:nil]];
 
     NSDate* fireDate = [NSDate date];
-    NSString* dateString = [[self actionProperties] getStringValueForAttribute:@"date" defaultValue:nil];
-    NSString* dateFormat = [[self actionProperties] getStringValueForAttribute:@"dateFormat" defaultValue:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSString* dateString = [[self actionProperties] getStringValueForAttribute:kIXDate defaultValue:nil];
+    NSString* dateFormat = [[self actionProperties] getStringValueForAttribute:kIXDateFormat defaultValue:kIXDefaultDateFormat];
 
     if( dateString.length > 0 ) {
         YLMoment* moment = [YLMoment momentWithDateAsString:dateString format:dateFormat];

@@ -40,7 +40,23 @@
               "title": "Exited region"
             },
             "on": "exitedBeaconRegion"
-          }
+          },
+                    {
+                    "_type": "Notify",
+                    "attributes": {
+                    "title" : "Beacon around",
+                    "message": "You are near a beacon"
+                    },
+                    "on": "enteredBeaconRegion"
+                    },
+                    {
+                    "_type": "Notify",
+                    "attributes": {
+                    "title" : "Beacon away",
+                    "message": "You are leaving a beacon region!"
+                    },
+                    "on": "exitedBeaconRegion"
+                    }
         ],
         "attributes": {
           "distanceFilter": "notsurewhatgoeshere",

@@ -35,7 +35,24 @@
             },
             "enabled": true,
             "on": "exitedBeaconRegion"
-          }
+          },
+                    {
+                    "_type": "Notify",
+                    "attributes": {
+                    "title" : "Beacon around",
+                    "message": "You are near a beacon"
+                    },
+                    "on": "enteredBeaconRegion"
+                    },
+                    {
+                    "_type": "Notify",
+                    "attributes": {
+                    "title" : "Beacon away",
+                    "message": "You are leaving a beacon region!"
+                    },
+                    "on": "exitedBeaconRegion"
+                    }
+
         ],
         "attributes": {
           "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
