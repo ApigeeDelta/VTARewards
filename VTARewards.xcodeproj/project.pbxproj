@@ -14,6 +14,7 @@
 		3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */; };
 		3FFE872C1BE8606900601777 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE872B1BE8606900601777 /* Images.xcassets */; };
 		63417A551BF298AF00FBB98F /* IXBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 63417A541BF298AF00FBB98F /* IXBeacon.m */; };
+		63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFF9A1BFA35260034607B /* IXNotifyAction.m */; };
 		CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */; };
 		CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */; };
 		CA860C2D1BE3EC9F00BB1F19 /* Aileron-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C1D1BE3EC9F00BB1F19 /* Aileron-Black.otf */; };
@@ -51,6 +52,8 @@
 		3FFE872B1BE8606900601777 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VTARewards/Images.xcassets; sourceTree = "<group>"; };
 		63417A531BF298AF00FBB98F /* IXBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXBeacon.h; sourceTree = "<group>"; };
 		63417A541BF298AF00FBB98F /* IXBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXBeacon.m; sourceTree = "<group>"; };
+		63EBFF991BFA35260034607B /* IXNotifyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXNotifyAction.h; sourceTree = "<group>"; };
+		63EBFF9A1BFA35260034607B /* IXNotifyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXNotifyAction.m; sourceTree = "<group>"; };
 		9540153EAE69696C9963D283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA6D43A6D244554B08386F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBProfile.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				3FFE71A11AF934E000AFCFED /* assets */,
 				3FAAB0571AF92E3600CFFA7D /* AppDelegate.h */,
 				3FAAB0581AF92E3600CFFA7D /* AppDelegate.m */,
+				63EBFF991BFA35260034607B /* IXNotifyAction.h */,
+				63EBFF9A1BFA35260034607B /* IXNotifyAction.m */,
 				CA2A9CBC1BD96A1700F00E8E /* IXFBLogin.h */,
 				CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */,
 				CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */,
@@ -319,6 +324,7 @@
 				CA9F5E2F1BE8340B00A77B49 /* IXLocationTracker.m in Sources */,
 				3FAAB0591AF92E3600CFFA7D /* AppDelegate.m in Sources */,
 				3FAAB0561AF92E3600CFFA7D /* main.m in Sources */,
+				63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */,
 				CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */,
 				63417A551BF298AF00FBB98F /* IXBeacon.m in Sources */,
 				CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */,
