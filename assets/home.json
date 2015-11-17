@@ -1,317 +1,278 @@
 {
-    "$view": {
-        "actions": [
-            {
-                "_type": "Function",
-                "attributes": {
-                    "_target": "mainBeacon",
-                    "functionName": "start"
-                },
-                "on": "didLoad,willFirstAppear"
-            },
-            {
-                "_type": "zAlert",
-                "attributes": {
-                    "message": "Did load"
-                },
-                "on": "didLoad"
-            }
-        ],
+  "$view": {
+    "actions": [
+      {
+        "_type": "Function",
         "attributes": {
-            "_id": "garage",
-            "bg.color": "#cdcdcd",
-            "statusBar.style": "dark"
+          "_target": "mainBeacon",
+          "functionName": "start"
+        },
+        "on": "didLoad,willFirstAppear"
+      },
+      {
+        "_type": "zAlert",
+        "attributes": {
+          "message": "Did load"
+        },
+        "on": "didLoad"
+      }
+    ],
+    "attributes": {
+      "_id": "garage",
+      "bg.color": "#cdcdcd",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "bg.color": "ffffff",
+          "layoutType": "float",
+          "size.h": "100%",
+          "size.w": "100%",
+          "visible": true
         },
         "controls": [
-            {
-                "_id": "mainBeacon",
-                "_type": "Beacon",
-                "actions": [
-                    {
-                        "_type": "Alert",
-                        "attributes": {
-                            "title": "Entered region"
-                        },
-                        "on": "enteredBeaconRegion"
-                    },
-                    {
-                        "_type": "Alert",
-                        "attributes": {
-                            "title": "Exited region"
-                        },
-                        "on": "exitedBeaconRegion"
-                    },
-                    {
-                        "_type": "Notify",
-                        "attributes": {
-                            "message": "You are near a beacon",
-                            "title": "Beacon around"
-                        },
-                        "on": "enteredBeaconRegion"
-                    },
-                    {
-                        "_type": "Notify",
-                        "attributes": {
-                            "message": "You are leaving a beacon region!",
-                            "title": "Beacon away"
-                        },
-                        "on": "exitedBeaconRegion"
-                    }
-                ],
+          {
+            "_id": "customHeader",
+            "_type": "Custom",
+            "actions": [
+              {
+                "_type": "Function",
                 "attributes": {
-                    "distanceFilter": "notsurewhatgoeshere",
-                    "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e,B9407F30-F5F8-466E-AFF9-25556B57FE6D,ED3A6985-8872-4BB7-B784-C59EF3589844"
-                }
+                  "_target": "$app",
+                  "functionName": "drawer.l.toggle"
+                },
+                "on": "button.left"
+              }
+            ],
+            "attributes": {
+              "button.left": "../images/btnMenu_42x42.png",
+              "controlLocation": "/controls/header.json",
+              "layoutType": "float",
+              "size.h": 62,
+              "size.w": "100%",
+              "title": "Home",
+              "visible": true
             },
-            {
-                "_id": "layoutMain",
+            "controls": []
+          },
+          {
+            "_id": "layoutHomeView",
+            "_type": "Layout",
+            "attributes": {
+              "layoutType": "relative",
+              "margin.top": 62,
+              "size.h": "40%",
+              "size.w": "100%",
+              "scrolling.enabled": true
+            },
+            "controls": [
+              {
+                "_id": "fbProfileBlur",
+                "_type": "FBProfile",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "top",
+                  "blur.enabled": true,
+                  "layoutType": "float",
+                  "size.h": "100%",
+                  "size.w": "100%"
+                }
+              },
+              {
+                "_id": "fbProfilePic",
+                "_type": "FBProfile",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "top",
+                  "border.color": "ffffff",
+                  "border.radius": "{{[[$self.size.w]] / 2}}",
+                  "border.size": 2,
+                  "layoutType": "float",
+                  "margin.top": 30,
+                  "size.h": [
+                    "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
+                  ],
+                  "size.w": [
+                    "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
+                  ]
+                }
+              },
+              {
+                "_id": "fbProfileName",
+                "_type": "Text",
+                "attributes": {
+                  "align.h": "center",
+                  "align.v": "top",
+                  "color": "ffffff",
+                  "font": "Aileron-Light:22",
+                  "layoutType": "float",
+                  "margin.top": [
+                    "if :: [[$device.screen.w]] > 320 :: 160 :: 120"
+                  ],
+                  "text": "[[fbProfilePic.name]]"
+                }
+              },
+              {
+                "_id": "layoutSummaryBackground",
                 "_type": "Layout",
                 "attributes": {
-                    "bg.color": "ffffff",
-                    "layoutType": "float",
-                    "size.h": "100%",
-                    "size.w": "100%",
-                    "visible": true
+                  "align.v": "bottom",
+                  "bg.color": "00000010",
+                  "layoutType": "float",
+                  "size.h": 60,
+                  "size.w": "100%"
                 },
                 "controls": [
-                    {
-                        "_id": "customHeader",
-                        "_type": "Custom",
-                        "actions": [
-                            {
-                                "_type": "Function",
-                                "attributes": {
-                                    "_target": "$app",
-                                    "functionName": "drawer.l.toggle"
-                                },
-                                "on": "button.left"
-                            }
-                        ],
-                        "attributes": {
-                            "button.left": "../images/btnMenu_42x42.png",
-                            "controlLocation": "/controls/header.json",
-                            "layoutType": "float",
-                            "size.h": 62,
-                            "size.w": "100%",
-                            "title": "Home",
-                            "visible": true
-                        },
-                        "controls": []
+                  {
+                    "_id": "layoutSummaryBorder",
+                    "_type": "Layout",
+                    "attributes": {
+                      "bg.color": "00000010",
+                      "layoutType": "float",
+                      "size.h": 1,
+                      "size.w": "100%"
                     },
-                    {
-                        "_id": "layoutHomeView",
-                        "_type": "Layout",
-                        "attributes": {
-                            "layoutType": "relative",
-                            "margin.top": 62,
-                            "size.h": "40%",
-                            "size.w": "100%",
-                            "scrolling.enabled": true
-                        },
-                        "controls": [
-                            {
-                                "_id": "fbProfileBlur",
-                                "_type": "FBProfile",
-                                "attributes": {
-                                    "align.h": "center",
-                                    "align.v": "top",
-                                    "blur.enabled": true,
-                                    "layoutType": "float",
-                                    "size.h": "100%",
-                                    "size.w": "100%"
-                                }
-                            },
-                            {
-                                "_id": "fbProfilePic",
-                                "_type": "FBProfile",
-                                "attributes": {
-                                    "align.h": "center",
-                                    "align.v": "top",
-                                    "border.color": "ffffff",
-                                    "border.radius": "{{[[$self.size.w]] / 2}}",
-                                    "border.size": 2,
-                                    "layoutType": "float",
-                                    "margin.top": 30,
-                                    "size.h": [
-                                        "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
-                                    ],
-                                    "size.w": [
-                                        "if :: [[$device.screen.w]] > 320 :: 120 :: 80"
-                                    ]
-                                }
-                            },
-                            {
-                                "_id": "fbProfileName",
-                                "_type": "Text",
-                                "attributes": {
-                                    "align.h": "center",
-                                    "align.v": "top",
-                                    "color": "ffffff",
-                                    "font": "Aileron-Light:22",
-                                    "layoutType": "float",
-                                    "margin.top": [
-                                        "if :: [[$device.screen.w]] > 320 :: 160 :: 120"
-                                    ],
-                                    "text": "[[fbProfilePic.name]]"
-                                }
-                            },
-                            {
-                                "_id": "layoutSummaryBackground",
-                                "_type": "Layout",
-                                "attributes": {
-                                    "align.v": "bottom",
-                                    "bg.color": "00000010",
-                                    "layoutType": "float",
-                                    "size.h": 60,
-                                    "size.w": "100%"
-                                },
-                                "controls": [
-                                    {
-                                        "_id": "layoutSummaryBorder",
-                                        "_type": "Layout",
-                                        "attributes": {
-                                            "bg.color": "00000010",
-                                            "layoutType": "float",
-                                            "size.h": 1,
-                                            "size.w": "100%"
-                                        },
-                                        "controls": []
-                                    },
-                                    {
-                                        "_id": "textLatestSavings",
-                                        "_type": "AttributedText",
-                                        "attributes": {
-                                            "align.h": "center",
-                                            "align.v": "middle",
-                                            "font": [
-                                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
-                                            ],
-                                            "layoutType": "float",
-                                            "markdown.enabled": true,
-                                            "padding.bottom": 8
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "_id": "textSavingsSummaryTitle",
-                        "_type": "Text",
-                        "attributes": {
-                            "align.h": "center",
-                            "color": "#333333",
-                            "font": "Aileron-Light:22",
-                            "layoutType": "relative",
-                            "margin.top": 40,
-                            "text": "Your Carbon Savings"
-                        }
-                    },
-                    {
-                        "_id": "textSavingsMonth",
-                        "_type": "AttributedText",
-                        "attributes": {
-                            "align.h": "left",
-                            "color": "#333333",
-                            "font": [
-                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
-                            ],
-                            "layoutType": "relative",
-                            "margin.top": 36,
-                            "margin.left": [
-                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
-                            ],
-                            "markdown.enabled": true,
-                            "text": "{#333333|This month:} {[[$app.color.textGreen]]|}"
-                        }
-                    },
-                    {
-                        "_id": "textSavingsYear",
-                        "_type": "AttributedText",
-                        "attributes": {
-                            "align.h": "left",
-                            "font": [
-                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
-                            ],
-                            "layoutType": "relative",
-                            "margin.top": 30,
-                            "margin.left": [
-                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
-                            ],
-                            "markdown.enabled": true,
-                            "text": "{#333333|This year:} {[[$app.color.textGreen]]|}"
-                        }
-                    },
-                    {
-                        "_id": "textSavingsAllTime",
-                        "_type": "AttributedText",
-                        "attributes": {
-                            "align.h": "left",
-                            "font": [
-                                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
-                            ],
-                            "layoutType": "relative",
-                            "margin.top": 30,
-                            "margin.left": [
-                                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
-                            ],
-                            "markdown.enabled": true,
-                            "text": "{#333333|All time:} {[[$app.color.textGreen]]|}"
-                        }
+                    "controls": []
+                  },
+                  {
+                    "_id": "textLatestSavings",
+                    "_type": "AttributedText",
+                    "attributes": {
+                      "align.h": "center",
+                      "align.v": "middle",
+                      "font": [
+                        "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+                      ],
+                      "layoutType": "float",
+                      "markdown.enabled": true,
+                      "padding.bottom": 8
                     }
+                  }
                 ]
+              }
+            ]
+          },
+          {
+            "_id": "textSavingsSummaryTitle",
+            "_type": "Text",
+            "attributes": {
+              "align.h": "center",
+              "color": "#333333",
+              "font": "Aileron-Light:22",
+              "layoutType": "relative",
+              "margin.top": 40,
+              "text": "Your Carbon Savings"
             }
-        ],
-        "datasources": [
-            {
-                "_id": "dataBaasProfile",
-                "_type": "HTTP",
-                "actions": [
-                    {
-                        "_type": "Modify",
-                        "on": "success",
-                        "set": {
-                            "textLatestSavings.text": "{#333333|Your last ride:} {#ffffff|[[$self.response.body.distance.latest]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.latest]] [[$self.response.body.savings.unit]] CO₂ saved}",
-                            "textSavingsMonth.text": "{#333333|This month:} {[[$app.color.textGreen]]|[[$self.response.body.distance.month]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.month]] [[$self.response.body.savings.unit]] CO₂ saved}",
-                            "textSavingsYear.text": "{#333333|This year:} {[[$app.color.textGreen]]|[[$self.response.body.distance.year]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.year]] [[$self.response.body.savings.unit]] CO₂ saved}",
-                            "textSavingsAllTime.text": "{#333333|All time:} {[[$app.color.textGreen]]|[[$self.response.body.distance.all]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.all]] [[$self.response.body.savings.unit]] CO₂ saved}"
-                        }
-                    },
-                    {
-                        "_type": "Refresh",
-                        "attributes": {
-                            "_target": "textLatestSavings"
-                        },
-                        "on": "success"
-                    }
-                ],
-                "attributes": {
-                    "autoLoad.enabled": true,
-                    "headers": {
-                        "access_token": "[[$session.access_token]]"
-                    },
-                    "method": "GET",
-                    "requestType": "json",
-                    "responseType": "json",
-                    "url": "https://vta-prod.apigee.net/karma/v1/me/profile"
-                }
-            },
-            {
-                "_id": "dataFacebookProfile",
-                "_type": "HTTP",
-                "actions": [],
-                "attributes": {
-                    "autoLoad.enabled": true,
-                    "method": "GET",
-                    "queryParams": {
-                        "access_token": "[[$session.fb_token]]",
-                        "fields": "hometown"
-                    },
-                    "requestType": "json",
-                    "responseType": "json",
-                    "url": "https://graph.facebook.com/v2.5/me"
-                }
+          },
+          {
+            "_id": "textSavingsMonth",
+            "_type": "AttributedText",
+            "attributes": {
+              "align.h": "left",
+              "color": "#333333",
+              "font": [
+                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+              ],
+              "layoutType": "relative",
+              "margin.top": 36,
+              "margin.left": [
+                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+              ],
+              "markdown.enabled": true,
+              "text": "{#333333|This month:} {[[$app.color.textGreen]]|}"
             }
+          },
+          {
+            "_id": "textSavingsYear",
+            "_type": "AttributedText",
+            "attributes": {
+              "align.h": "left",
+              "font": [
+                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+              ],
+              "layoutType": "relative",
+              "margin.top": 30,
+              "margin.left": [
+                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+              ],
+              "markdown.enabled": true,
+              "text": "{#333333|This year:} {[[$app.color.textGreen]]|}"
+            }
+          },
+          {
+            "_id": "textSavingsAllTime",
+            "_type": "AttributedText",
+            "attributes": {
+              "align.h": "left",
+              "font": [
+                "if :: [[$device.screen.w]] > 320 :: Aileron-Light:18 :: Aileron-Light:15"
+              ],
+              "layoutType": "relative",
+              "margin.top": 30,
+              "margin.left": [
+                "if :: [[$device.screen.w]] > 375 :: 50 :: 30"
+              ],
+              "markdown.enabled": true,
+              "text": "{#333333|All time:} {[[$app.color.textGreen]]|}"
+            }
+          }
         ]
-    }
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "dataBaasProfile",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "Modify",
+            "on": "success",
+            "set": {
+              "textLatestSavings.text": "{#333333|Your last ride:} {#ffffff|[[$self.response.body.distance.latest]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.latest]] [[$self.response.body.savings.unit]] CO₂ saved}",
+              "textSavingsMonth.text": "{#333333|This month:} {[[$app.color.textGreen]]|[[$self.response.body.distance.month]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.month]] [[$self.response.body.savings.unit]] CO₂ saved}",
+              "textSavingsYear.text": "{#333333|This year:} {[[$app.color.textGreen]]|[[$self.response.body.distance.year]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.year]] [[$self.response.body.savings.unit]] CO₂ saved}",
+              "textSavingsAllTime.text": "{#333333|All time:} {[[$app.color.textGreen]]|[[$self.response.body.distance.all]] [[$self.response.body.distance.unit]] / [[$self.response.body.savings.all]] [[$self.response.body.savings.unit]] CO₂ saved}"
+            }
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "textLatestSavings"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "headers": {
+            "access_token": "[[$session.access_token]]"
+          },
+          "method": "GET",
+          "requestType": "json",
+          "responseType": "json",
+          "url": "https://vta-prod.apigee.net/karma/v1/me/profile"
+        }
+      },
+      {
+        "_id": "dataFacebookProfile",
+        "_type": "HTTP",
+        "actions": [],
+        "attributes": {
+          "autoLoad.enabled": true,
+          "method": "GET",
+          "queryParams": {
+            "access_token": "[[$session.fb_token]]",
+            "fields": "hometown"
+          },
+          "requestType": "json",
+          "responseType": "json",
+          "url": "https://graph.facebook.com/v2.5/me"
+        }
+      },
+
+    ]
+  }
 }

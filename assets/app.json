@@ -1,43 +1,188 @@
 {
-    "$app": {
+  "$app": {
+    "actions": [
+      {
+        "_type": "zAlert",
+        "attributes": {
+          "message": [
+            "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+          ]
+        },
+        "on": "didBecomeActive"
+      },
+      {
+        "_type": "Function",
+        "attributes": {
+          "_target": "mainBeacon",
+          "functionName": "start"
+        },
+        "on": "didBecomeActive"
+      }
+    ],
+    "attributes": {
+      "color.text": "#434a54",
+      "color.textGreen": "#84c51d",
+      "color.textLight": "#acafb4",
+      "debug.layout.enabled": false,
+      "defaultView": [
+        "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+      ],
+      "drawer.allowedStates": [
+        "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+      ],
+      "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
+      "drawer.l.url": "/menu.json",
+      "drawer.shadow.enabled": false,
+      "location.autoRequest.enabled": true,
+      "logging.datasource.enabled": true,
+      "logging.level": "verbose",
+      "mode": "debug",
+      "navigationBar.enabled": false,
+      "preloadImages": [
+        "assets/images/pin_32x60_red@2x.png",
+        "assets/images/imgUserTim_38x53@2x.png",
+        "assets/images/imgUserAnne_38x53@2x.png",
+        "assets/images/bgCarGarage.png",
+        "assets/images/bgCarZoom.png"
+      ]
+    },
+    "controls": [
+      {
+        "_id": "mainBeacon",
+        "_type": "Beacon",
         "actions": [
-            {
-                "_type": "zAlert",
-                "attributes": {
-                    "message": [
-                        "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
-                    ]
-                },
-                "on": "didBecomeActive"
-            }
+          {
+            "_type": "Alert",
+            "attributes": {
+              "title": "Entered region (home)"
+            },
+            "on": "enteredBeaconRegion"
+          },
+          {
+            "_type": "Function",
+            "attributes": {
+              "_target": "locationTracker",
+              "name": "toggle"
+            },
+            "on": "enteredBeaconRegion,exitedBeaconRegion"
+          },
+          {
+            "_type": "Refresh",
+            "attributes": {
+              "_target": "locationTracker",
+              "name": "toggle"
+            },
+            "on": "enteredBeaconRegion,exitedBeaconRegion"
+          },
+          {
+            "_type": "Modify",
+            "set": {
+              "$session.beaconStatus": "Region Entered"
+            },
+            "on": "enteredBeaconRegion"
+          },
+          {
+            "_type": "Modify",
+            "set": {
+              "$session.beaconStatus": "Region Exited"
+            },
+            "on": "exitedBeaconRegion"
+          },
+          {
+            "_type": "Notify",
+            "attributes": {
+              "message": "You are near a beacon (home)",
+              "title": "Beacon around"
+            },
+            "on": "enteredBeaconRegion"
+          },
+          {
+            "_type": "Notify",
+            "attributes": {
+              "message": "You are leaving a beacon region (home)!",
+              "title": "Beacon away"
+            },
+            "on": "exitedBeaconRegion"
+          }
         ],
         "attributes": {
-            "color.text": "#434a54",
-            "color.textGreen": "#84c51d",
-            "color.textLight": "#acafb4",
-            "debug.layout.enabled": false,
-            "defaultView": [
-                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
-            ],
-            "drawer.allowedStates": [
-                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
-            ],
-            "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
-            "drawer.l.url": "/menu.json",
-            "drawer.shadow.enabled": false,
-            "location.autoRequest.enabled": true,
-            "logging.datasource.enabled": true,
-            "logging.level": "verbose",
-            "mode": "debug",
-            "navigationBar.enabled": false,
-            "preloadImages": [
-                "assets/images/pin_32x60_red@2x.png",
-                "assets/images/imgUserTim_38x53@2x.png",
-                "assets/images/imgUserAnne_38x53@2x.png",
-                "assets/images/bgCarGarage.png",
-                "assets/images/bgCarZoom.png"
-            ]
-        },
-        "datasources": []
-    }
+          "distanceFilter": "notsurewhatgoeshere",
+          "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e,B9407F30-F5F8-466E-AFF9-25556B57FE6D,ED3A6985-8872-4BB7-B784-C59EF3589844"
+        }
+      },
+      {
+        "_id": "locationTracker",
+        "_type": "LocationTracker",
+        "actions": [
+          {
+            "_type": "Notify",
+            "attributes": {
+              "title": "Location Tracking Started"
+            },
+            "on": "started"
+          },
+          {
+            "_type": "Notify",
+            "attributes": {
+              "title": "Location Tracking Stopped"
+            },
+            "on": "stopped"
+          },
+          {
+            "_type": "Load",
+            "attributes": {
+              "_target": "postTrip"
+            },
+            "on": "stopped"
+          }
+        ],
+        "attributes": {}
+      }
+    ],
+    "datasources": [
+      {
+        "_id": "postTrip",
+        "_type": "HTTP",
+        "actions": [
+          {
+            "_type": "zAlert",
+            "attributes": {
+              "message": "[[$self.response.string]]",
+              "title": "token"
+            },
+            "on": "success"
+          },
+          {
+            "_type": "Notify",
+            "attributes": {
+              "message": "Good Karma: You saved [[$self.response.body.savings.averageCarEfficiencyMpg]][[$self.response.body.savings.units]] CO₂ over [[$self.response.body.distanceTraveled.miles:round(2)]]mi vs the fuel efficiency of an average car!"
+            },
+            "on": "success"
+          },
+          {
+            "_type": "Modify",
+            "set": {
+              "$session.rideIndex": 0
+            }
+          },
+          {
+            "_type": "xNavigate",
+            "attributes": {
+              "to": "/rideDetail.json"
+            },
+            "on": "success"
+          }
+        ],
+        "attributes": {
+          "autoLoad.enabled": false,
+          "body": "[[locationTracker.trip]]",
+          "headers": {
+            "access_token": "[[$session.access_token]]"
+          },
+          "method": "POST",
+          "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
+        }
+      }
+    ]
+  }
 }

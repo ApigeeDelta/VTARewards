@@ -1,18 +1,6 @@
 {
   "entities": [
     {
-      "name": "Home",
-      "path": "home.json"
-    },
-    {
-      "name": "Stops",
-      "path": "stops.json"
-    },
-    {
-      "name": "Location",
-      "path": "location.json"
-    },
-    {
       "name": "Login",
       "path": "login.json"
     }

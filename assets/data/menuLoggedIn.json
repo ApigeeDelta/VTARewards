@@ -13,8 +13,8 @@
       "path": "rides.json"
     },
     {
-      "name": "Location",
-      "path": "location.json"
+      "name": "Status",
+      "path": "status.json"
     },
     {
       "name": "Logout",

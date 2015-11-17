@@ -1,0 +1,71 @@
+{
+  "$view": {
+    "actions": [
+    ],
+    "attributes": {
+      "_id": "garage",
+      "bg.color": "#cdcdcd",
+      "statusBar.style": "dark"
+    },
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "bg.color": "ffffff",
+          "layoutType": "float",
+          "size.h": "100%",
+          "size.w": "100%",
+          "visible": true
+        },
+        "controls": [
+          {
+            "_id": "customHeader",
+            "_type": "Custom",
+            "actions": [
+              {
+                "_type": "Function",
+                "attributes": {
+                  "_target": "$app",
+                  "functionName": "drawer.l.toggle"
+                },
+                "on": "button.left"
+              }
+            ],
+            "attributes": {
+              "button.left": "../images/btnMenu_42x42.png",
+              "controlLocation": "/controls/header.json",
+              "layoutType": "float",
+              "size.h": 62,
+              "size.w": "100%",
+              "title": "Tracking",
+              "visible": true
+            },
+            "controls": []
+          }
+        ]
+      },
+      {
+        "_id": "beaconStatus",
+        "_type": "Text",
+        "actions": [],
+        "attributes": {
+          "align.h": "center",
+          "align.v": "middle",
+          "bg.color": "cdcdcd",
+          "color": "6c6c6c",
+          "layoutType": "float",
+          "margin.bottom": 0,
+          "size.h": 50,
+          "size.w": 200,
+          "text": [
+            "if :: [[$session.beaconStatus:is(!empty && !nil)]] :: [[$session.beaconStatus]] :: Not Set"
+          ],
+          "touch.bg.color": "cdcdcd",
+          "touch.color": "6c6c6c50"
+        }
+      }
+    ],
+    "datasources": []
+  }
+}
