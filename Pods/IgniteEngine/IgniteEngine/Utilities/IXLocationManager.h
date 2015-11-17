@@ -45,7 +45,7 @@
 @property (nonatomic,strong,readonly) CLLocation* lastKnownLocation;
 
 @property (nonatomic,assign) BOOL shouldTrackTripData;
-@property (nonatomic,readonly) NSString* tripDataString;
+@property (nonatomic,readonly) NSString* tripDataJSON;
 
 +(instancetype)sharedLocationManager;
 

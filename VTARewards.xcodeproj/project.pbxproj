@@ -454,7 +454,7 @@
 					"\"${PODS_ROOT}/Headers/Public/jetfire\"",
 					"\"${PODS_ROOT}/Headers/Public/ApigeeiOSSDK/ApigeeiOSSDK\"/**",
 				);
-				INFOPLIST_FILE = IgniteEngineStarterKit/Info.plist;
+				INFOPLIST_FILE = VTARewards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apigee.ent.vtarewards;
@@ -502,7 +502,7 @@
 					"\"${PODS_ROOT}/Headers/Public/jetfire\"",
 					"\"${PODS_ROOT}/Headers/Public/ApigeeiOSSDK/ApigeeiOSSDK\"/**",
 				);
-				INFOPLIST_FILE = IgniteEngineStarterKit/Info.plist;
+				INFOPLIST_FILE = VTARewards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apigee.ent.vtarewards;
