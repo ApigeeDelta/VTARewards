@@ -1,238 +1,237 @@
 {
-  "$view": {
-    "actions": [
-      {
-        "_type": "Alert",
-        "attributes": {
-          "title": "[[$session.user_uuid]] // canMonitorBeacons: [[beaconTest.canMonitorBeacons]]"
-        },
-        "enabled": true,
-        "on": "didAppear"
-      }
-    ],
-    "attributes": {
-      "_id": "garage",
-      "bg.color": "#cdcdcd",
-      "statusBar.style": "dark"
-    },
-    "controls": [
-      {
-        "_id": "beaconTest",
-        "_type": "Beacon",
+    "$view": {
         "actions": [
-          {
-            "_type": "Alert",
-            "attributes": {
-              "title": "enteredBeaconRegion"
-            },
-            "enabled": true,
-            "on": "enteredBeaconRegion"
-          },
-          {
-            "_type": "Alert",
-            "attributes": {
-              "title": "exitedBeaconRegion"
-            },
-            "enabled": true,
-            "on": "exitedBeaconRegion"
-          },
-                    {
-                    "_type": "Notify",
-                    "attributes": {
-                    "title" : "Beacon around",
-                    "message": "You are near a beacon"
-                    },
-                    "on": "enteredBeaconRegion"
-                    },
-                    {
-                    "_type": "Notify",
-                    "attributes": {
-                    "title" : "Beacon away",
-                    "message": "You are leaving a beacon region!"
-                    },
-                    "on": "exitedBeaconRegion"
-                    }
-
+            {
+                "_type": "Alert",
+                "attributes": {
+                    "title": "[[$session.user_uuid]] // canMonitorBeacons: [[beaconTest.canMonitorBeacons]]"
+                },
+                "enabled": true,
+                "on": "didAppear"
+            }
         ],
         "attributes": {
-          "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
-          "1distanceFilter": ""
-        }
-      },
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "bg.color": "ffffff",
-          "layoutType": "float",
-          "size.h": "100%",
-          "size.w": "100%",
-          "visible": true
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "dark"
         },
         "controls": [
-          {
-            "_id": "customHeader",
-            "_type": "Custom",
-            "actions": [
-              {
-                "_type": "Function",
+            {
+                "_id": "beaconTest",
+                "_type": "Beacon",
+                "actions": [
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "title": "enteredBeaconRegion"
+                        },
+                        "enabled": true,
+                        "on": "enteredBeaconRegion"
+                    },
+                    {
+                        "_type": "Alert",
+                        "attributes": {
+                            "title": "exitedBeaconRegion"
+                        },
+                        "enabled": true,
+                        "on": "exitedBeaconRegion"
+                    },
+                    {
+                        "_type": "Notify",
+                        "attributes": {
+                            "message": "You are near a beacon",
+                            "title": "Beacon around"
+                        },
+                        "on": "enteredBeaconRegion"
+                    },
+                    {
+                        "_type": "Notify",
+                        "attributes": {
+                            "message": "You are leaving a beacon region!",
+                            "title": "Beacon away"
+                        },
+                        "on": "exitedBeaconRegion"
+                    }
+                ],
                 "attributes": {
-                  "_target": "$app",
-                  "functionName": "drawer.l.toggle"
+                    "1distanceFilter": "",
+                    "regionUUIDs": "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                }
+            },
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
+                "attributes": {
+                    "bg.color": "ffffff",
+                    "layoutType": "float",
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
                 },
-                "on": "button.left"
-              }
-            ],
-            "attributes": {
-              "button.left": "../images/btnMenu_42x42.png",
-              "controlLocation": "/controls/header.json",
-              "layoutType": "float",
-              "size.h": 62,
-              "size.w": "100%",
-              "title": "Tracking",
-              "visible": true
+                "controls": [
+                    {
+                        "_id": "customHeader",
+                        "_type": "Custom",
+                        "actions": [
+                            {
+                                "_type": "Function",
+                                "attributes": {
+                                    "_target": "$app",
+                                    "functionName": "drawer.l.toggle"
+                                },
+                                "on": "button.left"
+                            }
+                        ],
+                        "attributes": {
+                            "button.left": "../images/btnMenu_42x42.png",
+                            "controlLocation": "/controls/header.json",
+                            "layoutType": "float",
+                            "size.h": 62,
+                            "size.w": "100%",
+                            "title": "Tracking",
+                            "visible": true
+                        },
+                        "controls": []
+                    }
+                ]
             },
-            "controls": []
-          }
+            {
+                "_id": "button",
+                "_type": "Button",
+                "actions": [
+                    {
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "beaconTest",
+                            "functionName": [
+                                "if :: '[[$self.text]]' == 'Location Tracking: Off' :: start",
+                                "if :: '[[$self.text]]' == 'Location Tracking: On' :: stop"
+                            ]
+                        },
+                        "on": "touchUp"
+                    },
+                    {
+                        "_type": "Function",
+                        "attributes": {
+                            "_target": "locationTracker",
+                            "name": "toggle"
+                        },
+                        "on": "touchUp"
+                    },
+                    {
+                        "_type": "Modify",
+                        "attributes": {
+                            "_target": "$self"
+                        },
+                        "on": "touchUp",
+                        "set": {
+                            "text": [
+                                "if :: '[[$self.text]]' == 'Location Tracking: Off' :: Location Tracking: On",
+                                "if :: '[[$self.text]]' == 'Location Tracking: On' :: Location Tracking: Off"
+                            ]
+                        }
+                    }
+                ],
+                "attributes": {
+                    "align.h": "center",
+                    "align.v": "middle",
+                    "bg.color": "cdcdcd",
+                    "color": "6c6c6c",
+                    "layoutType": "float",
+                    "margin.bottom": 0,
+                    "size.h": 50,
+                    "size.w": 200,
+                    "text": "Location Tracking: Off",
+                    "touch.bg.color": "cdcdcd",
+                    "touch.color": "6c6c6c50"
+                }
+            },
+            {
+                "_id": "button",
+                "_type": "Button",
+                "actions": [
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "stackType": "pop"
+                        },
+                        "on": "touchUp"
+                    }
+                ],
+                "attributes": {
+                    "align.h": "center",
+                    "align.v": "bottom",
+                    "bg.color": "cdcdcd",
+                    "color": "6c6c6c",
+                    "layoutType": "float",
+                    "margin.bottom": 50,
+                    "size.h": 50,
+                    "size.w": 200,
+                    "text": "Back",
+                    "touch.bg.color": "cdcdcd",
+                    "touch.color": "6c6c6c50",
+                    "visible": false
+                }
+            },
+            {
+                "_id": "locationTracker",
+                "_type": "LocationTracker",
+                "actions": [
+                    {
+                        "_type": "zAlert",
+                        "attributes": {
+                            "title": "[[$self.data]]"
+                        },
+                        "on": "stopped"
+                    },
+                    {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "_target": "postTrip"
+                        },
+                        "on": "stopped"
+                    }
+                ],
+                "attributes": {}
+            }
+        ],
+        "datasources": [
+            {
+                "_id": "postTrip",
+                "_type": "HTTP",
+                "actions": [
+                    {
+                        "_type": "zAlert",
+                        "attributes": {
+                            "message": "[[$self.response.string]]",
+                            "title": "token"
+                        },
+                        "on": "success"
+                    },
+                    {
+                        "_type": "Modify",
+                        "set": {
+                            "$session.rideIndex": 0
+                        }
+                    },
+                    {
+                        "_type": "Navigate",
+                        "attributes": {
+                            "to": "/rideDetail.json"
+                        },
+                        "on": "success"
+                    }
+                ],
+                "attributes": {
+                    "autoLoad.enabled": false,
+                    "body": "[[locationTracker.trip]]",
+                    "headers": {
+                        "access_token": "[[$session.access_token]]"
+                    },
+                    "method": "POST",
+                    "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
+                }
+            }
         ]
-      },
-      {
-        "_id": "button",
-        "_type": "Button",
-        "actions": [
-          {
-            "_type": "Function",
-            "attributes": {
-              "_target": "beaconTest",
-              "functionName": [
-                "if :: '[[$self.text]]' == 'Location Tracking: Off' :: start",
-                "if :: '[[$self.text]]' == 'Location Tracking: On' :: stop"
-              ]
-            },
-            "on": "touchUp"
-          },
-          {
-            "_type": "Function",
-            "attributes": {
-              "_target": "locationTracker",
-              "name": "toggle"
-            },
-            "on": "touchUp"
-          },
-          {
-            "_type": "Modify",
-            "attributes": {
-              "_target": "$self"
-            },
-            "on": "touchUp",
-            "set": {
-              "text": [
-                "if :: '[[$self.text]]' == 'Location Tracking: Off' :: Location Tracking: On",
-                "if :: '[[$self.text]]' == 'Location Tracking: On' :: Location Tracking: Off"
-              ]
-            }
-          }
-        ],
-        "attributes": {
-          "align.h": "center",
-          "align.v": "middle",
-          "bg.color": "cdcdcd",
-          "color": "6c6c6c",
-          "layoutType": "float",
-          "margin.bottom": 0,
-          "size.h": 50,
-          "size.w": 200,
-          "text": "Location Tracking: Off",
-          "touch.bg.color": "cdcdcd",
-          "touch.color": "6c6c6c50"
-        }
-      },
-      {
-        "_id": "button",
-        "_type": "Button",
-        "actions": [
-          {
-            "_type": "Navigate",
-            "attributes": {
-              "stackType": "pop"
-            },
-            "on": "touchUp"
-          }
-        ],
-        "attributes": {
-          "align.h": "center",
-          "align.v": "bottom",
-          "bg.color": "cdcdcd",
-          "color": "6c6c6c",
-          "layoutType": "float",
-          "margin.bottom": 50,
-          "size.h": 50,
-          "size.w": 200,
-          "text": "Back",
-          "touch.bg.color": "cdcdcd",
-          "touch.color": "6c6c6c50",
-          "visible": false
-        }
-      },
-      {
-        "_id": "locationTracker",
-        "_type": "LocationTracker",
-        "actions": [
-          {
-            "_type": "zAlert",
-            "attributes": {
-              "title": "[[$self.data]]"
-            },
-            "on": "stopped"
-          },
-          {
-            "_type": "Refresh",
-            "attributes": {
-              "_target": "postTrip"
-            },
-            "on": "stopped"
-          }
-        ],
-        "attributes": {}
-      }
-    ],
-    "datasources": [
-      {
-        "_id": "postTrip",
-        "_type": "HTTP",
-        "actions": [
-          {
-            "_type": "zAlert",
-            "attributes": {
-              "message": "[[$self.response.string]]",
-              "title": "token"
-            },
-            "on": "success"
-          },
-          {
-            "_type": "Modify",
-            "set": {
-              "$session.rideIndex": 0
-            }
-          },
-          {
-            "_type": "Navigate",
-            "attributes": {
-              "to": "/rideDetail.json"
-            },
-            "on": "success"
-          }
-        ],
-        "attributes": {
-          "autoLoad.enabled": false,
-          "body": "[[locationTracker.trip]]",
-          "headers": {
-            "access_token": "[[$session.access_token]]"
-          },
-          "method": "POST",
-          "url": "https://vta-prod.apigee.net/karma/v1/me/rides"
-        }
-      }
-    ]
-  }
+    }
 }
