@@ -25,7 +25,6 @@
 @property (weak,nonatomic) id<IXBeaconManagerDelegate> delegate;
 
 @property (nonatomic,readonly) BOOL canMonitorBeacons;
-@property (nonatomic,readonly) NSString* tripDataString;
 
 +(IXBeaconManager*)sharedManager;
 

@@ -79,6 +79,7 @@ IX_STATIC_CONST_STRING kIXEnableLayoutDebugging = @"debug.layout.enabled";
 IX_STATIC_CONST_STRING kIXEnableRequestLogging = @"logging.datasource.enabled";
 IX_STATIC_CONST_STRING kIXEnableRemoteLogging = @"logging.remote.enabled";
 IX_STATIC_CONST_STRING kIXLocationAccuracy = @"location.accuracy";
+IX_STATIC_CONST_STRING kIXLocationTrackTripData = @"location.trackTripData";
 IX_STATIC_CONST_STRING kIXShowsNavigationBar = @"navigationBar.enabled";
 IX_STATIC_CONST_STRING kIXPreloadImages = @"preloadImages";
 IX_STATIC_CONST_STRING kIXPreloadDrawers = @"preloadDrawers.enabled";
@@ -131,6 +132,7 @@ IX_STATIC_CONST_STRING kIXRequestAccessLocation = @"location.auth.request";
 
 IX_STATIC_CONST_STRING kIXStartLocationTracking = @"location.beginTracking";
 IX_STATIC_CONST_STRING kIXStopLocationTracking = @"location.endTracking";
+IX_STATIC_CONST_STRING kIXLocationTripData = @"location.tripData";
 
 // Device Readonly Attributes
 IX_STATIC_CONST_STRING kIXDeviceModel = @"model";
@@ -152,18 +154,17 @@ IX_STATIC_CONST_STRING kIXDefaultIndexPath = @"IXApp";
 IX_STATIC_CONST_STRING kIXDefaultIndexPathOld = @"assets/_index.json";
 IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x";
 
-// IXBeacon Attributes
+// App Attributes
 IX_STATIC_CONST_STRING kIXBeaconRegionUUIDs = @"beacon.regionUUIDs";
 
-// IXBeacon ReadOnly Attributes
+// App ReadOnly Attributes
 IX_STATIC_CONST_STRING kIXBeaconCanMonitorBeacons = @"beacon.canMonitor";
-IX_STATIC_CONST_STRING kIXBeaconTripData = @"beacon.tripData";
 
-// IXBeacon Functions
+// App Functions
 IX_STATIC_CONST_STRING kIXBeaconStart = @"beacon.start";
 IX_STATIC_CONST_STRING kIXBeaconStop = @"beacon.stop";
 
-// IXBeacon Events
+// App Level Events
 IX_STATIC_CONST_STRING kIXBeaconEnteredRegion = @"beacon.enteredRegion";
 IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 
@@ -444,6 +445,7 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
     [self setAppRightDrawerViewPath:[[self appProperties] getStringValueForAttribute:kIXDrawerViewRight defaultValue:nil]];
     [[self drawerController] setAnimationVelocity:[[self appProperties] getFloatValueForAttribute:kIXDrawerToggleVelocity defaultValue:840.0f]];
 
+    [[IXLocationManager sharedLocationManager] setShouldTrackTripData:[[self appProperties] getBoolValueForAttribute:kIXLocationTrackTripData defaultValue:NO]];
     [[IXBeaconManager sharedManager] setRegionUUIDsToMonitor:[[self appProperties] getCommaSeparatedArrayOfValuesForAttribute:kIXBeaconRegionUUIDs defaultValue:nil]];
 
     if( [[self appDefaultViewPath] length] > 0 && [IXPathHandler pathIsLocal:[self appDefaultViewPath]] )
@@ -768,8 +770,8 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
     NSString* returnValue = nil;
     if( [propertyName isEqualToString:kIXBeaconCanMonitorBeacons] ) {
         returnValue = [NSString ix_stringFromBOOL:[[IXBeaconManager sharedManager] canMonitorBeacons]];
-    } else if( [propertyName isEqualToString:kIXBeaconTripData] ) {
-        returnValue = [[IXBeaconManager sharedManager] tripDataString];
+    } else if( [propertyName isEqualToString:kIXLocationTripData] ) {
+        returnValue = [[IXLocationManager sharedLocationManager] tripDataString];
     } else {
         returnValue = [[self appProperties] getStringValueForAttribute:propertyName defaultValue:nil];
     }
