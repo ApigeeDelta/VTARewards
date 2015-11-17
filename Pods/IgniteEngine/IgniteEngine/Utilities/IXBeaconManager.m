@@ -8,8 +8,7 @@
 
 #import "IXBeaconManager.h"
 #import "IXConstants.h"
-#import "IXLocationManager.h"
-#import "NSString+IXAdditions.h"
+
 #import <KontaktSDK/KontaktSDK.h>
 
 @import CoreLocation;
@@ -17,8 +16,6 @@
 @interface IXBeaconManager () <KTKLocationManagerDelegate>
 
 @property (strong,nonatomic) KTKLocationManager *locationManager;
-
-@property (nonatomic, strong) NSArray *regionsToMonitor;
 
 @end
 
@@ -54,7 +51,6 @@
 -(void)startMonitoring
 {
     if( [KTKLocationManager canMonitorBeacons] ) {
-        [self.locationManager setRegions:self.regionsToMonitor];
         [self.locationManager startMonitoringBeacons];
     } else {
         DDLogError(@"ERROR: Cannot monitor beacons.");
@@ -68,7 +64,7 @@
 
 -(BOOL)canMonitorBeacons
 {
-    return [NSString ix_stringFromBOOL:[KTKLocationManager canMonitorBeacons]];
+    return [KTKLocationManager canMonitorBeacons];
 }
 
 -(void)setRegionUUIDsToMonitor:(NSArray*)regionUUIDs
@@ -77,7 +73,7 @@
     for( NSString* regionUUID in regionUUIDs ) {
         [regionsToMonitor addObject:[[KTKRegion alloc] initWithUUID:regionUUID]];
     }
-    self.regionsToMonitor = regionsToMonitor;
+    [self.locationManager setRegions:regionsToMonitor];
 }
 
 - (void)locationManager:(KTKLocationManager *)locationManager didChangeState:(KTKLocationManagerState)state withError:(NSError *)error

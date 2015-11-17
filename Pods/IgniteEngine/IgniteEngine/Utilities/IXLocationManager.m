@@ -43,6 +43,12 @@
 
 @implementation IXLocationManager
 
+-(void)dealloc
+{
+    [_locationManager setDelegate:nil];
+    [_locationManager stopUpdatingLocation];
+}
+
 +(instancetype)sharedLocationManager
 {
     static IXLocationManager *sharedInstance = nil;
@@ -117,6 +123,9 @@
     self.waypoints = nil;
     self.tripData = nil;
 
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
+        _locationManager.allowsBackgroundLocationUpdates = YES;
+    }
     [[self locationManager] startUpdatingLocation];
 }
 
