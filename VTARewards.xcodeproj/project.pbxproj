@@ -465,7 +465,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apigee.ent.vtarewards;
 				PRODUCT_NAME = VTARewards;
-				PROVISIONING_PROFILE = "3ab66343-fcb6-49f9-8448-8b2173f5dd80";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -513,7 +513,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apigee.ent.vtarewards;
 				PRODUCT_NAME = VTARewards;
-				PROVISIONING_PROFILE = "3ab66343-fcb6-49f9-8448-8b2173f5dd80";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
