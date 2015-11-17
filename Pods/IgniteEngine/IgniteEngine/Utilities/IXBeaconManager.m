@@ -14,22 +14,6 @@
 
 @import CoreLocation;
 
-// IXBeacon Attributes
-IX_STATIC_CONST_STRING kIXRegionUUIDs = @"regionUUIDs";
-IX_STATIC_CONST_STRING kIXDistanceFilter = @"distanceFilter";
-
-// IXBeacon ReadOnly Attributes
-IX_STATIC_CONST_STRING kIXCanMonitorBeacons = @"canMonitorBeacons";
-IX_STATIC_CONST_STRING kIXTripData = @"tripData";
-
-// IXBeacon Functions
-IX_STATIC_CONST_STRING kIXStart = @"start";
-IX_STATIC_CONST_STRING kIXStop = @"stop";
-
-// IXBeacon Events
-IX_STATIC_CONST_STRING kIXEnteredBeaconRegion = @"enteredBeaconRegion";
-IX_STATIC_CONST_STRING kIXExitedBeaconRegion = @"exitedBeaconRegion";
-
 // Non attribute constants
 IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
 
