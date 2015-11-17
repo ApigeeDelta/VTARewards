@@ -324,6 +324,8 @@
 		62C0FE1D5A640489990B348BAB1AF917 /* IXBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE20EAEC754334687ABC0383E4AD9474 /* IXBaseAction.m */; };
 		62DDEB5456833B4AD3A84F7AADBE9099 /* FBSDKGraphRequest+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = E856FBC31593C4398CB5AF16B31E0D80 /* FBSDKGraphRequest+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		62E6558AD348F6D29B89E54E4D78B81A /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 97BCDA423528662E9432ECE01E5E6CB2 /* de.lproj */; };
+		6300F22E1BFBC35F0036F1AB /* IXBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6300F22C1BFBC35F0036F1AB /* IXBeaconManager.m */; };
+		6300F22F1BFBC36B0036F1AB /* IXBeaconManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6300F22B1BFBC35F0036F1AB /* IXBeaconManager.h */; };
 		630354832641D02E4C7F40DE65C3A65D /* refcnt.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C866743ACA31563ED477634BB8B564A /* refcnt.c */; settings = {COMPILER_FLAGS = "-w -fno-objc-arc"; }; };
 		634D85A94A89FB79C887AEB085DECA60 /* Bolts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 937235C4BB9ED0D45855774CC987C4AC /* Bolts-dummy.m */; };
 		6386153DAFB46A4B245F11B923C17227 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1130408587625ABC69E94DA9309639 /* QuartzCore.framework */; };
@@ -1594,6 +1596,8 @@
 		62AB81A98AF0D28574AD8A85081CDE94 /* FBSDKServerConfigurationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKServerConfigurationManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.m; sourceTree = "<group>"; };
 		62C03C15AE1F6BD9F0030D9C63EE7317 /* FBSDKAccessTokenCacheV3_21.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenCacheV3_21.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_21.h; sourceTree = "<group>"; };
 		62F5C373F71F57F7375480F701C307AF /* libColorUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libColorUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6300F22B1BFBC35F0036F1AB /* IXBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IXBeaconManager.h; path = IgniteEngine/Utilities/IXBeaconManager.h; sourceTree = "<group>"; };
+		6300F22C1BFBC35F0036F1AB /* IXBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IXBeaconManager.m; path = IgniteEngine/Utilities/IXBeaconManager.m; sourceTree = "<group>"; };
 		633B0CDE4B6E759BFA1E76FE5F4B48E1 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = es.lproj; path = YLMoment/Localization/es.lproj; sourceTree = "<group>"; };
 		636081FF8DDB5C16168B85EFB1B2F6CE /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
 		637C06F68F8C5077324189A7283A3A00 /* UIFont+IXAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+IXAdditions.h"; path = "IgniteEngine/Categories/UIFont+IXAdditions.h"; sourceTree = "<group>"; };
@@ -3289,6 +3293,8 @@
 				D4D49CE60FB3C0C382DB695D66E5F3DA /* IXAFNetworkActivityLogger.m */,
 				07AC21FC62BC017AC305B5BA72E38A79 /* IXAssetManager.h */,
 				ECFFA2623AB9763518D88E18A9EF4B93 /* IXAssetManager.m */,
+				6300F22B1BFBC35F0036F1AB /* IXBeaconManager.h */,
+				6300F22C1BFBC35F0036F1AB /* IXBeaconManager.m */,
 				97D93074A2E561B806D156569D9D40BA /* IXCustomNavPushPopTransition.h */,
 				6DB0BD4156331CB7A8F4DFC1BE5D98B2 /* IXCustomNavPushPopTransition.m */,
 				C1764BC5EDEA0149A8218C7AC0A1AF94 /* IXDeviceInfo.h */,
@@ -4531,6 +4537,7 @@
 				2F75C8619D04D3EF6FE77DF8CCD21453 /* IXTextInput.h in Headers */,
 				9947CDC82DC81D261AC7E51C55957AA6 /* IXTextToSpeech.h in Headers */,
 				D86FB1D05E933F4869FB6EC135EB87C4 /* IXTimer.h in Headers */,
+				6300F22F1BFBC36B0036F1AB /* IXBeaconManager.h in Headers */,
 				6955609B1494FC3724E359FCD22D63BE /* IXToggle.h in Headers */,
 				E08AC50A0A4C1DC7AAA1B4461C5286C1 /* IXTouchID.h in Headers */,
 				DDC2EFF1DEF99B6603D7D62E84ACC454 /* IXUICollectionViewCell.h in Headers */,
@@ -5912,6 +5919,7 @@
 				BEB18C91E351CADBA248300D981ED4E7 /* IXSandbox.m in Sources */,
 				FD091F7403F7AB532B0B67A9ABBDC671 /* IXScanner.m in Sources */,
 				A4BF4F18C70F4664F9A4E3C20BFF58B7 /* IXSize.m in Sources */,
+				6300F22E1BFBC35F0036F1AB /* IXBeaconManager.m in Sources */,
 				9795BA0C07A4868CBA6C52256EBF5029 /* IXSlider.m in Sources */,
 				13DCB66D6B31D5A8DB1C057F5F0945BA /* IXSocial.m in Sources */,
 				5A59B4061B56D23098CACEEAC31186C2 /* IXSocketDataProvider.m in Sources */,

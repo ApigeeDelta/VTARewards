@@ -84,6 +84,8 @@ typedef enum {
  */
 -(void)applyAppProperties;
 
+-(NSString*)appPropertyNamed:(NSString*)propertyName;
+
 /**
  *  Tells the manager when that the application has registered a device token.
  *  This method should be called from application:didRegisterForRemoteNotificationsWithDeviceToken: in your application delegate.

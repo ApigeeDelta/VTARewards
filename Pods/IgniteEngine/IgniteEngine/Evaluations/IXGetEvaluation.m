@@ -59,6 +59,10 @@
         IXViewController* viewController = [sandbox viewController];
         returnValue = [viewController getViewPropertyNamed:propertyName];
     }
+    else if( [[self objectID] isEqualToString:kIXAppRef] )
+    {
+        returnValue = [[IXAppManager sharedAppManager] appPropertyNamed:propertyName];
+    }
     else
     {
         IXBaseObject* baseObject = [[[self property] attributeContainer] ownerObject];

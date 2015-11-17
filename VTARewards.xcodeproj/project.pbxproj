@@ -13,7 +13,6 @@
 		3FFE71A21AF934E000AFCFED /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A11AF934E000AFCFED /* assets */; };
 		3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */; };
 		3FFE872C1BE8606900601777 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE872B1BE8606900601777 /* Images.xcassets */; };
-		63417A551BF298AF00FBB98F /* IXBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 63417A541BF298AF00FBB98F /* IXBeacon.m */; };
 		63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFF9A1BFA35260034607B /* IXNotifyAction.m */; };
 		CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */; };
 		CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */; };
@@ -50,8 +49,6 @@
 		3FFE71A11AF934E000AFCFED /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
 		3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		3FFE872B1BE8606900601777 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VTARewards/Images.xcassets; sourceTree = "<group>"; };
-		63417A531BF298AF00FBB98F /* IXBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXBeacon.h; sourceTree = "<group>"; };
-		63417A541BF298AF00FBB98F /* IXBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXBeacon.m; sourceTree = "<group>"; };
 		63EBFF991BFA35260034607B /* IXNotifyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXNotifyAction.h; sourceTree = "<group>"; };
 		63EBFF9A1BFA35260034607B /* IXNotifyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXNotifyAction.m; sourceTree = "<group>"; };
 		9540153EAE69696C9963D283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,8 +130,6 @@
 				CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */,
 				CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */,
 				CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */,
-				63417A531BF298AF00FBB98F /* IXBeacon.h */,
-				63417A541BF298AF00FBB98F /* IXBeacon.m */,
 				CA9F5E2E1BE8340B00A77B49 /* IXLocationTracker.h */,
 				CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */,
 				3FAAB0601AF92E3600CFFA7D /* Images.xcassets */,
@@ -326,7 +321,6 @@
 				3FAAB0561AF92E3600CFFA7D /* main.m in Sources */,
 				63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */,
 				CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */,
-				63417A551BF298AF00FBB98F /* IXBeacon.m in Sources */,
 				CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

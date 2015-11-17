@@ -1,12 +1,13 @@
 //
-//  IXBeacon.m
+//  IXBeaconManager.m
 //  IgniteEngineStarterKit
 //
 //  Created by Robert Walsh on 10/7/15.
 //  Copyright © 2015 Apigee. All rights reserved.
 //
 
-#import "IXBeacon.h"
+#import "IXBeaconManager.h"
+#import "IXConstants.h"
 #import "IXLocationManager.h"
 #import "NSString+IXAdditions.h"
 #import <KontaktSDK/KontaktSDK.h>
@@ -38,12 +39,12 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
 
 @end
 
-@interface IXBeacon () <KTKLocationManagerDelegate,IXLocationManagerDelegate>
+@interface IXBeaconManager () <KTKLocationManagerDelegate,IXLocationManagerDelegate>
 
 @property (strong,nonatomic) KTKLocationManager *locationManager;
 @property (strong,nonatomic) IXLocationManager* locationTrackerManager;
-@property (strong,nonatomic) NSArray *regionsToMonitor;
 
+@property (nonatomic, strong) NSArray *regionsToMonitor;
 @property (nonatomic, strong) NSMutableArray *waypoints;
 @property (nonatomic, strong) NSDictionary *start;
 @property (nonatomic, strong) NSDictionary *stop;
@@ -52,7 +53,7 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
 
 @end
 
-@implementation IXBeacon
+@implementation IXBeaconManager
 
 -(void)dealloc
 {
@@ -62,64 +63,70 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
     self.locationTrackerManager.delegate = nil;
 }
 
--(void)buildView
++(IXBeaconManager*)sharedManager
 {
-    self.locationManager = [[KTKLocationManager alloc]init];
-    self.locationManager.delegate = self;
-
-    self.locationTrackerManager = [[IXLocationManager alloc] init];
-    self.locationTrackerManager.delegate = self;
-
-    [self.locationTrackerManager.locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    [self.locationTrackerManager requestAccessToLocation];
+    static IXBeaconManager *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[IXBeaconManager alloc] init];
+    });
+    return sharedInstance;
 }
 
--(void)applySettings
+-(instancetype)init
 {
-    [super applySettings];
+    self = [super init];
+    if( self != nil )
+    {
+        self.locationManager = [[KTKLocationManager alloc]init];
+        self.locationManager.delegate = self;
 
-    [self.locationTrackerManager.locationManager setDistanceFilter:[self.attributeContainer getFloatValueForAttribute:kIXDistanceFilter defaultValue:20.0f]];
+        self.locationTrackerManager = [[IXLocationManager alloc] init];
+        [self.locationTrackerManager setDelegate:self];
+        [self.locationTrackerManager.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [self.locationTrackerManager.locationManager setDistanceFilter:kCLDistanceFilterNone];
+        [self.locationTrackerManager requestAccessToLocation];
+    }
+    return self;
+}
 
+-(void)startMonitoring
+{
+    if( [KTKLocationManager canMonitorBeacons] ) {
+        [self.locationManager setRegions:self.regionsToMonitor];
+        [self.locationManager startMonitoringBeacons];
+    } else {
+        NSLog(@"ERROR: Cannot monitor beacons.");
+    }
+}
+
+-(void)stopMonitoring
+{
+    [self.locationManager stopMonitoringBeacons];
+}
+
+-(BOOL)canMonitorBeacons
+{
+    return [NSString ix_stringFromBOOL:[KTKLocationManager canMonitorBeacons]];
+}
+
+-(NSString*)tripDataString
+{
+    if( self.tripData != nil && [NSJSONSerialization isValidJSONObject:self.tripData] ) {
+        NSError* err;
+        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:self.tripData options:0 error:&err];
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return nil;
+}
+
+-(void)setRegionUUIDsToMonitor:(NSArray*)regionUUIDs
+{
     NSMutableArray* regionsToMonitor = [NSMutableArray array];
-    NSArray* regionUUIDs = [self.attributeContainer getCommaSeparatedArrayOfValuesForAttribute:kIXRegionUUIDs defaultValue:nil];
     for( NSString* regionUUID in regionUUIDs ) {
         [regionsToMonitor addObject:[[KTKRegion alloc] initWithUUID:regionUUID]];
     }
     self.regionsToMonitor = regionsToMonitor;
-}
-
--(void)applyFunction:(NSString *)functionName withParameters:(IXAttributeContainer *)parameterContainer
-{
-    if( [functionName isEqualToString:kIXStart] ) {
-        if( [KTKLocationManager canMonitorBeacons] ) {
-            [self.locationManager setRegions:self.regionsToMonitor];
-            [self.locationManager startMonitoringBeacons];
-        } else {
-            NSLog(@"ERROR: Cannot monitor beacons.");
-        }
-    } else if( [functionName isEqualToString:kIXStop] ) {
-        [self.locationManager stopMonitoringBeacons];
-    } else {
-        [super applyFunction:functionName withParameters:parameterContainer];
-    }
-}
-
--(NSString *)getReadOnlyPropertyValue:(NSString *)propertyName
-{
-    NSString* returnValue = nil;
-    if( [propertyName isEqualToString:kIXCanMonitorBeacons] ) {
-        returnValue = [NSString ix_stringFromBOOL:[KTKLocationManager canMonitorBeacons]];
-    } else if( [propertyName isEqualToString:kIXTripData] ) {
-        if( self.tripData != nil && [NSJSONSerialization isValidJSONObject:self.tripData] ) {
-            NSError* err;
-            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:self.tripData options:0 error:&err];
-            returnValue = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        }
-    }
-    else {
-        returnValue = [super getReadOnlyPropertyValue:propertyName];
-    }
-    return returnValue;
 }
 
 - (void)locationManager:(KTKLocationManager *)locationManager didChangeState:(KTKLocationManagerState)state withError:(NSError *)error
@@ -140,7 +147,7 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
     [self.locationTrackerManager.locationManager startMonitoringSignificantLocationChanges];
     [self.locationTrackerManager beginLocationTracking];
 
-    [self.actionContainer executeActionsForEventNamed:kIXEnteredBeaconRegion];
+    [self.delegate beaconManagerEnteredRegion:self];
 }
 
 -(void)locationManager:(KTKLocationManager *)locationManager didExitRegion:(KTKRegion *)region
@@ -164,8 +171,8 @@ IX_STATIC_CONST_STRING kIXWayPoints = @"waypoints";
     if (self.stop!=nil) {
         [self.tripData setObject:self.stop forKey:kIXStop];
     }
-    
-    [self.actionContainer executeActionsForEventNamed:kIXExitedBeaconRegion];
+
+    [self.delegate beaconManagerExitedRegion:self];
 }
 
 -(void)locationManagerAuthStatusChanged:(CLAuthorizationStatus)status;

@@ -46,6 +46,7 @@
 #import "IXSandbox.h"
 #import "IXViewController.h"
 #import "NSURL+IXAdditions.h"
+#import "NSString+IXAdditions.h"
 
 #import "ApigeeClient.h"
 #import "ApigeeDataClient.h"
@@ -56,6 +57,7 @@
 //#import "RKLog.h"
 #import "SDWebImageManager.h"
 #import "IXLocationManager.h"
+#import "IXBeaconManager.h"
 
 // Top Level Containers
 IX_STATIC_CONST_STRING kIXAppActions = @"$app.actions";
@@ -150,7 +152,22 @@ IX_STATIC_CONST_STRING kIXDefaultIndexPath = @"IXApp";
 IX_STATIC_CONST_STRING kIXDefaultIndexPathOld = @"assets/_index.json";
 IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x";
 
-@interface IXAppManager () <IXLocationManagerDelegate>
+// IXBeacon Attributes
+IX_STATIC_CONST_STRING kIXBeaconRegionUUIDs = @"beacon.regionUUIDs";
+
+// IXBeacon ReadOnly Attributes
+IX_STATIC_CONST_STRING kIXBeaconCanMonitorBeacons = @"beacon.canMonitor";
+IX_STATIC_CONST_STRING kIXBeaconTripData = @"beacon.tripData";
+
+// IXBeacon Functions
+IX_STATIC_CONST_STRING kIXBeaconStart = @"beacon.start";
+IX_STATIC_CONST_STRING kIXBeaconStop = @"beacon.stop";
+
+// IXBeacon Events
+IX_STATIC_CONST_STRING kIXBeaconEnteredRegion = @"beacon.enteredRegion";
+IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
+
+@interface IXAppManager () <IXLocationManagerDelegate,IXBeaconManagerDelegate>
 
 @property (nonatomic,assign) IXAppMode appMode;
 @property (nonatomic,assign) BOOL layoutDebuggingEnabled;
@@ -208,6 +225,7 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
         _reachabilty = [Reachability reachabilityForInternetConnection];
 
         [[IXLocationManager sharedLocationManager] setDelegate:self];
+        [[IXBeaconManager sharedManager] setDelegate:self];
     }
     return self;
 }
@@ -425,7 +443,9 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
     [self setAppLeftDrawerViewPath:[[self appProperties] getStringValueForAttribute:kIXDrawerViewLeft defaultValue:nil]];
     [self setAppRightDrawerViewPath:[[self appProperties] getStringValueForAttribute:kIXDrawerViewRight defaultValue:nil]];
     [[self drawerController] setAnimationVelocity:[[self appProperties] getFloatValueForAttribute:kIXDrawerToggleVelocity defaultValue:840.0f]];
-    
+
+    [[IXBeaconManager sharedManager] setRegionUUIDsToMonitor:[[self appProperties] getCommaSeparatedArrayOfValuesForAttribute:kIXBeaconRegionUUIDs defaultValue:nil]];
+
     if( [[self appDefaultViewPath] length] > 0 && [IXPathHandler pathIsLocal:[self appDefaultViewPath]] )
     {
         [self setAppDefaultViewPath:[IXPathHandler localPathWithRelativeFilePath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:kIXAssetsBasePath],[self appDefaultViewPath]]]];
@@ -659,6 +679,14 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
     {
         [[IXLocationManager sharedLocationManager] stopTrackingLocation];
     }
+    else if( [functionName isEqualToString:kIXBeaconStart] )
+    {
+        [[IXBeaconManager sharedManager] startMonitoring];
+    }
+    else if( [functionName isEqualToString:kIXBeaconStop] )
+    {
+        [[IXBeaconManager sharedManager] stopMonitoring];
+    }
 }
 
 -(void)storeSessionProperties
@@ -675,9 +703,14 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
 {
     if( [appEventName length] > 0 )
     {
-        [[self actionContainer] setOwnerObject:[[self currentIXViewController] containerControl]];
-        [[self actionContainer] executeActionsForEventNamed:appEventName];
-        [[self actionContainer] setOwnerObject:nil];
+        for( UIViewController* viewController in self.rootViewController.viewControllers ) {
+            if( [viewController isKindOfClass:[IXViewController class]] ) {
+                IXViewController* ixViewController = (IXViewController*) viewController;
+                [[self actionContainer] setOwnerObject:[ixViewController containerControl]];
+                [[self actionContainer] executeActionsForEventNamed:appEventName];
+            }
+            [[self actionContainer] setOwnerObject:nil];
+        }
     }
 }
 
@@ -730,6 +763,19 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
     }
 }
 
+-(NSString*)appPropertyNamed:(NSString*)propertyName
+{
+    NSString* returnValue = nil;
+    if( [propertyName isEqualToString:kIXBeaconCanMonitorBeacons] ) {
+        returnValue = [NSString ix_stringFromBOOL:[[IXBeaconManager sharedManager] canMonitorBeacons]];
+    } else if( [propertyName isEqualToString:kIXBeaconTripData] ) {
+        returnValue = [[IXBeaconManager sharedManager] tripDataString];
+    } else {
+        returnValue = [[self appProperties] getStringValueForAttribute:propertyName defaultValue:nil];
+    }
+    return returnValue;
+}
+
 -(void)locationManagerAuthStatusChanged:(CLAuthorizationStatus)status
 {
     [_actionContainer executeActionsForEventNamed:kIXLocationAuthChanged];
@@ -739,6 +785,16 @@ IX_STATIC_CONST_STRING kIXTokenStringFormat = @"%08x%08x%08x%08x%08x%08x%08x%08x
 -(void)locationManagerDidUpdateLocation:(CLLocation *)location
 {
     [_actionContainer executeActionsForEventNamed:kIXLocationLocationUpdated];
+}
+
+-(void)beaconManagerEnteredRegion:(IXBeaconManager*)beaconManager
+{
+    [self fireAppEventNamed:kIXBeaconEnteredRegion];
+}
+
+-(void)beaconManagerExitedRegion:(IXBeaconManager*)beaconManager
+{
+    [self fireAppEventNamed:kIXBeaconExitedRegion];
 }
 
 @end
