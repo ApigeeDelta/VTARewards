@@ -1,135 +1,133 @@
 {
-  "$view": {
-    "attributes": {
-      "_id": "garage",
-      "statusBar.style": "hidden",
-      "bg.color": "#cdcdcd"
-    },
-    "actions": [
-      {
-        "_type": "Refresh",
+    "$view": {
+        "actions": [],
         "attributes": {
-          "_target": "getHvac,getSecurity,getDishwasher"
-        },
-        "on": "willAppear"
-      }
-    ],
-    "controls": [
-      {
-        "_id": "layoutMain",
-        "_type": "Layout",
-        "attributes": {
-          "size.w": "100%",
-          "size.h": "100%",
-          "padding.top": 20,
-          "visible": true,
-          "bg.color": "ffffff",
-          "layoutType": "float"
+            "_id": "garage",
+            "bg.color": "#cdcdcd",
+            "statusBar.style": "hidden"
         },
         "controls": [
-          {
-            "_id": "layoutDivider",
-            "_type": "Layout",
-            "attributes": {
-              "size.w": "100%",
-              "size.h": "100%",
-              "visible": true
+            {
+                "_id": "layoutMain",
+                "_type": "Layout",
+                "attributes": {
+                    "bg.color": "ffffff",
+                    "layoutType": "float",
+                    "padding.top": 20,
+                    "size.h": "100%",
+                    "size.w": "100%",
+                    "visible": true
+                },
+                "controls": [
+                    {
+                        "_id": "layoutDivider",
+                        "_type": "Layout",
+                        "attributes": {
+                            "size.h": "100%",
+                            "size.w": "100%",
+                            "visible": true
+                        },
+                        "controls": [
+                            {
+                                "_id": "textAPIConsole",
+                                "_type": "Text",
+                                "actions": [
+                                    {
+                                        "_type": "Navigate",
+                                        "attributes": {
+                                            "1animation.type": "flip.r",
+                                            "to": "apiconsole.json"
+                                        },
+                                        "on": "touchUp"
+                                    }
+                                ],
+                                "attributes": {
+                                    "align.h": "right",
+                                    "bg.color": "#ff00ff00",
+                                    "color": "[[$app.color.text]]",
+                                    "font": "Aileron-Regular:18",
+                                    "layoutType": "float",
+                                    "margin.top": 0,
+                                    "size.h": "100%",
+                                    "size.w": "100%",
+                                    "text": "[[$custom.title:lowercase]]",
+                                    "text.align": "center"
+                                }
+                            },
+                            {
+                                "_id": "btnMenu",
+                                "_type": "Image",
+                                "actions": [
+                                    {
+                                        "_type": "Event",
+                                        "attributes": {
+                                            "_target": "$custom",
+                                            "eventName": "button.left"
+                                        },
+                                        "on": "touchUp"
+                                    }
+                                ],
+                                "attributes": {
+                                    "bg.color": "#ff00ff00",
+                                    "enabled": [
+                                        "if :: [[$session.fb_token:is(!empty && !nil)]] :: true :: false"
+                                    ],
+                                    "image": "[[$custom.button.left]]",
+                                    "layoutType": "float",
+                                    "margin.left": 7,
+                                    "margin.top": 0,
+                                    "size.h": 42,
+                                    "size.w": 42,
+                                    "visible": [
+                                        "if :: [[$session.fb_token:is(!empty && !nil)]] :: true :: false"
+                                    ]
+                                }
+                            },
+                            {
+                                "_id": "btnRight",
+                                "_type": "Image",
+                                "actions": [
+                                    {
+                                        "_type": "Event",
+                                        "attributes": {
+                                            "_target": "$custom",
+                                            "eventName": "button.right"
+                                        },
+                                        "on": "touchUp"
+                                    }
+                                ],
+                                "attributes": {
+                                    "align.h": "right",
+                                    "bg.color": "#ff00ff00",
+                                    "image": "[[$custom.button.right]]",
+                                    "layoutType": "float",
+                                    "margin.right": 7,
+                                    "margin.top": 0,
+                                    "size.h": 42,
+                                    "size.w": 42,
+                                    "visible": [
+                                        "if :: [[$custom.button.right]] == '' :: false"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
-            "controls": [
-              {
-                "_id": "textAPIConsole",
-                "_type": "Text",
-                "actions": [
-                  {
-                    "_type": "Navigate",
-                    "attributes": {
-                      "to": "apiconsole.json",
-                      "1animation.type": "flip.r"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
+            {
+                "_id": "layoutDivider",
+                "_type": "Layout",
                 "attributes": {
-                  "color": "[[$app.color.text]]",
-                  "bg.color": "#ff00ff00",
-                  "align.h": "right",
-                  "margin.top": 0,
-                  "size.h": "100%",
-                  "size.w": "100%",
-                  "text.align": "center",
-                  "font": "Aileron-Regular:18",
-                  "layoutType": "float",
-                  "text": "[[$custom.title:lowercase]]"
-                }
-              },
-              {
-                "_id": "btnMenu",
-                "_type": "Image",
-                "actions": [
-                  {
-                    "_type": "Event",
-                    "attributes": {
-                      "_target": "$custom",
-                      "eventName": "button.left"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "attributes": {
-                  "bg.color": "#ff00ff00",
-                  "margin.left": 7,
-                  "size.h": 42,
-                  "size.w": 42,
-                  "margin.top": 0,
-                  "image": "[[$custom.button.left]]",
-                  "layoutType": "float"
-                }
-              },
-              {
-                "_id": "btnRight",
-                "_type": "Image",
-                "actions": [
-                  {
-                    "_type": "Event",
-                    "attributes": {
-                      "_target": "$custom",
-                      "eventName": "button.right"
-                    },
-                    "on": "touchUp"
-                  }
-                ],
-                "attributes": {
-                  "bg.color": "#ff00ff00",
-                  "margin.right": 7,
-                  "size.h": 42,
-                  "size.w": 42,
-                  "margin.top": 0,
-                  "image": "[[$custom.button.right]]",
-                  "layoutType": "float",
-                  "align.h": "right",
-                  "visible": [
-                    "if :: [[$custom.button.right]] == '' :: false"
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "_id": "layoutDivider",
-        "_type": "Layout",
-        "attributes": {
-          "size.w": "100%",
-          "size.h": 1,
-          "visible": true,
-          "align.v": "bottom",
-          "bg.color": "d4d7dd",
-          "layoutType": "float"
-        },
-        "controls": []
-      }
-    ],
-    "datasources": []
-  }
+                    "align.v": "bottom",
+                    "bg.color": "d4d7dd",
+                    "layoutType": "float",
+                    "size.h": 1,
+                    "size.w": "100%",
+                    "visible": true
+                },
+                "controls": []
+            }
+        ],
+        "datasources": []
+    }
 }

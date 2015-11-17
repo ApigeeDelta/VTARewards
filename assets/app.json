@@ -19,6 +19,9 @@
             "defaultView": [
                 "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
             ],
+            "drawer.allowedStates": [
+                "if :: [[$session.fb_token:is(!empty && !nil)]] :: /home.json :: /login.json"
+            ],
             "drawer.l.max.w": "{{[[$device.screen.width]]-50;}}",
             "drawer.l.url": "/menu.json",
             "drawer.shadow.enabled": false,
