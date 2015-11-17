@@ -84,7 +84,7 @@ typedef enum {
  */
 -(void)applyAppProperties;
 
--(NSString*)appPropertyNamed:(NSString*)propertyName;
+-(NSString*)getAppAttributeNamed:(NSString*)attributeName;
 
 /**
  *  Tells the manager when that the application has registered a device token.

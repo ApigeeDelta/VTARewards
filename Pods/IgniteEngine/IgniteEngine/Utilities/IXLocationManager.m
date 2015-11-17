@@ -100,7 +100,7 @@
     return didHaveAKey;
 }
 
--(NSString*)tripDataString
+-(NSString*)tripDataJSON
 {
     if( self.tripData != nil && [NSJSONSerialization isValidJSONObject:self.tripData] ) {
         NSError* err;
@@ -136,7 +136,7 @@
             [self.tripData setObject:self.start forKey:@"start"];
         }
         if (self.waypoints!=nil) {
-            [self.tripData setObject:self.waypoints forKey:@"wayPoints"];
+            [self.tripData setObject:self.waypoints forKey:@"waypoints"];
         }
         if (self.stop!=nil) {
             [self.tripData setObject:self.stop forKey:@"stop"];

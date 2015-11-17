@@ -103,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				3FFE872B1BE8606900601777 /* Images.xcassets */,
-				3FAAB0521AF92E3600CFFA7D /* IgniteEngineStarterKit */,
+				3FAAB0521AF92E3600CFFA7D /* VTARewards */,
 				3FAAB0511AF92E3600CFFA7D /* Products */,
 				86F25A01E2DA07909B130107 /* Pods */,
 				3EE4325606A4AE2FAA0005FD /* Frameworks */,
@@ -118,7 +118,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3FAAB0521AF92E3600CFFA7D /* IgniteEngineStarterKit */ = {
+		3FAAB0521AF92E3600CFFA7D /* VTARewards */ = {
 			isa = PBXGroup;
 			children = (
 				3FFE71A11AF934E000AFCFED /* assets */,
@@ -137,7 +137,7 @@
 				CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */,
 				CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */,
 			);
-			path = IgniteEngineStarterKit;
+			path = VTARewards;
 			sourceTree = "<group>";
 		};
 		3FAAB0531AF92E3600CFFA7D /* Supporting Files */ = {

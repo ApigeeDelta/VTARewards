@@ -57,7 +57,7 @@
         [self.locationManager setRegions:self.regionsToMonitor];
         [self.locationManager startMonitoringBeacons];
     } else {
-        NSLog(@"ERROR: Cannot monitor beacons.");
+        DDLogError(@"ERROR: Cannot monitor beacons.");
     }
 }
 
@@ -84,7 +84,7 @@
 {
     if (state == KTKLocationManagerStateFailed)
     {
-        NSLog(@"Something went wrong with your Location Services settings. Check OS settings.");
+        DDLogError(@"Error: Something went wrong with your Location Services settings. Check OS settings.");
     }
 }
 
@@ -103,7 +103,7 @@
     NSLog(@"Ranged beacons count: %lu", (unsigned long)[beacons count]);
     [beacons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CLBeacon* beacon = (CLBeacon*)obj;
-        NSLog(@"%d - major %d minor %d strength %d accuracy %f",idx,[beacon.major intValue],[beacon.minor intValue],beacon.rssi,beacon.accuracy);
+        DDLogInfo(@"%lu - major %d minor %d strength %ld accuracy %0.4f",(unsigned long)idx,[beacon.major intValue],[beacon.minor intValue],(long)beacon.rssi,beacon.accuracy);
     }];
 }
 

@@ -61,7 +61,7 @@
     }
     else if( [[self objectID] isEqualToString:kIXAppRef] )
     {
-        returnValue = [[IXAppManager sharedAppManager] appPropertyNamed:propertyName];
+        returnValue = [[IXAppManager sharedAppManager] getAppAttributeNamed:propertyName];
     }
     else
     {

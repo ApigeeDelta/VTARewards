@@ -132,7 +132,7 @@ IX_STATIC_CONST_STRING kIXRequestAccessLocation = @"location.auth.request";
 
 IX_STATIC_CONST_STRING kIXStartLocationTracking = @"location.beginTracking";
 IX_STATIC_CONST_STRING kIXStopLocationTracking = @"location.endTracking";
-IX_STATIC_CONST_STRING kIXLocationTripData = @"location.tripData";
+IX_STATIC_CONST_STRING kIXLocationTripData = @"location.lastTripData";
 
 // Device Readonly Attributes
 IX_STATIC_CONST_STRING kIXDeviceModel = @"model";
@@ -765,15 +765,15 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
     }
 }
 
--(NSString*)appPropertyNamed:(NSString*)propertyName
+-(NSString*)getAppAttributeNamed:(NSString*)attributeName
 {
     NSString* returnValue = nil;
-    if( [propertyName isEqualToString:kIXBeaconCanMonitorBeacons] ) {
+    if( [attributeName isEqualToString:kIXBeaconCanMonitorBeacons] ) {
         returnValue = [NSString ix_stringFromBOOL:[[IXBeaconManager sharedManager] canMonitorBeacons]];
-    } else if( [propertyName isEqualToString:kIXLocationTripData] ) {
-        returnValue = [[IXLocationManager sharedLocationManager] tripDataString];
+    } else if( [attributeName isEqualToString:kIXLocationTripData] ) {
+        returnValue = [[IXLocationManager sharedLocationManager] tripDataJSON];
     } else {
-        returnValue = [[self appProperties] getStringValueForAttribute:propertyName defaultValue:nil];
+        returnValue = [[self appProperties] getStringValueForAttribute:attributeName defaultValue:nil];
     }
     return returnValue;
 }
