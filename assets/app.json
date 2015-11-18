@@ -24,7 +24,7 @@
                 "on": "beacon.enteredRegion"
             },
             {
-                "_type": "Alert",
+                "_type": "xAlert",
                 "attributes": {
                     "message": "[[$device.bluetooth.state]]"
                 },
@@ -33,7 +33,7 @@
             {
                 "_type": "Alert",
                 "attributes": {
-                    "title": "Entered region (home)"
+                    "title": "You have entered the range of a VTA Beacon"
                 },
                 "on": "beacon.enteredRegion"
             },
@@ -79,7 +79,7 @@
             {
                 "_type": "Notify",
                 "attributes": {
-                    "message": "You are near a beacon (home)",
+                    "message": "You have entered the range of a VTA Beacon",
                     "title": "Beacon around"
                 },
                 "on": "beacon.enteredRegion"
@@ -87,7 +87,7 @@
             {
                 "_type": "Notify",
                 "attributes": {
-                    "message": "You are leaving a beacon region (home)!",
+                    "message": "You have left the range of a VTA Beacon",
                     "title": "Beacon away"
                 },
                 "on": "beacon.exitedRegion"
