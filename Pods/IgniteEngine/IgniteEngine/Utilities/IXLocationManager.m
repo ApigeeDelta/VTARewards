@@ -120,7 +120,7 @@
 {
     self.start = nil;
     self.stop = nil;
-    self.waypoints = nil;
+    self.waypoints = [NSMutableArray array];
     self.tripData = nil;
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
