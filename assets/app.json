@@ -49,7 +49,7 @@
                 "_type": "Function",
                 "actions": [
                     {
-                        "_type": "Load",
+                        "_type": "Refresh",
                         "attributes": {
                             "_target": "postTrip"
                         },
@@ -109,6 +109,7 @@
             "drawer.l.url": "/menu.json",
             "drawer.shadow.enabled": false,
             "location.autoRequest.enabled": false,
+            "location.trackTripData.enabled": true,
             "logging.datasource.enabled": true,
             "logging.level": "verbose",
             "mode": "debug",
@@ -157,7 +158,7 @@
                 ],
                 "attributes": {
                     "autoLoad.enabled": false,
-                    "body": "[[$app.location.lastTripData.trip]]",
+                    "body": "[[$app.location.lastTripData]]",
                     "headers": {
                         "access_token": "[[$session.access_token]]"
                     },
