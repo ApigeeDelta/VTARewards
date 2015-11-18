@@ -168,7 +168,7 @@ IX_STATIC_CONST_STRING kIXBeaconStop = @"beacon.stop";
 IX_STATIC_CONST_STRING kIXBeaconEnteredRegion = @"beacon.enteredRegion";
 IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 
-@interface IXAppManager () <IXLocationManagerDelegate,IXBeaconManagerDelegate>
+@interface IXAppManager () <IXLocationManagerDelegate,IXBeaconManagerDelegate,CBCentralManagerDelegate>
 
 @property (nonatomic,assign) IXAppMode appMode;
 @property (nonatomic,assign) BOOL layoutDebuggingEnabled;
@@ -182,6 +182,7 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 @property (nonatomic,copy) NSString *appDefaultViewPath;
 @property (nonatomic,copy) NSString *appLeftDrawerViewPath;
 @property (nonatomic,copy) NSString *appRightDrawerViewPath;
+@property (nonatomic,copy) NSString *bluetoothState;
 
 @property (nonatomic,strong) IXAttributeContainer *deviceProperties;
 @property (nonatomic,strong) IXAttributeContainer *appProperties;
@@ -190,6 +191,7 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 
 @property (nonatomic,strong) Reachability *reachabilty;
 @property (nonatomic,strong) ApigeeClient *apigeeClient;
+@property (nonatomic,readwrite) CBCentralManager *bluetoothManager;
 
 @property (nonatomic,strong) UIWebView *webViewForJS;
 
@@ -224,7 +226,11 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
         [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView|MMCloseDrawerGestureModeTapCenterView];
 
         _reachabilty = [Reachability reachabilityForInternetConnection];
-
+        
+        _bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self
+                                                                 queue:nil
+                                                               options:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0]
+                                                                                                    forKey:CBCentralManagerOptionShowPowerAlertKey]];
         [[IXLocationManager sharedLocationManager] setDelegate:self];
         [[IXBeaconManager sharedManager] setDelegate:self];
     }
@@ -797,6 +803,35 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 -(void)beaconManagerExitedRegion:(IXBeaconManager*)beaconManager
 {
     [self fireAppEventNamed:kIXBeaconExitedRegion];
+}
+
+#pragma mark - CBCentralManagerDelegate
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    // This delegate method will monitor for any changes in bluetooth state and respond accordingly
+    _bluetoothState = [self bluetoothStatusFromCurrentState];
+}
+
+- (NSString*)bluetoothState
+{
+    return [self bluetoothStatusFromCurrentState];
+}
+
+- (NSString*)bluetoothStatusFromCurrentState
+{
+    _bluetoothState = nil;
+    NSString* bluetoothState;
+    switch(_bluetoothManager.state)
+    {
+        case CBCentralManagerStateResetting: bluetoothState = @"resetting"; break;
+        case CBCentralManagerStateUnsupported: bluetoothState = @"unsupported"; break;
+        case CBCentralManagerStateUnauthorized: bluetoothState = @"unauthorized"; break;
+        case CBCentralManagerStatePoweredOff: bluetoothState = @"off"; break;
+        case CBCentralManagerStatePoweredOn: bluetoothState = @"on"; break;
+        default: bluetoothState = @"unknown"; break;
+    }
+    return bluetoothState;
 }
 
 @end

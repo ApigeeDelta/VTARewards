@@ -26,6 +26,13 @@
             {
                 "_type": "Alert",
                 "attributes": {
+                    "message": "[[$device.bluetooth.state]]"
+                },
+                "on": "didBecomeActive"
+            },
+            {
+                "_type": "Alert",
+                "attributes": {
                     "title": "Entered region (home)"
                 },
                 "on": "beacon.enteredRegion"
