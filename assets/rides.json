@@ -54,8 +54,8 @@
                   "rideIndex": "[[$row.$index]]",
                   "textRideDate": "[[$row.tripEnd.timestamp:moment(js|MMMM dd yyyy)]]",
                   "textRideDistance": "[[$row.summary.distanceTraveled.miles:round(1)]]",
-                  "textRideYouSaved": "{[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
-                  "textRideYouSavedCO2": "[[$row.summary.savings.versusAverage:round(2)]] kg CO₂"
+                  "textRideYouSaved": "{[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] lb CO₂}",
+                  "textRideYouSavedCO2": "[[$row.summary.savings.versusAverage:round(2)]] lb CO₂"
                 },
                 "on": "touchUp"
               },
@@ -124,7 +124,7 @@
                   "margin.top": 0,
                   "markdown.enabled": true,
                   "size.h": 40,
-                  "text": "You saved {[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] kg CO₂}",
+                  "text": "You saved {[[$app.color.textGreen]]|[[$row.summary.savings.versusAverage:round(2)]] lb CO₂}",
                   "text.align": "center"
                 }
               },
