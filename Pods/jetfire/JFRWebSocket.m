@@ -39,6 +39,11 @@ typedef NS_ENUM(NSUInteger, JFRInternalErrorCode) {
     JFROutputStreamWriteError  = 1
 };
 
+typedef NS_ENUM(NSUInteger, JFRInternalHTTPStatus) {
+    JFRInternalHTTPStatusWebSocket = 101,
+    JFRInternalHTTPStatusError     = 0
+};
+
 //holds the responses in our read stack to properly process messages
 @interface JFRResponse : NSObject
 
@@ -64,6 +69,7 @@ typedef NS_ENUM(NSUInteger, JFRInternalErrorCode) {
 @property(nonatomic, strong)NSArray *optProtocols;
 @property(nonatomic, assign)BOOL isCreated;
 @property(nonatomic, assign)BOOL didDisconnect;
+@property(nonatomic, assign)BOOL certValidated;
 
 @end
 
@@ -99,6 +105,7 @@ static const size_t  JFRMaxFrameSize        = 32;
 - (instancetype)initWithURL:(NSURL *)url protocols:(NSArray*)protocols
 {
     if(self = [super init]) {
+        self.certValidated = NO;
         self.voipEnabled = NO;
         self.selfSignedSSL = NO;
         self.queue = dispatch_get_main_queue();
@@ -238,6 +245,8 @@ static const size_t  JFRMaxFrameSize        = 32;
     if([self.url.scheme isEqualToString:@"wss"] || [self.url.scheme isEqualToString:@"https"]) {
         [self.inputStream setProperty:NSStreamSocketSecurityLevelNegotiatedSSL forKey:NSStreamSocketSecurityLevelKey];
         [self.outputStream setProperty:NSStreamSocketSecurityLevelNegotiatedSSL forKey:NSStreamSocketSecurityLevelKey];
+    } else {
+        self.certValidated = YES; //not a https session, so no need to check SSL pinning
     }
     if(self.voipEnabled) {
         [self.inputStream setProperty:NSStreamNetworkServiceTypeVoIP forKey:NSStreamNetworkServiceType];
@@ -268,6 +277,16 @@ static const size_t  JFRMaxFrameSize        = 32;
 
 /////////////////////////////////////////////////////////////////////////////
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+    if(self.security && !self.certValidated && (eventCode == NSStreamEventHasBytesAvailable || eventCode == NSStreamEventHasSpaceAvailable)) {
+        SecTrustRef trust = (__bridge SecTrustRef)([aStream propertyForKey:(__bridge_transfer NSString *)kCFStreamPropertySSLPeerTrust]);
+        NSString *domain = [aStream propertyForKey:(__bridge_transfer NSString *)kCFStreamSSLPeerName];
+        if([self.security isValid:trust domain:domain]) {
+            self.certValidated = YES;
+        } else {
+            [self disconnectStream:[self errorWithDetail:@"Invalid SSL certificate" code:1]];
+            return;
+        }
+    }
     switch (eventCode) {
         case NSStreamEventNone:
             break;
@@ -307,6 +326,7 @@ static const size_t  JFRMaxFrameSize        = 32;
     self.inputStream = nil;
     self.isRunLoop = NO;
     _isConnected = NO;
+    self.certValidated = NO;
     [self doDisconnect:error];
 }
 /////////////////////////////////////////////////////////////////////////////
@@ -320,9 +340,9 @@ static const size_t  JFRMaxFrameSize        = 32;
         NSInteger length = [self.inputStream read:buffer maxLength:BUFFER_MAX];
         if(length > 0) {
             if(!self.isConnected) {
-                BOOL status = [self processHTTP:buffer length:length];
-                if(!status) {
-                    [self doDisconnect:[self errorWithDetail:@"Invalid HTTP upgrade" code:1]];
+                JFRInternalHTTPStatus status = [self processHTTP:buffer length:length];
+                if(status != JFRInternalHTTPStatusWebSocket) {
+                    [self doDisconnect:[self errorWithDetail:@"Invalid HTTP upgrade" code:1 userInfo:@{@"HTTPResponseStatusCode" : @(status)}]];
                 }
             } else {
                 BOOL process = NO;
@@ -355,7 +375,7 @@ static const size_t  JFRMaxFrameSize        = 32;
 }
 /////////////////////////////////////////////////////////////////////////////
 //Finds the HTTP Packet in the TCP stream, by looking for the CRLF.
-- (BOOL)processHTTP:(uint8_t*)buffer length:(NSInteger)bufferLen {
+- (JFRInternalHTTPStatus)processHTTP:(uint8_t*)buffer length:(NSInteger)bufferLen {
     int k = 0;
     NSInteger totalSize = 0;
     for(int i = 0; i < bufferLen; i++) {
@@ -370,43 +390,45 @@ static const size_t  JFRMaxFrameSize        = 32;
         }
     }
     if(totalSize > 0) {
-        if([self validateResponse:buffer length:totalSize]) {
-            if([self.delegate respondsToSelector:@selector(websocketDidConnect:)]) {
-                __weak typeof(self) weakSelf = self;
-                dispatch_async(self.queue,^{
-                    _isConnected = YES;
+        JFRInternalHTTPStatus status = [self validateResponse:buffer length:totalSize];
+        if (status == JFRInternalHTTPStatusWebSocket) {
+            _isConnected = YES;
+            __weak typeof(self) weakSelf = self;
+            dispatch_async(self.queue,^{
+                if([self.delegate respondsToSelector:@selector(websocketDidConnect:)]) {
                     [weakSelf.delegate websocketDidConnect:self];
-                    if(weakSelf.onConnect) {
-                        weakSelf.onConnect();
-                    }
-                });
-            }
+                }
+                if(weakSelf.onConnect) {
+                    weakSelf.onConnect();
+                }
+            });
             totalSize += 1; //skip the last \n
             NSInteger  restSize = bufferLen-totalSize;
             if(restSize > 0) {
                 [self processRawMessage:(buffer+totalSize) length:restSize];
             }
-            return YES;
         }
+        return status;
     }
-    return NO;
+    return JFRInternalHTTPStatusError;
 }
 /////////////////////////////////////////////////////////////////////////////
 //Validate the HTTP is a 101, as per the RFC spec.
-- (BOOL)validateResponse:(uint8_t *)buffer length:(NSInteger)bufferLen {
+- (JFRInternalHTTPStatus)validateResponse:(uint8_t *)buffer length:(NSInteger)bufferLen {
     CFHTTPMessageRef response = CFHTTPMessageCreateEmpty(kCFAllocatorDefault, NO);
     CFHTTPMessageAppendBytes(response, buffer, bufferLen);
-    if(CFHTTPMessageGetResponseStatusCode(response) != 101) {
+    JFRInternalHTTPStatus statusCode = CFHTTPMessageGetResponseStatusCode(response);
+    if(statusCode != JFRInternalHTTPStatusWebSocket) {
         CFRelease(response);
-        return NO;
+        return statusCode;
     }
     NSDictionary *headers = (__bridge_transfer NSDictionary *)(CFHTTPMessageCopyAllHeaderFields(response));
     NSString *acceptKey = headers[headerWSAcceptName];
     CFRelease(response);
     if(acceptKey.length > 0) {
-        return YES;
+        return statusCode;
     }
-    return NO;
+    return JFRInternalHTTPStatusError;
 }
 /////////////////////////////////////////////////////////////////////////////
 -(void)processRawMessage:(uint8_t*)buffer length:(NSInteger)bufferLen {
@@ -613,6 +635,9 @@ static const size_t  JFRMaxFrameSize        = 32;
 }
 /////////////////////////////////////////////////////////////////////////////
 -(void)dequeueWrite:(NSData*)data withCode:(JFROpCode)code {
+    if(!self.isConnected) {
+        return;
+    }
     if(!self.writeQueue) {
         self.writeQueue = [[NSOperationQueue alloc] init];
         self.writeQueue.maxConcurrentOperationCount = 1;
@@ -620,20 +645,10 @@ static const size_t  JFRMaxFrameSize        = 32;
     
     __weak typeof(self) weakSelf = self;
     [self.writeQueue addOperationWithBlock:^{
-        typeof(weakSelf) strongSelf = weakSelf;
-        //stream isn't ready, let's wait
-        int tries = 0;
-        while(!strongSelf.outputStream || !strongSelf.isConnected) {
-            if(tries < 5) {
-                sleep(1);
-            } else {
-                break;
-            }
-            tries++;
-        }
-        if(!strongSelf.isConnected) {
+        if(!weakSelf || !weakSelf.isConnected) {
             return;
         }
+        typeof(weakSelf) strongSelf = weakSelf;
         uint64_t offset = 2; //how many bytes do we need to skip for the header
         uint8_t *bytes = (uint8_t*)[data bytes];
         uint64_t dataLength = data.length;
@@ -670,7 +685,7 @@ static const size_t  JFRMaxFrameSize        = 32;
         }
         uint64_t total = 0;
         while (true) {
-            if(!strongSelf.outputStream) {
+            if(!strongSelf.isConnected || !strongSelf.outputStream) {
                 break;
             }
             NSInteger len = [strongSelf.outputStream write:([frame bytes]+total) maxLength:(NSInteger)(offset-total)];
@@ -706,8 +721,15 @@ static const size_t  JFRMaxFrameSize        = 32;
 /////////////////////////////////////////////////////////////////////////////
 - (NSError*)errorWithDetail:(NSString*)detail code:(NSInteger)code
 {
+    return [self errorWithDetail:detail code:code userInfo:nil];
+}
+- (NSError*)errorWithDetail:(NSString*)detail code:(NSInteger)code userInfo:(NSDictionary *)userInfo
+{
     NSMutableDictionary* details = [NSMutableDictionary dictionary];
-    [details setValue:detail forKey:NSLocalizedDescriptionKey];
+    details[detail] = NSLocalizedDescriptionKey;
+    if (userInfo) {
+        [details addEntriesFromDictionary:userInfo];
+    }
     return [[NSError alloc] initWithDomain:@"JFRWebSocket" code:code userInfo:details];
 }
 /////////////////////////////////////////////////////////////////////////////

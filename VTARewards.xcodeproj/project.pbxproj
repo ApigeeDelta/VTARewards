@@ -13,9 +13,6 @@
 		3FFE71A21AF934E000AFCFED /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A11AF934E000AFCFED /* assets */; };
 		3FFE71A51AF9413900AFCFED /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */; };
 		3FFE872C1BE8606900601777 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FFE872B1BE8606900601777 /* Images.xcassets */; };
-		63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFF9A1BFA35260034607B /* IXNotifyAction.m */; };
-		CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */; };
-		CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */; };
 		CA860C2D1BE3EC9F00BB1F19 /* Aileron-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C1D1BE3EC9F00BB1F19 /* Aileron-Black.otf */; };
 		CA860C2E1BE3EC9F00BB1F19 /* Aileron-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C1E1BE3EC9F00BB1F19 /* Aileron-BlackItalic.otf */; };
 		CA860C2F1BE3EC9F00BB1F19 /* Aileron-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C1F1BE3EC9F00BB1F19 /* Aileron-Bold.otf */; };
@@ -32,7 +29,6 @@
 		CA860C3A1BE3EC9F00BB1F19 /* Aileron-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C2A1BE3EC9F00BB1F19 /* Aileron-ThinItalic.otf */; };
 		CA860C3B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C2B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf */; };
 		CA860C3C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA860C2C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf */; };
-		CA9F5E2F1BE8340B00A77B49 /* IXLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */; };
 		CA9F5E311BE9274900A77B49 /* LaunchScreenLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */; };
 		CAE9C69B1AFA7F66002004A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */; };
 		D9A5387969AB69A3100F77D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF1103913C6F54FD9D0305 /* libPods.a */; };
@@ -49,14 +45,8 @@
 		3FFE71A11AF934E000AFCFED /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
 		3FFE71A41AF9413900AFCFED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		3FFE872B1BE8606900601777 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VTARewards/Images.xcassets; sourceTree = "<group>"; };
-		63EBFF991BFA35260034607B /* IXNotifyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXNotifyAction.h; sourceTree = "<group>"; };
-		63EBFF9A1BFA35260034607B /* IXNotifyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXNotifyAction.m; sourceTree = "<group>"; };
 		9540153EAE69696C9963D283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA6D43A6D244554B08386F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBProfile.h; sourceTree = "<group>"; };
-		CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXFBProfile.m; sourceTree = "<group>"; };
-		CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXFBLogin.m; sourceTree = "<group>"; };
-		CA2A9CBC1BD96A1700F00E8E /* IXFBLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXFBLogin.h; sourceTree = "<group>"; };
 		CA860C1D1BE3EC9F00BB1F19 /* Aileron-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-Black.otf"; sourceTree = "<group>"; };
 		CA860C1E1BE3EC9F00BB1F19 /* Aileron-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-BlackItalic.otf"; sourceTree = "<group>"; };
 		CA860C1F1BE3EC9F00BB1F19 /* Aileron-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-Bold.otf"; sourceTree = "<group>"; };
@@ -73,8 +63,6 @@
 		CA860C2A1BE3EC9F00BB1F19 /* Aileron-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-ThinItalic.otf"; sourceTree = "<group>"; };
 		CA860C2B1BE3EC9F00BB1F19 /* Aileron-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-UltraLight.otf"; sourceTree = "<group>"; };
 		CA860C2C1BE3EC9F00BB1F19 /* Aileron-UltraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aileron-UltraLightItalic.otf"; sourceTree = "<group>"; };
-		CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXLocationTracker.m; sourceTree = "<group>"; };
-		CA9F5E2E1BE8340B00A77B49 /* IXLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXLocationTracker.h; sourceTree = "<group>"; };
 		CA9F5E301BE9274900A77B49 /* LaunchScreenLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreenLogo.png; sourceTree = "<group>"; };
 		CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,14 +112,6 @@
 				3FFE71A11AF934E000AFCFED /* assets */,
 				3FAAB0571AF92E3600CFFA7D /* AppDelegate.h */,
 				3FAAB0581AF92E3600CFFA7D /* AppDelegate.m */,
-				63EBFF991BFA35260034607B /* IXNotifyAction.h */,
-				63EBFF9A1BFA35260034607B /* IXNotifyAction.m */,
-				CA2A9CBC1BD96A1700F00E8E /* IXFBLogin.h */,
-				CA2A9CBB1BD96A1700F00E8E /* IXFBLogin.m */,
-				CA0C42201BDFE97A00CCCA2C /* IXFBProfile.h */,
-				CA0C42211BDFE97A00CCCA2C /* IXFBProfile.m */,
-				CA9F5E2E1BE8340B00A77B49 /* IXLocationTracker.h */,
-				CA9F5E2D1BE8340B00A77B49 /* IXLocationTracker.m */,
 				3FAAB0601AF92E3600CFFA7D /* Images.xcassets */,
 				3FAAB0531AF92E3600CFFA7D /* Supporting Files */,
 				CAE9C69A1AFA7F66002004A0 /* LaunchScreen.xib */,
@@ -316,12 +296,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9F5E2F1BE8340B00A77B49 /* IXLocationTracker.m in Sources */,
 				3FAAB0591AF92E3600CFFA7D /* AppDelegate.m in Sources */,
 				3FAAB0561AF92E3600CFFA7D /* main.m in Sources */,
-				63EBFF9B1BFA35260034607B /* IXNotifyAction.m in Sources */,
-				CA0C42221BDFE97A00CCCA2C /* IXFBProfile.m in Sources */,
-				CA2A9CBD1BD96A1700F00E8E /* IXFBLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
