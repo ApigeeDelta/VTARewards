@@ -218,7 +218,7 @@ IX_STATIC_CONST_STRING kIXMapImageAnnotationIdentifier = @"kIXMapImageAnnotation
         }
     }
 
-    [self setUsesMapLines:[[self attributeContainer] getBoolValueForAttribute:kIXRouteEnabled defaultValue:YES]];
+    [self setUsesMapLines:[[self attributeContainer] getBoolValueForAttribute:kIXRouteEnabled defaultValue:NO]];
     if( [self usesMapLines] ) {
         [self reloadMapRoute];
     } else {
