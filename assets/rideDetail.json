@@ -73,7 +73,8 @@
               "size.h": "100%",
               "size.w": "100%",
               "userLocation.enabled": true,
-              "zoomLevel": 12
+              "zoomLevel": 12,
+              "route.enabled": true
             }
           },
           {
