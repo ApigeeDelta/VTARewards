@@ -367,7 +367,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   IgniteEngine:
-    :commit: a662c54b358c638acd889ecae5abe80026f17585
+    :commit: b98251dd854fff0e5c4c649ada17746509b3b3d3
     :git: https://github.com/apigee/IgniteEngine-iOS.git
 
 SPEC CHECKSUMS:
