@@ -33,7 +33,8 @@
             {
                 "_type": "Alert",
                 "attributes": {
-                    "title": "You have entered the range of a VTA Beacon"
+                    "title": "Welcome aboard.",
+                    "message": "Have a great ride"
                 },
                 "on": "beacon.enteredRegion"
             },
@@ -79,16 +80,24 @@
             {
                 "_type": "Notify",
                 "attributes": {
-                    "message": "You have entered the range of a VTA Beacon",
-                    "title": "Beacon around"
+                    "message": "Welcome aboard.",
+                    "title": "Have a great ride"
                 },
                 "on": "beacon.enteredRegion"
             },
             {
+                "_type": "Alert",
+                "attributes": {
+                "message": "See you again",
+                "title": "Thank you for riding VTA"
+                },
+                "on": "beacon.exitedRegion"
+            },
+            {
                 "_type": "Notify",
                 "attributes": {
-                    "message": "You have left the range of a VTA Beacon",
-                    "title": "Beacon away"
+                    "message": "See you again",
+                    "title": "Thank you for riding VTA"
                 },
                 "on": "beacon.exitedRegion"
             }
