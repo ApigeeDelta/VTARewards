@@ -36,6 +36,16 @@
                   "functionName": "present"
                 },
                 "on": "button.right"
+              },
+              {
+                "_type": "Alert",
+                "attributes": {
+                  "enabled": [
+                        "if :: [[socialTest.isAllowed.twitter]] :: false :: true"
+                    ],
+                  "title": "Please sign in to your twitter account"
+                },
+                "on": "button.right"
               }
             ],
             "attributes": {
@@ -182,7 +192,8 @@
           {
             "_type": "Alert",
             "attributes": {
-              "title": "success"
+              "title": "Successfully posted!",
+              "message":"Your message has been posted."
             },
             "on": "success"
           }
