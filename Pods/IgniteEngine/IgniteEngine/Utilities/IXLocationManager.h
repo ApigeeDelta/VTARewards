@@ -40,11 +40,13 @@
 
 @property (nonatomic,weak) id<IXLocationManagerDelegate> delegate;
 @property (nonatomic,assign) CLLocationAccuracy desiredAccuracy;
+@property (nonatomic,assign) CLLocationDistance distanceFilter;
 
 @property (nonatomic,assign,readonly) BOOL isAuthorized;
 @property (nonatomic,strong,readonly) CLLocation* lastKnownLocation;
 
 @property (nonatomic,assign) BOOL shouldTrackTripData;
+@property (nonatomic,assign) CGFloat tripDistance;
 @property (nonatomic,readonly) NSString* tripDataJSON;
 
 +(instancetype)sharedLocationManager;

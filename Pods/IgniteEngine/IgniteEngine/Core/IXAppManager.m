@@ -101,6 +101,8 @@ IX_STATIC_CONST_STRING kIXRequestAccessMicrophoneAuto = @"mic.autoRequest.enable
 IX_STATIC_CONST_STRING kIXRequestAccessLocationAuto = @"location.autoRequest.enabled"; // Should app automatically request access to location. If NO must use app function kIXRequestAccessLocation to track location.  This will begin tracking automatically as well when set to YES.
 
 // App Attribute Values
+IX_STATIC_CONST_STRING kIXLocationDistanceFilter = @"distanceFilter"; // location services
+
 IX_STATIC_CONST_STRING kIXLocationAccuracyBest = @"best"; // location services
 IX_STATIC_CONST_STRING kIXLocationAccuracyBestForNavigation = @"bestForNavigation"; // location services
 IX_STATIC_CONST_STRING kIXLocationAccuracyNearestTenMeters = @"nearestTenMeters"; // location services
@@ -680,6 +682,10 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
         } else if( [locationAccuracy isEqualToString:kIXLocationAccuracyThreeKilometers] ) {
             [[IXLocationManager sharedLocationManager] setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
         }
+
+        CGFloat parameterDistanceFilter = [parameters getFloatValueForAttribute:kIXLocationDistanceFilter defaultValue:kCLDistanceFilterNone];
+        CGFloat distanceFilter = [[self appProperties] getFloatValueForAttribute:kIXLocationDistanceFilter defaultValue:parameterDistanceFilter];
+        [[IXLocationManager sharedLocationManager] setDistanceFilter:distanceFilter];
 
         [[IXLocationManager sharedLocationManager] beginLocationTracking];
     }

@@ -30,6 +30,7 @@
 
 @interface IXLocationManager () <CLLocationManagerDelegate>
 
+@property (nonatomic,strong) CLLocation* startTripLocation;
 @property (nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic,strong) CLLocation* lastKnownLocation;
 
@@ -84,6 +85,11 @@
     [[self locationManager] setDesiredAccuracy:desiredAccuracy];
 }
 
+-(void)setDistanceFilter:(CLLocationDistance)distanceFilter
+{
+    [[self locationManager] setDistanceFilter:distanceFilter];
+}
+
 -(BOOL)isAuthorized
 {
     CLAuthorizationStatus currentStatus = [CLLocationManager authorizationStatus];
@@ -119,6 +125,7 @@
 -(void)beginLocationTracking
 {
     self.start = nil;
+    self.startTripLocation = nil;
     self.stop = nil;
     self.waypoints = [NSMutableArray array];
     self.tripData = nil;
@@ -182,11 +189,13 @@
 
         if (self.start == nil) {
             self.start = locationDict;
+            self.startTripLocation = mostRecentLocation;
         } else {
             [self.waypoints addObject:locationDict];
         }
         self.stop = locationDict;
 
+        self.tripDistance = [[self startTripLocation] distanceFromLocation:mostRecentLocation];
     }
 
     CLLocationDistance distance = [[self lastKnownLocation] distanceFromLocation:mostRecentLocation];

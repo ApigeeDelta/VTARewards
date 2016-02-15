@@ -50,6 +50,7 @@ IX_STATIC_CONST_STRING kIXOSName = @"os.name";
 IX_STATIC_CONST_STRING kIXLocation = @"location"; // Return format: lat:long
 IX_STATIC_CONST_STRING kIXLocationLat = @"location.lat";
 IX_STATIC_CONST_STRING kIXLocationLong = @"location.long";
+IX_STATIC_CONST_STRING kIXLocationTripDistance = @"location.tripDistance";
 
 IX_STATIC_CONST_STRING kIXBluetoothState = @"bluetooth.state";
 
@@ -110,6 +111,10 @@ IX_STATIC_CONST_STRING kIXBluetoothState = @"bluetooth.state";
             else if( [methodName isEqualToString:kIXLocationLong] )
             {
                 returnValue = [NSString ix_stringFromFloat:[[[IXLocationManager sharedLocationManager] lastKnownLocation] coordinate].longitude];
+            }
+            else if( [methodName isEqualToString:kIXLocationTripDistance] )
+            {
+                returnValue = [NSString ix_stringFromFloat:[[IXLocationManager sharedLocationManager] tripDistance]];
             }
             else if( [methodName isEqualToString:kIXLocation] )
             {

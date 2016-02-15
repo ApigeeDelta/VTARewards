@@ -31,37 +31,100 @@
                 "on": "didBecomeActive"
             },
             {
-                "_type": "Alert",
+                "_type": "Modify",
+                "on": "beacon.enteredRegion",
                 "attributes": {
-                    "title": "Welcome aboard.",
-                    "message": "Have a great ride"
+                    "enabled": [
+                        "if :: !$session.isOnTrip :: true :: false"
+                    ]
                 },
-                "on": "beacon.enteredRegion"
-            },
-            {
-                "_type": "Function",
-                "attributes": {
-                    "_target": "$app",
-                    "name": "location.beginTracking"
+                "set": {
+                    "$session.isOnTrip": true
                 },
-                "on": "beacon.enteredRegion"
-            },
-            {
-                "_type": "Function",
                 "actions": [
                     {
-                        "_type": "Refresh",
+                        "_type": "Function",
                         "attributes": {
-                            "_target": "postTrip"
+                            "_target": "$app",
+                            "name": "location.beginTracking"
                         },
                         "on": "done"
                     }
-                ],
+                ]                
+            },
+            {
+                "_type": "Alert",
+                "on": "location.changed",
+                "attributes": {
+                    "enabled": [
+                        "if :: $device.location.tripDistance > 10 && $session.isOnTrip && !$session.beaconStartAlertSent :: true :: false"
+                    ],
+                    "message": "Have a great ride",
+                    "title": "Welcome aboard."
+                },
+                "actions": [
+                    {
+                        "_type": "Notify",
+                        "on": "done",
+                        "attributes": {
+                            "message": "Welcome aboard.",
+                            "title": "Have a great ride"
+                        }
+                    },
+                    {
+                        "_type": "Modify",
+                        "on" : "done",
+                        "set" : {
+                            "$session.beaconStartAlertSent": true
+                        }
+                    }
+                ]                
+            },
+            {
+                "_type": "Function",
+                "on": "beacon.exitedRegion",
                 "attributes": {
                     "_target": "$app",
                     "name": "location.endTracking"
-                },
-                "on": "beacon.exitedRegion"
+                },                
+                "actions": [
+                    {
+                        "_type": "Refresh",
+                        "on": "done",
+                        "attributes": {
+                            "_target": "postTrip",
+                            "enabled": [
+                                "if :: $device.location.tripDistance > 100 && $session.isOnTrip :: true :: false"
+                            ]
+                        },
+                        "actions": [
+                            {
+                                "_type": "Alert",
+                                "attributes": {
+                                    "message": "See you again",
+                                    "title": "Thank you for riding VTA"
+                                },
+                                "on": "done"
+                            },
+                            {
+                                "_type": "Notify",
+                                "attributes": {
+                                    "message": "See you again",
+                                    "title": "Thank you for riding VTA"
+                                },
+                                "on": "done"
+                            }
+                        ]                      
+                    }
+                ]
+            },
+            {
+                "_type": "Modify",
+                "on": "beacon.exitedRegion",
+                "set": {
+                    "$session.beaconStartAlertSent": false,
+                    "$session.isOnTrip": false
+                }
             },
             {
                 "_type": "Modify",
@@ -76,30 +139,6 @@
                 "set": {
                     "$session.beaconStatus": "Region Exited"
                 }
-            },
-            {
-                "_type": "Notify",
-                "attributes": {
-                    "message": "Welcome aboard.",
-                    "title": "Have a great ride"
-                },
-                "on": "beacon.enteredRegion"
-            },
-            {
-                "_type": "Alert",
-                "attributes": {
-                "message": "See you again",
-                "title": "Thank you for riding VTA"
-                },
-                "on": "beacon.exitedRegion"
-            },
-            {
-                "_type": "Notify",
-                "attributes": {
-                    "message": "See you again",
-                    "title": "Thank you for riding VTA"
-                },
-                "on": "beacon.exitedRegion"
             }
         ],
         "attributes": {
@@ -118,6 +157,7 @@
             "drawer.l.url": "/menu.json",
             "drawer.shadow.enabled": false,
             "location.autoRequest.enabled": false,
+            "location.distanceFilter": 10,
             "location.trackTripData.enabled": true,
             "logging.datasource.enabled": true,
             "logging.level": "verbose",
