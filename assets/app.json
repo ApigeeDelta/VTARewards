@@ -64,6 +64,14 @@
                 },
                 "actions": [
                     {
+                        "_type": "Function",
+                        "on": "done",
+                        "attributes": {
+                            "_target": "$app",
+                            "name": "beacon.monitorClosest"
+                        }
+                    },
+                    {
                         "_type": "Notify",
                         "on": "done",
                         "attributes": {
@@ -82,7 +90,7 @@
             },
             {
                 "_type": "Function",
-                "on": "beacon.exitedRegion",
+                "on": "beacon.closestBeaconExited",
                 "attributes": {
                     "_target": "$app",
                     "name": "location.endTracking"

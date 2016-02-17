@@ -165,9 +165,11 @@ IX_STATIC_CONST_STRING kIXBeaconCanMonitorBeacons = @"beacon.canMonitor";
 // App Functions
 IX_STATIC_CONST_STRING kIXBeaconStart = @"beacon.start";
 IX_STATIC_CONST_STRING kIXBeaconStop = @"beacon.stop";
+IX_STATIC_CONST_STRING kIXBeaconMonitorClosest = @"beacon.monitorClosest";
 
 // App Level Events
 IX_STATIC_CONST_STRING kIXBeaconEnteredRegion = @"beacon.enteredRegion";
+IX_STATIC_CONST_STRING kIXClosestBeaconExited = @"beacon.closestBeaconExited";
 IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 
 @interface IXAppManager () <IXLocationManagerDelegate,IXBeaconManagerDelegate,CBCentralManagerDelegate>
@@ -701,6 +703,10 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
     {
         [[IXBeaconManager sharedManager] stopMonitoring];
     }
+    else if( [functionName isEqualToString:kIXBeaconMonitorClosest] )
+    {
+        [[IXBeaconManager sharedManager] determineClosestBeaconAndMonitor];
+    }
 }
 
 -(void)storeSessionProperties
@@ -804,6 +810,11 @@ IX_STATIC_CONST_STRING kIXBeaconExitedRegion = @"beacon.exitedRegion";
 -(void)beaconManagerEnteredRegion:(IXBeaconManager*)beaconManager
 {
     [self fireAppEventNamed:kIXBeaconEnteredRegion];
+}
+
+-(void)closestBeaconExited:(IXBeaconManager*)beaconManager
+{
+    [self fireAppEventNamed:kIXClosestBeaconExited];
 }
 
 -(void)beaconManagerExitedRegion:(IXBeaconManager*)beaconManager

@@ -16,6 +16,9 @@
 @interface IXBeaconManager () <KTKLocationManagerDelegate>
 
 @property (strong,nonatomic) KTKLocationManager *locationManager;
+@property (strong,nonatomic) NSArray* rangedBeacons;
+
+@property (nonatomic,strong) CLBeacon* closestBeacon;
 
 @end
 
@@ -92,10 +95,38 @@
 -(void)locationManager:(KTKLocationManager *)locationManager didExitRegion:(KTKRegion *)region
 {
     [self.delegate beaconManagerExitedRegion:self];
+
+    if( self.closestBeacon != nil && [self.closestBeacon.proximityUUID.UUIDString isEqualToString:region.uuid] ) {
+        [self.delegate closestBeaconExited:self];
+        self.closestBeacon = nil;
+    }
+}
+
+-(CLBeacon*)determineClosestBeaconAndMonitor
+{
+    self.closestBeacon = self.rangedBeacons.firstObject;
+    return self.closestBeacon;
 }
 
 - (void)locationManager:(KTKLocationManager *)locationManager didRangeBeacons:(NSArray *)beacons
 {
+    self.rangedBeacons = beacons;
+
+    if( self.closestBeacon != nil ) {
+
+        BOOL didFindBeaconStill = NO;
+        for( CLBeacon* beacon in beacons )
+        {
+            didFindBeaconStill = [beacon.major isEqualToNumber:self.closestBeacon.major] && [beacon.minor isEqualToNumber:self.closestBeacon.minor];
+        }
+
+        if( !didFindBeaconStill ) {
+
+            [self.delegate closestBeaconExited:self];
+            self.closestBeacon = nil;
+        }
+    }
+
     NSLog(@"Ranged beacons count: %lu", (unsigned long)[beacons count]);
     [beacons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CLBeacon* beacon = (CLBeacon*)obj;

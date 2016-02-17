@@ -17,6 +17,7 @@
 @required
 -(void)beaconManagerEnteredRegion:(IXBeaconManager*)beaconManager;
 -(void)beaconManagerExitedRegion:(IXBeaconManager*)beaconManager;
+-(void)closestBeaconExited:(IXBeaconManager*)beaconManager;
 
 @end
 
@@ -32,5 +33,7 @@
 
 -(void)startMonitoring;
 -(void)stopMonitoring;
+
+-(CLBeacon*)determineClosestBeaconAndMonitor;
 
 @end
