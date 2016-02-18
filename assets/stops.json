@@ -8,6 +8,24 @@
                     "functionName": "location.auth.request"
                 },
                 "on": "willAppear"
+            },
+            {
+                "_type": "Function",
+                "attributes": {
+                    "_target": "$app",
+                    "functionName": "location.beginTracking"
+                },
+                "on": "willAppear",
+                "actions": [
+                    {
+                        "_type": "Refresh",
+                        "attributes": {
+                            "delay": 1,
+                            "_target": "stops"
+                        },
+                        "on": "done"
+                    }
+                ]
             }
         ],
         "attributes": {
